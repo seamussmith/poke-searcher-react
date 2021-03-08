@@ -177,7 +177,7 @@ function PkmnFlairs(props: {
     }
     if (splitName.some((e: any) => e === "gmax"))
     {
-        flairs.push(<p className='search__result-flair search__result-is-gmax'>Gigamax Form</p>)
+        flairs.push(<p className='search__result-flair search__result-is-gigamax'>Gigamax Form</p>)
     }
     if (splitName.some((e: any) => e === "alola"))
     {
