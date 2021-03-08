@@ -43,7 +43,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                         alt={pokemon.name} />
                     </div>
                     <div className='search__result-flairs'>
-                        <PkmnFlairs species={species} pkmnName={pokemon.name}/>
+                        <PkmnFlairs species={species} pkmnName={pokemon.name} />
                         <PkmnTypes types={pokemon.types} />
                     </div>
                 </div>
