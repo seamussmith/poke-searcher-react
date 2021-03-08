@@ -17,7 +17,7 @@ class Footer extends React.Component
                 <nav className="navbar navbar--minature footer__content">
                     <ul className="navbar__ulist">
                         <li className="navbar__ulist-item">
-                            <a className="navbar__link" href="https://github.com/seamussmith/PollsProject">
+                            <a className="navbar__link" href="https://github.com/seamussmith/poke-searcher-react">
                             <i className="fab fa-github --force-inheritence"></i> github</a>
                         </li>
                         <li className="navbar__ulist-item">
