@@ -1,0 +1,166 @@
+/** Detailed Pokemon Search Result */
+.search__result-detailed {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  --pokemon-color: none;
+  transform-origin: top;
+  width: 800px;
+  min-height: none;
+  justify-content: center;
+  align-items: stretch;
+  animation: emphasis 0.25s ease;
+  border-color: var(--pokemon-color);
+  background-color: var(--layer-1);
+  border-radius: var(--division-radius);
+  box-shadow: 0px 0px 5px var(--shadow-color);
+  padding: 5px;
+}
+
+.search__result-division {
+  width: 46%;
+  margin: 5px;
+  flex-grow: 1;
+  background-color: var(--layer-2);
+  border-radius: var(--division-radius);
+  box-shadow: 1px 1px 1px var(--shadow-color);
+}
+
+.search__result-name-detailed {
+  font-size: 30pt;
+  /* color: var(--pokemon-color); Pokemon with black pokedex colors dont look very nice... */
+}
+
+.search__result-types-detailed {
+  font-size: 25pt;
+  margin: 10px;
+  font-weight: bold;
+}
+
+.search__result-flair {
+  color: var(--text-color-inverse);
+  font-size: 20pt;
+  font-weight: bold;
+  margin: 5px 10%;
+  border-radius: 100px;
+  display: block;
+}
+
+.search__result-flair--true {
+  display: block;
+}
+
+.search__result-is-mythical {
+  background-color: rgb(231, 13, 231);
+  border: solid rgb(231, 13, 231) 5px;
+}
+
+.search__result-is-legendary {
+  background-color: gold;
+  border: solid gold 5px;
+}
+
+.search__result-is-mega-evo {
+  background-color: #00a9cc;
+  border: solid #00a9cc 5px;
+}
+
+.search__result-is-gigamax {
+  background-color: rgb(192, 39, 39);
+  border: solid rgb(192, 39, 39) 5px;
+}
+
+.search__result-is-alola {
+  background-color: #e8be95;
+  border: solid #e8be95 5px;
+}
+
+.search__result-is-galarian {
+  background-color: #6227d1;
+  border: solid #6227d1 5px;
+}
+
+.search__result-flavor-text {
+  padding: 0 15%;
+}
+
+.search__result-base-stats,
+.search__result-gender-rates {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.search__result-stat {
+  flex-grow: 1;
+  width: 40%;
+  background-color: var(--layer-1);
+  border-radius: var(--mini-divison-radius);
+  box-shadow: 1px 1px 1px var(--shadow-color);
+  margin: 5px;
+}
+
+.search__result-gender {
+  flex-grow: 1;
+  width: 40%;
+  height: 84px;
+  display: flex;
+  border-radius: var(--mini-divison-radius);
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--layer-1);
+  box-shadow: 1px 1px 1px var(--shadow-color);
+  margin: 5px;
+}
+
+.search__result-gender--female {
+  background-color: var(--female-stat-background);
+}
+
+.search__result-gender--male {
+  background-color: var(--male-stat-background);
+}
+
+.search__result-division--pokedex {
+  width: 100%;
+}
+
+.search__result-division--info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.search__result-division--share {
+  width: 100%;
+}
+
+.search__result-division--pokemon {
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+}
+
+.search__share-result {
+  color: var(--text-color);
+  padding: 5px;
+  margin-top: 5px;
+  display: inline-block;
+  background-color: var(--layer-1);
+  border: solid var(--layer-0) 1px;
+  transition: all 0.25s ease; 
+}
+
+.search__share-result:hover {
+  cursor: pointer;
+  background-color: var(--layer-0);
+}
+
+.search__share-result:active {
+  background-color: rgb(15, 20, 15);
+  transition: color 0.05s ease;
+}
+
+.search__result-flairs {
+  padding-bottom: 10px;
+}

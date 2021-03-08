@@ -1,0 +1,76 @@
+/* There are probably more efficient ways to do this... */
+.grass {
+    color: green;
+}
+
+.fire {
+    color: orange;
+}
+
+.water {
+    color: rgb(0, 81, 255);
+}
+
+.electric {
+    color: yellow;
+}
+
+.normal {
+    color: lightgray;
+}
+
+.bug {
+    color: lightgreen;
+}
+
+.psychic {
+    color: rgb(226, 126, 143);
+}
+
+.poison {
+    color: purple;
+}
+
+.ice {
+    color: lightblue;
+}
+
+.dark {
+    color: darkgray;
+}
+
+.dragon {
+    color: darkmagenta;
+}
+
+.steel {
+    color: gray;
+}
+
+.fairy {
+    color: lightpink;
+}
+
+.rock {
+    color: brown;
+}
+
+.flying {
+    color: rgb(211, 194, 224);
+}
+
+.bird {
+    color: rgb(211, 194, 224);
+}
+
+.ground {
+    color: #cda483;
+}
+
+.fighting {
+    color: red;
+}
+
+.ghost {
+    color: rgb(92, 60, 105);
+}

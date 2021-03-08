@@ -1,0 +1,21 @@
+
+/** The search inputs  */
+.search__inputs {
+    margin-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.search__input {
+font-size: 30pt;
+min-width: 0;
+border: solid rgb(138, 138, 138) 2px;
+border-radius: 1000px;
+padding: 5px 20px;
+}
+
+.search__input:focus {
+outline: none;
+}
