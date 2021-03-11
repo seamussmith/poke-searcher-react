@@ -17,6 +17,7 @@ type App_props = {
 class App extends React.Component<App_props, App_state>
 {
     // PokeAPI Cache
+    // <url, Promise<pokedata>>
     private pokemonCache: Record<string, Promise<any>>
     private speciesCache: Record<string, Promise<any>>
     // Number that prevents previous queries overriding the latest one
