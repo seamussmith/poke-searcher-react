@@ -9,11 +9,9 @@ type CopyClicker_state = {
 }
 class CopyClicker extends React.Component<CopyClicker_props, CopyClicker_state>
 {
-    private timeout: number
     constructor(props: CopyClicker_props)
     {
         super(props)
-        this.timeout = -1
         this.state = {
             hover_txt: "Click to copy"
         }
@@ -21,11 +19,10 @@ class CopyClicker extends React.Component<CopyClicker_props, CopyClicker_state>
     }
     onClick()
     {
-        clearTimeout(this.timeout)
         this.setState({
             hover_txt: "Copied!"
         })
-        this.timeout = window.setTimeout(() => {
+        window.setTimeout(() => {
             this.setState({
                 hover_txt: "Click to copy"
             })
