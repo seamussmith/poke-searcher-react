@@ -7,14 +7,19 @@
     background-color: var(--layer-1);
     border: solid var(--layer-0) 1px;
     transition: all 0.25s ease; 
-  }
+}
   
-  .search__share-result:hover {
-    cursor: pointer;
-    background-color: var(--layer-0);
-  }
-  
-  .search__share-result:active {
-    background-color: rgb(15, 20, 15);
-    transition: color 0.05s ease;
-  }
+.search__share-result:hover {
+  cursor: pointer;
+  background-color: var(--layer-0);
+}
+
+.search__share-result:active {
+  background-color: rgb(15, 20, 15);
+  transition: color 0.05s ease;
+}
+
+.search__share-result--copied::before {
+  color: rgb(0, 192, 0);
+  transition: 1s cubic-bezier(0.16, 1, 0.3, 1);
+}

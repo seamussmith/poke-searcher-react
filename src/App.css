@@ -85,11 +85,6 @@ body {
   background-color: var(--layer-3);
 }
 
-.search__share-result--copied::before {
-  color: rgb(0, 192, 0);
-  transition: 1s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
 @keyframes bounce {
   from {
     transform: scale(0.95, 0.95);
