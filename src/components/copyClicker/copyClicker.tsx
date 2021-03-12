@@ -1,4 +1,5 @@
 import React from 'react'
+import copy from 'copy-to-clipboard'
 import './copyClicker.css'
 
 type CopyClicker_props = {
@@ -22,6 +23,7 @@ class CopyClicker extends React.Component<CopyClicker_props, CopyClicker_state>
         this.setState({
             hover_txt: "Copied!"
         })
+        copy(this.props.copy_txt)
         window.setTimeout(() => {
             this.setState({
                 hover_txt: "Click to copy"
