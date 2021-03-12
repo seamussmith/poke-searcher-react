@@ -22,13 +22,6 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                                         .reverse()[0]
                                         .flavor_text.replaceAll("", ' ')
                                         .replaceAll(/(\r\n|\n|\r)/gm," ")
-        // Format all the egg group names
-        let eggGroupText = species.egg_groups
-                                    .map(
-                                        (e: any) => capitalize(e.name === "no-eggs" ? "undiscovered" : e.name)
-                                    ) // Map out the egg groups the pokemon is in
-        if (!eggGroupText.join("")) // Check if there are no egg groups (failsafe)
-            eggGroupText = ["N/A"]
         return (
             <div className='search__result-detailed'>
                 <div className='search__result-division search__result-division--pokemon'>
@@ -51,7 +44,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 <div className='search__result-division search__result-division--info'>
                     <BaseStatList stats={pokemon.stats} />
                     {/* TODO: Just give <PkmnInfo /> the pokemon object itself... */}
-                    <PkmnInfo entryID={pokemon.id} weight={pokemon.weight} habitat={pokemon.habitat?.name} eggGroups={eggGroupText} />
+                    <PkmnInfo pokemon={pokemon} species={species} />
                     <PkmnGenderRatio genderRatio={species.gender_rate} />
                 </div>
                 <PokedexEntry flavorText={latestFlavorText} />
@@ -141,18 +134,23 @@ function PokedexEntry(props: {
 
 // Element that displays the pokemon's extra info 
 function PkmnInfo(props: {
-    entryID: number
-    weight: number
-    habitat: string | null
-    eggGroups: string[]
+    pokemon: any
+    species: any
 })
 {
+            // Format all the egg group names
+    let eggGroupText = props.species.egg_groups
+                                    .map(
+                                        (e: any) => capitalize(e.name === "no-eggs" ? "undiscovered" : e.name)
+                                    ) // Map out the egg groups the pokemon is in
+    if (!eggGroupText.join("")) // Check if there are no egg groups (failsafe)
+        eggGroupText = ["N/A"]
     return (
         <div>
-            <p>ID #{props.entryID}</p>
-            <p>Weight: {props.weight/10}kg</p>
-            <p className='search__result-habitat'>Likes {props.habitat ?? "no"} environments</p>
-            <p className='search__result-egg-group'>Egg groups: {props.eggGroups.join(", ")}</p>
+            <p>ID #{props.pokemon.id}</p>
+            <p>Weight: {props.pokemon.weight/10}kg</p>
+            <p className='search__result-habitat'>Likes {props.pokemon.habitat ?? "no"} environments</p>
+            <p className='search__result-egg-group'>Egg groups: {eggGroupText.join(", ")}</p>
         </div>
     )
 }
