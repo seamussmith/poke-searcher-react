@@ -57,7 +57,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 <PokedexEntry flavorText={latestFlavorText} />
                 <div className='search__result-division search__result-division--info'>
                     <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-                        <CopyClicker copyTxt={pokemon.name} />
+                        <CopyClicker copyTxt={`${window.location.href}?pkmn=${pokemon.name}`} />
                     </p>
                 </div>
             </div>
