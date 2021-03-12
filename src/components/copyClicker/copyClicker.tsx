@@ -34,8 +34,7 @@ class CopyClicker extends React.Component<CopyClicker_props, CopyClicker_state>
             <span
             className="search__share-result tooltip"
             data-hover-txt={this.state.hover_txt}
-            onClick={this.onClick}
-            >
+            onClick={this.onClick}>
                 {this.props.copy_txt}
             </span>
         )
