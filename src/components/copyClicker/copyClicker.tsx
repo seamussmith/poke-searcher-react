@@ -38,7 +38,7 @@ class CopyClicker extends React.Component<CopyClicker_props, CopyClicker_state>
             data-hover-txt={this.state.hover_txt}
             onClick={this.onClick}
             >
-                {/* ${document.location.origin + document.location.pathname}?pkmn=${result.name} */}
+                {this.props.copy_txt}
             </span>
         )
     }
