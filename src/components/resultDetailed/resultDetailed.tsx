@@ -1,6 +1,7 @@
 import React from 'react'
 import { capitalize, stylePokemonName } from '../util/util'
 import '../typeColorClasses/typeColorClasses.css'
+import CopyClicker from '../copyClicker/copyClicker'
 import './resultDetailed.css'
 
 type ResultDetailed_props = {
@@ -54,6 +55,11 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                     <PkmnGenderRatio genderRatio={species.gender_rate} />
                 </div>
                 <PokedexEntry flavorText={latestFlavorText} />
+                <div className='search__result-division search__result-division--info'>
+                    <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
+                        <CopyClicker copyTxt={pokemon.name} />
+                    </p>
+                </div>
             </div>
         )
     }

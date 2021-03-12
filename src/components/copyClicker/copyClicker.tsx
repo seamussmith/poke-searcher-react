@@ -3,10 +3,10 @@ import copy from 'copy-to-clipboard'
 import './copyClicker.css'
 
 type CopyClicker_props = {
-    copy_txt: string
+    copyTxt: string
 }
 type CopyClicker_state = {
-    hover_txt: string
+    hoverTxt: string
 }
 class CopyClicker extends React.Component<CopyClicker_props, CopyClicker_state>
 {
@@ -14,19 +14,19 @@ class CopyClicker extends React.Component<CopyClicker_props, CopyClicker_state>
     {
         super(props)
         this.state = {
-            hover_txt: "Click to copy"
+            hoverTxt: "Click to copy"
         }
         this.onClick = this.onClick.bind(this)
     }
     onClick()
     {
         this.setState({
-            hover_txt: "Copied!"
+            hoverTxt: "Copied!"
         })
-        copy(this.props.copy_txt)
+        copy(this.props.copyTxt)
         window.setTimeout(() => {
             this.setState({
-                hover_txt: "Click to copy"
+                hoverTxt: "Click to copy"
             })
         }, 500)
     }
@@ -35,9 +35,9 @@ class CopyClicker extends React.Component<CopyClicker_props, CopyClicker_state>
         return (
             <span
             className="search__share-result tooltip"
-            data-hover-txt={this.state.hover_txt}
+            data-hover-txt={this.state.hoverTxt}
             onClick={this.onClick}>
-                {this.props.copy_txt}
+                {this.props.copyTxt}
             </span>
         )
     }

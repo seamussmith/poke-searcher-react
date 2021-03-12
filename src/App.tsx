@@ -102,7 +102,6 @@ class App extends React.Component<App_props, App_state>
                     <div className="search__result-container">
                         {this.state.detailedResult}
                         {this.state.searchResults}
-                        <CopyClicker copy_txt="aaa"/>
                     </div>
                 </div>
             </div>
