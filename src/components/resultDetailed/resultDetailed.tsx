@@ -49,6 +49,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 </div>
                 <div className='search__result-division search__result-division--info'>
                     <BaseStatList stats={pokemon.stats} />
+                    {/* TODO: Just give <PkmnInfo /> the pokemon object itself... */}
                     <PkmnInfo entryID={pokemon.id} weight={pokemon.weight} habitat={pokemon.habitat?.name} eggGroups={eggGroupText} />
                     <PkmnGenderRatio genderRatio={species.gender_rate} />
                 </div>
