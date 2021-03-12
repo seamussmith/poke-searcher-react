@@ -2,7 +2,7 @@ import React from 'react'
 import './searchBox.css'
 
 type SearchBox_props = {
-    typeAheadHandler: (query: string) => void
+    keyUp: (query: string) => void
 }
 type SearchBox_state = {}
 class SearchBox extends React.Component<SearchBox_props, SearchBox_state>
@@ -15,7 +15,7 @@ class SearchBox extends React.Component<SearchBox_props, SearchBox_state>
     }
     keyUpInput(event: React.KeyboardEvent<HTMLInputElement>)
     {
-        this.props.typeAheadHandler(event.currentTarget.value)
+        this.props.keyUp(event.currentTarget.value)
     }
     render()
     {

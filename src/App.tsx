@@ -97,7 +97,7 @@ class App extends React.Component<App_props, App_state>
         return (
             <div className="App">
                 <div className="search">
-                    <SearchBox typeAheadHandler={this.queryPokeAPI} />
+                    <SearchBox keyUp={this.queryPokeAPI} />
                     <div className="search__result-container">
                         {this.state.detailedResult}
                         {this.state.searchResults}
