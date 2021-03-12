@@ -55,11 +55,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                     <PkmnGenderRatio genderRatio={species.gender_rate} />
                 </div>
                 <PokedexEntry flavorText={latestFlavorText} />
-                <div className='search__result-division search__result-division--info'>
-                    <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-                        <CopyClicker copyTxt={`${window.location.href}?pkmn=${pokemon.name}`} />
-                    </p>
-                </div>
+                <SharePokemon name={pokemon.name} />
             </div>
         )
     }
@@ -211,6 +207,19 @@ function PkmnTypes(props: {
             <span className={props.types[0].type.name}>{capitalize(props.types[0].type.name)} </span>
             <span className={(props.types[1]?.type.name ?? "")}>{capitalize(props.types[1]?.type.name ?? "")}</span>
         </p>
+    )
+}
+
+function SharePokemon(props: {
+    name: string
+})
+{
+    return (
+        <div className='search__result-division search__result-division--info'>
+            <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
+                <CopyClicker copyTxt={`${window.location.href}?pkmn=${props.name}`} />
+            </p>
+        </div>
     )
 }
 
