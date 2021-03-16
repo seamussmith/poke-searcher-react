@@ -2,8 +2,6 @@ import React from 'react'
 import SearchBox from './components/searchBox/searchBox'
 import SearchResult from './components/searchResult/searchResult'
 import ResultDetailed from './components/resultDetailed/resultDetailed'
-import CopyClicker from './components/copyClicker/copyClicker'
-import logo from './logo.svg'
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 
