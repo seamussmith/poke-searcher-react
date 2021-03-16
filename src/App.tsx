@@ -90,6 +90,28 @@ class App extends React.Component<App_props, App_state>
             })
         
     }
+    componentDidMount()
+    {
+        let url_string = window.location.href
+        let url = new URL(url_string)
+        let pkmn = url.searchParams.get("pkmn")
+        if (pkmn !== null)
+        {
+            // Grab the pokemon
+            let pokeIndex = this.props.pokemonIndex.results.find((i: any) => i.name.match(pkmn) !== null)
+            // if it existts...
+            if (pokeIndex !== undefined || pokeIndex !== null)
+            {
+
+                // Grab the pokemon data
+                (this.pokemonCache[pokeIndex.url] = fetch(pokeIndex.url).then(blob => blob.json()))
+                    .then((data) => {
+                        // Pass it to detail handler to render the pokemon
+                        this.detailHandler(data)
+                    })
+            }
+        }
+    }
     render()
     {
         return (
