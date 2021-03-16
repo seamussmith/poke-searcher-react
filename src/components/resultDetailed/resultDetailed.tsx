@@ -215,7 +215,7 @@ function SharePokemon(props: {
     return (
         <div className='search__result-division search__result-division--info'>
             <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-                <CopyClicker copyTxt={`${window.location.href}?pkmn=${props.name}`} />
+                <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${props.name}`} />
             </p>
         </div>
     )
