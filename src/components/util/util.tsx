@@ -11,7 +11,7 @@ export function stylePokemonName(str: string): JSX.Element
     if (str !== "ho-oh") // WHY IS THERE A POKEMON WITH A HYPHEN IN THEIR NAME?? WHY IS HO-OH THE ONLY ONE????
         splitStr = str.split("-").map(e => capitalize(e))
     else
-        return <span>{capitalize(str)}</span> // Ho-oh does not have male/female variants. Right? RIGHT???
+        return <span className="--force-inheritence">{capitalize(str)}</span> // Ho-oh does not have male/female variants. Right? RIGHT???
     let genderSymbol = null
     if (splitStr[splitStr.length-1].match(/M$|Male$/))
     {
