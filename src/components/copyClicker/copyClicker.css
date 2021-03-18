@@ -1,5 +1,5 @@
 
-.search__share-result {
+.copy-clicker {
     color: var(--text-color);
     padding: 5px;
     margin-top: 5px;
@@ -9,17 +9,17 @@
     transition: all 0.25s ease; 
 }
   
-.search__share-result:hover {
+.copy-clicker:hover {
   cursor: pointer;
   background-color: var(--layer-0);
 }
 
-.search__share-result:active {
+.copy-clicker:active {
   background-color: rgb(15, 20, 15);
   transition: color 0.05s ease;
 }
 
-.search__share-result--copied::before {
+.copy-clicker--copied::before {
   color: rgb(0, 192, 0);
   transition: 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
