@@ -23,9 +23,9 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                                         .flavor_text.replaceAll("", ' ')
                                         .replaceAll(/(\r\n|\n|\r)/gm," ")
         return (
-            <div className='search__result-detailed'>
-                <div className='search__result-division search__result-division--pokemon'>
-                    <h2 className='search__result-name-detailed'>
+            <div className='result-detailed'>
+                <div className='result-detailed__division result-detailed__division--pokemon'>
+                    <h2 className='result-detailed__name-detailed'>
                         <span className={pokemon.types[0].type.name}>{stylePokemonName(pokemon.name)}</span>
                     </h2>
                     <div>
@@ -36,12 +36,12 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                               "TODO: INSERT NO ART PLACEHOLDER" }
                         alt={pokemon.name} />
                     </div>
-                    <div className='search__result-flairs'>
+                    <div className='result-detailed__flairs'>
                         <PkmnFlairs species={species} pkmnName={pokemon.name} />
                         <PkmnTypes types={pokemon.types} />
                     </div>
                 </div>
-                <div className='search__result-division search__result-division--info'>
+                <div className='result-detailed__division result-detailed__division--info'>
                     <BaseStatList stats={pokemon.stats} />
                     {/* TODO: Just give <PkmnInfo /> the pokemon object itself... */}
                     <PkmnInfo pokemon={pokemon} species={species} />
@@ -62,7 +62,7 @@ function PkmnStat(props: {
 })
 {
     return (
-        <div className='search__result-stat'>
+        <div className='result-detailed__stat'>
             <p>{props.name}:</p>
             <p>{props.stat}</p>
         </div>
@@ -75,7 +75,7 @@ function BaseStatList(props: {
 })
 {
     return (
-        <div className='search__result-base-stats'>
+        <div className='result-detailed__base-stats'>
             {
             props.stats.map((stat: any) =>
                 <PkmnStat name={capitalize(stat.stat.name).replace("-", " ")} stat={stat.base_stat} />
@@ -97,7 +97,7 @@ function PkmnGenderRatio(props: {
     if (props.genderRatio === -1)
     {
         genderElements = [(
-            <div className='search__result-gender'>
+            <div className='result-detailed__gender'>
                 <h1>Genderless</h1>
             </div>
         )]
@@ -105,17 +105,17 @@ function PkmnGenderRatio(props: {
     else
     {
         genderElements = [
-            <div className='search__result-gender search__result-gender--male'>
+            <div className='result-detailed__gender result-detailed__gender--male'>
                 <h1><i className="fas fa-mars --force-inheritence"></i> {maleRatio}%</h1>
             </div>,
-            <div className='search__result-gender search__result-gender--female'>
+            <div className='result-detailed__gender result-detailed__gender--female'>
                 <h1><i className="fas fa-venus --force-inheritence"></i> {femaleRatio}%</h1>
             </div>
         ]
     }
         
     return (
-        <div className='search__result-gender-rates'>
+        <div className='result-detailed__gender-rates'>
             {genderElements}
         </div>
     )
@@ -127,8 +127,8 @@ function PokedexEntry(props: {
 })
 {
     return (
-        <div className='search__result-division search__result-division--pokedex'>
-            <p className='search__result-flavor-text'>"{props.flavorText}"<br/> - Pokedex</p>
+        <div className='result-detailed__division result-detailed__division--pokedex'>
+            <p className='result-detailed__flavor-text'>"{props.flavorText}"<br/> - Pokedex</p>
         </div>
     )
 }
@@ -150,8 +150,8 @@ function PkmnInfo(props: {
         <div>
             <p>ID #{props.pokemon.id}</p>
             <p>Weight: {props.pokemon.weight/10}kg</p>
-            <p className='search__result-habitat'>Likes {props.pokemon.habitat ?? "no"} environments</p>
-            <p className='search__result-egg-group'>Egg groups: {eggGroupText.join(", ")}</p>
+            <p className='result-detailed__habitat'>Likes {props.pokemon.habitat ?? "no"} environments</p>
+            <p className='result-detailed__egg-group'>Egg groups: {eggGroupText.join(", ")}</p>
         </div>
     )
 }
@@ -167,27 +167,27 @@ function PkmnFlairs(props: {
     let flairs = []
     if (props.species.is_legendary)
     {
-        flairs.push(<p className='search__result-flair search__result-is-legendary'>Legendary Pokemon</p>)
+        flairs.push(<p className='result-detailed__flair result-detailed__is-legendary'>Legendary Pokemon</p>)
     }
     if (props.species.is_mythical)
     {
-        flairs.push(<p className='search__result-flair search__result-is-mythical'>Mythical Pokemon</p>)
+        flairs.push(<p className='result-detailed__flair result-detailed__is-mythical'>Mythical Pokemon</p>)
     }
     if (splitName.some((e: any) => e === "mega"))
     {
-        flairs.push(<p className='search__result-flair search__result-is-mega-evo'>Mega Evolution</p>)
+        flairs.push(<p className='result-detailed__flair result-detailed__is-mega-evo'>Mega Evolution</p>)
     }
     if (splitName.some((e: any) => e === "gmax"))
     {
-        flairs.push(<p className='search__result-flair search__result-is-gigamax'>Gigamax Form</p>)
+        flairs.push(<p className='result-detailed__flair result-detailed__is-gigamax'>Gigamax Form</p>)
     }
     if (splitName.some((e: any) => e === "alola"))
     {
-        flairs.push(<p className='search__result-flair search__result-is-alola'>Alola Form</p>)
+        flairs.push(<p className='result-detailed__flair result-detailed__is-alola'>Alola Form</p>)
     }
     if (splitName.some((e: any) => e === "galar"))
     {
-        flairs.push(<p className='search__result-flair search__result-is-galarian'>Galarian Form</p>)
+        flairs.push(<p className='result-detailed__flair result-detailed__is-galarian'>Galarian Form</p>)
     }
     return (
         <div>
@@ -202,7 +202,7 @@ function PkmnTypes(props: {
 })
 {
     return (
-        <p className='search__result-types-detailed'>
+        <p className='result-detailed__types-detailed'>
             <span className={props.types[0].type.name}>{capitalize(props.types[0].type.name)} </span>
             <span className={(props.types[1]?.type.name ?? "")}>{capitalize(props.types[1]?.type.name ?? "")}</span>
         </p>
@@ -214,7 +214,7 @@ function SharePokemon(props: {
 })
 {
     return (
-        <div className='search__result-division search__result-division--info'>
+        <div className='result-detailed__division result-detailed__division--info'>
             <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
                 <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${props.name}`} />
             </p>
