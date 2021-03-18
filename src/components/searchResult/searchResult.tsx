@@ -29,7 +29,7 @@ class SearchResult extends React.Component<SearchResult_props, {}>
                 </h2>
                 <div>
                     <img
-                    className="nofilter"
+                    className="search-result__image nofilter"
                     src={pokeData.sprites.front_default}
                     alt={`${pokeData.name} sprite`}/>
                 </div>
