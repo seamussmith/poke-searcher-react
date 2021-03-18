@@ -1,146 +1,146 @@
 /** Detailed Pokemon Search Result */
 .result-detailed {
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  --pokemon-color: none;
-  transform-origin: top;
-  width: 800px;
-  min-height: none;
-  justify-content: center;
-  align-items: stretch;
-  animation: emphasis 0.25s ease;
-  border-color: var(--pokemon-color);
-  background-color: var(--layer-1);
-  border-radius: var(--division-radius);
-  box-shadow: 0px 0px 5px var(--shadow-color);
-  padding: 5px;
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    --pokemon-color: none;
+    transform-origin: top;
+    width: 800px;
+    min-height: none;
+    justify-content: center;
+    align-items: stretch;
+    animation: emphasis 0.25s ease;
+    border-color: var(--pokemon-color);
+    background-color: var(--layer-1);
+    border-radius: var(--division-radius);
+    box-shadow: 0px 0px 5px var(--shadow-color);
+    padding: 5px;
 }
 
 .result-detailed__division {
-  width: 46%;
-  margin: 5px;
-  flex-grow: 1;
-  background-color: var(--layer-2);
-  border-radius: var(--division-radius);
-  box-shadow: 1px 1px 1px var(--shadow-color);
+    width: 46%;
+    margin: 5px;
+    flex-grow: 1;
+    background-color: var(--layer-2);
+    border-radius: var(--division-radius);
+    box-shadow: 1px 1px 1px var(--shadow-color);
 }
 
 .result-detailed__name-detailed {
-  font-size: 30pt;
-  /* color: var(--pokemon-color); Pokemon with black pokedex colors dont look very nice... */
+    font-size: 30pt;
+    /* color: var(--pokemon-color); Pokemon with black pokedex colors dont look very nice... */
 }
 
 .result-detailed__types-detailed {
-  font-size: 25pt;
-  margin: 10px;
-  font-weight: bold;
+    font-size: 25pt;
+    margin: 10px;
+    font-weight: bold;
 }
 
 .result-detailed__flair {
-  color: var(--text-color-inverse);
-  font-size: 20pt;
-  font-weight: bold;
-  margin: 5px 10%;
-  border-radius: 100px;
-  display: block;
+    color: var(--text-color-inverse);
+    font-size: 20pt;
+    font-weight: bold;
+    margin: 5px 10%;
+    border-radius: 100px;
+    display: block;
 }
 
 .result-detailed__flair--true {
-  display: block;
+    display: block;
 }
 
 .result-detailed__is-mythical {
-  background-color: rgb(231, 13, 231);
-  border: solid rgb(231, 13, 231) 5px;
+    background-color: rgb(231, 13, 231);
+    border: solid rgb(231, 13, 231) 5px;
 }
 
 .result-detailed__is-legendary {
-  background-color: gold;
-  border: solid gold 5px;
+    background-color: gold;
+    border: solid gold 5px;
 }
 
 .result-detailed__is-mega-evo {
-  background-color: #00a9cc;
-  border: solid #00a9cc 5px;
+    background-color: #00a9cc;
+    border: solid #00a9cc 5px;
 }
 
 .result-detailed__is-gigamax {
-  background-color: rgb(192, 39, 39);
-  border: solid rgb(192, 39, 39) 5px;
+    background-color: rgb(192, 39, 39);
+    border: solid rgb(192, 39, 39) 5px;
 }
 
 .result-detailed__is-alola {
-  background-color: #e8be95;
-  border: solid #e8be95 5px;
+    background-color: #e8be95;
+    border: solid #e8be95 5px;
 }
 
 .result-detailed__is-galarian {
-  background-color: #6227d1;
-  border: solid #6227d1 5px;
+    background-color: #6227d1;
+    border: solid #6227d1 5px;
 }
 
 .result-detailed__flavor-text {
-  padding: 0 15%;
+    padding: 0 15%;
 }
 
 .result-detailed__base-stats,
 .result-detailed__gender-rates {
-  display: flex;
-  flex-wrap: wrap;
-  padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 
 .result-detailed__stat {
-  flex-grow: 1;
-  width: 40%;
-  background-color: var(--layer-1);
-  border-radius: var(--mini-divison-radius);
-  box-shadow: 1px 1px 1px var(--shadow-color);
-  margin: 5px;
+    flex-grow: 1;
+    width: 40%;
+    background-color: var(--layer-1);
+    border-radius: var(--mini-divison-radius);
+    box-shadow: 1px 1px 1px var(--shadow-color);
+    margin: 5px;
 }
 
 .result-detailed__gender {
-  flex-grow: 1;
-  width: 40%;
-  height: 84px;
-  display: flex;
-  border-radius: var(--mini-divison-radius);
-  flex-direction: column;
-  justify-content: center;
-  background-color: var(--layer-1);
-  box-shadow: 1px 1px 1px var(--shadow-color);
-  margin: 5px;
+    flex-grow: 1;
+    width: 40%;
+    height: 84px;
+    display: flex;
+    border-radius: var(--mini-divison-radius);
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--layer-1);
+    box-shadow: 1px 1px 1px var(--shadow-color);
+    margin: 5px;
 }
 
 .result-detailed__gender--female {
-  background-color: var(--female-stat-background);
+    background-color: var(--female-stat-background);
 }
 
 .result-detailed__gender--male {
-  background-color: var(--male-stat-background);
+    background-color: var(--male-stat-background);
 }
 
 .result-detailed__division--pokedex {
-  width: 100%;
+    width: 100%;
 }
 
 .result-detailed__division--info {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
 }
 
 .result-detailed__division--share {
-  width: 100%;
+    width: 100%;
 }
 
 .result-detailed__division--pokemon {
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
 }
 
 .result-detailed__flairs {
-  padding-bottom: 10px;
+    padding-bottom: 10px;
 }
