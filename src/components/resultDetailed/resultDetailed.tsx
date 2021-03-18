@@ -4,6 +4,8 @@ import '../typeColorClasses/typeColorClasses.css'
 import CopyClicker from '../copyClicker/copyClicker'
 import './resultDetailed.css'
 
+const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
+
 type ResultDetailed_props = {
     pokemon: any
     pkmnSpecies: any
@@ -33,7 +35,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                         className='pokeimg'
                         src={ pokemon.sprites.other["official-artwork"].front_default ??
                               pokemon.sprites.front_default ??
-                              "TODO: INSERT NO ART PLACEHOLDER" }
+                              NO_IMAGE }
                         alt={pokemon.name} />
                     </div>
                     <div className='result-detailed__flairs'>
