@@ -1,6 +1,7 @@
 import React from 'react'
 import copy from 'copy-to-clipboard'
 import './copyClicker.css'
+import '../tooltip/tooltip.css'
 
 type CopyClicker_props = {
     copyTxt: string
