@@ -28,7 +28,7 @@ export function stylePokemonName(str: string): JSX.Element
     )
 }
 
-export function escapeRegExp(str: string) 
+export function escapeRegExp(str: string): string
 {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
