@@ -1,0 +1,22 @@
+{
+  "csp-pic": {
+        "t": "one-dark",
+        "bg": "#FFFFFF",
+        "wt": "none",
+        "wc": false,
+        "fm": "Ubuntu Mono",
+        "fs": "18px",
+        "ln": true,
+        "ds": false,
+        "dsyoff": "20px",
+        "dsblur": "68px",
+        "wa": true,
+        "lh": "133%",
+        "pv": "0px",
+        "ph": "0px",
+        "si": false,
+        "wm": false,
+        "es": "2x",
+        "type": "png"
+    }
+}
