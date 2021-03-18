@@ -9,13 +9,13 @@
 }
 
 .search-box__input {
-font-size: 30pt;
-min-width: 0;
-border: solid rgb(138, 138, 138) 2px;
-border-radius: 1000px;
-padding: 5px 20px;
+    font-size: 30pt;
+    min-width: 0;
+    border: solid rgb(138, 138, 138) 2px;
+    border-radius: 1000px;
+    padding: 5px 20px;
 }
 
 .search-box__input:focus {
-outline: none;
+    outline: none;
 }
