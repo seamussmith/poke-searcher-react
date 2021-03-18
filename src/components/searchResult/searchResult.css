@@ -1,4 +1,4 @@
-.search__result {
+.search-result {
     color: white;
     display: flex;
     flex-direction: column;
@@ -15,13 +15,13 @@
     box-shadow: 2px 2px 2px var(--shadow-color);
 }
   
-.search__result:hover {
+.search-result:hover {
   background-color: var(--search-result-hover);
   /* outline: solid rgb(189, 53, 19) 3px; */
   cursor: pointer;
 }
 
-.search__result:active {
+.search-result:active {
   filter: brightness(90%);
   outline: none;
   transform: translate(-2px, -2px);

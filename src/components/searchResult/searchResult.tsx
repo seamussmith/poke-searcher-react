@@ -23,8 +23,8 @@ class SearchResult extends React.Component<SearchResult_props, {}>
     {
         let pokeData = this.props.pokeData
         return (
-            <div className='search__result' onClick={this.onClick}>
-                <h2 className='search__result-name'>
+            <div className='search-result' onClick={this.onClick}>
+                <h2 className='search-result-name'>
                     <span className={pokeData.types[0].type.name}>{stylePokemonName(pokeData.name)}</span>
                 </h2>
                 <div>
@@ -33,7 +33,7 @@ class SearchResult extends React.Component<SearchResult_props, {}>
                     src={pokeData.sprites.front_default}
                     alt={`${pokeData.name} sprite`}/>
                 </div>
-                <p className='search__result-types'>
+                <p className='search-result-types'>
                     <span className={pokeData.types[0].type.name}>{capitalize(pokeData.types[0].type.name)} </span>
                     <span className={(pokeData.types[1]?.type.name ?? "")}>{capitalize(pokeData.types[1]?.type.name ?? "")}</span>
                 </p>
