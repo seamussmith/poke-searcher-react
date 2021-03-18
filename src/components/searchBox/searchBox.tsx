@@ -20,11 +20,11 @@ class SearchBox extends React.Component<SearchBox_props, SearchBox_state>
     render()
     {
         return (
-            <div className="search__inputs">
-                <h1 className="search__title">PokeSearcher!</h1>
+            <div className="search-box">
+                <h1 className="search-box__title">PokeSearcher!</h1>
                 <input
                 type="text"
-                className="search__input"
+                className="search-box__input"
                 placeholder="Search for a Pokemon!"
                 spellCheck={false}
                 onKeyUp={this.keyUpInput}/>
