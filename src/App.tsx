@@ -98,9 +98,9 @@ class App extends React.Component<App_props, App_state>
         if (pkmn !== null)
         {
             // Grab the pokemon
-            let pokeIndex = this.props.pokemonIndex.results.find((i: any) => i.name.match(pkmn) !== null)
+            let pokeIndex = this.props.pokemonIndex.results.find((i: any) => i.name === pkmn)
             // if it exists...
-            if (pokeIndex !== undefined || pokeIndex !== null)
+            if (pokeIndex !== undefined && pokeIndex !== null)
             {
                 // Grab the pokemon data
                 (this.pokemonCache[pokeIndex.url] = fetch(pokeIndex.url).then(blob => blob.json()))
