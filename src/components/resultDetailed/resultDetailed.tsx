@@ -26,6 +26,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                                         .replaceAll(/(\r\n|\n|\r)/gm," ")
         return (
             <div className='result-detailed'>
+                {/* Pokemon name, Portrait, Flairs, Type */}
                 <div className='result-detailed__division result-detailed__division--pokemon'>
                     <h2 className='result-detailed__name-detailed'>
                         <span className={pokemon.types[0].type.name}>{stylePokemonName(pokemon.name)}</span>
@@ -43,14 +44,14 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                         <PkmnTypes types={pokemon.types} />
                     </div>
                 </div>
+                {/* Stats, Info, Gender Ratios */}
                 <div className='result-detailed__division result-detailed__division--info'>
                     <BaseStatList stats={pokemon.stats} />
-                    {/* TODO: Just give <PkmnInfo /> the pokemon object itself... */}
                     <PkmnInfo pokemon={pokemon} species={species} />
                     <PkmnGenderRatio genderRatio={species.gender_rate} />
                 </div>
                 <PokedexEntry flavorText={latestFlavorText} />
-                {/* Egg group compatability */}
+                {/* TODO: Insert egg group compatability here */}
                 <SharePokemon name={pokemon.name} />
             </div>
         )
