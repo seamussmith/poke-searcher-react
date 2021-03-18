@@ -10,16 +10,16 @@
 }
 
 .copy-clicker:hover {
-  cursor: pointer;
-  background-color: var(--layer-0);
+    cursor: pointer;
+    background-color: var(--layer-0);
 }
 
 .copy-clicker:active {
-  background-color: rgb(15, 20, 15);
-  transition: color 0.05s ease;
+    background-color: rgb(15, 20, 15);
+    transition: color 0.05s ease;
 }
 
 .copy-clicker--copied::before {
-  color: rgb(0, 192, 0);
-  transition: 1s cubic-bezier(0.16, 1, 0.3, 1);
+    color: rgb(0, 192, 0);
+    transition: 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
