@@ -23,7 +23,7 @@ if (-not (Test-Path -Path "./generated-code-pictures"))
 
 # Go into /generated-code-pictures. This is the output directory
 cd generated-code-pictures
-
+del *
 $MAX_LINE_COUNT = 20
 function GeneratePics($filter)
 {
