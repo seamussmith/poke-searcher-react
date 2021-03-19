@@ -22,7 +22,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
         let latestFlavorText = species.flavor_text_entries
                                         .filter((e: any) => e.language.name === "en")
                                         .reverse()[0]
-                                        .flavor_text.replaceAll("", ' ')
+                                        .flavor_text.replaceAll("\u000C", ' ')
                                         .replaceAll(/(\r\n|\n|\r)/gm," ")
         return (
             <div className='result-detailed'>
