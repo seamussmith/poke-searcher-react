@@ -24,18 +24,19 @@ if (-not (Test-Path -Path "./generated-code-pictures"))
 # Go into /generated-code-pictures. This is the output directory
 cd generated-code-pictures
 
+$MAX_LINE_COUNT = 20
 function GeneratePics($filter)
 {
     # Recursively search through /src for all files that match the filter
     Get-ChildItem -Path "../src" -Filter $filter -Recurse -File | ForEach-Object {
         # Get the amount of 25 line segments
-        $lines = [Math]::Ceiling((Get-Content $_.FullName | Measure-Object -Line).Lines / 25)
+        $lines = [Math]::Ceiling((Get-Content $_.FullName | Measure-Object -Line).Lines / $MAX_LINE_COUNT)
         echo $lines
         # Make a picture for each of those 25 line segments
         for ($i = 0; $i -lt $lines; $i += 1)
         {
-            carbon-now $_.FullName -p csp-pic -t ($_.BaseName+$_.Extension+"--$i") -s ($i * 25) -e (($i * 25) + 24)
-            if ($?) # if error
+            carbon-now $_.FullName -p csp-pic -t ($_.BaseName+$_.Extension+"--$i") -s ($i * $MAX_LINE_COUNT) -e (($i * $MAX_LINE_COUNT) + ($MAX_LINE_COUNT - 1))
+            if (-not $?) # if error
             {
                 $i -= 1 # decrement $i to try to generate the pic again
             }
