@@ -24,26 +24,28 @@ if (-not (Test-Path -Path "./generated-code-pictures"))
 # Go into /generated-code-pictures. This is the output directory
 cd generated-code-pictures
 
-# Generate code pictures for *.tsx files
-Get-ChildItem -Path "../src" -Filter "*.tsx" -Recurse -File | ForEach-Object {
-    # Get the amount of 25 line segments
-    $lines = [Math]::Ceiling((Get-Content $_.FullName | Measure-Object -Line).Lines / 25)
-    echo $lines
-    # Make a picture for each of those 25 line segments
-    for ($i = 0; $i -lt $lines; $i += 1)
-    {
-        carbon-now $_.FullName -p csp-pic -t ($_.BaseName+$_.Extension+"--$i") -s ($i * 25) -e (($i * 25) + 24)
+function GeneratePics($filter)
+{
+    # Recursively search through /src for all files that match the filter
+    Get-ChildItem -Path "../src" -Filter $filter -Recurse -File | ForEach-Object {
+        # Get the amount of 25 line segments
+        $lines = [Math]::Ceiling((Get-Content $_.FullName | Measure-Object -Line).Lines / 25)
+        echo $lines
+        # Make a picture for each of those 25 line segments
+        for ($i = 0; $i -lt $lines; $i += 1)
+        {
+            carbon-now $_.FullName -p csp-pic -t ($_.BaseName+$_.Extension+"--$i") -s ($i * 25) -e (($i * 25) + 24)
+            if ($?) # if error
+            {
+                $i -= 1 # decrement $i to try to generate the pic again
+            }
+        }
     }
 }
 
-Get-ChildItem -Path "../src" -Filter "*.css" -Recurse -File | ForEach-Object {
-    $lines = [Math]::Ceiling((Get-Content $_.FullName | Measure-Object -Line).Lines / 24)
-    echo $lines
-    for ($i = 0; $i -lt $lines; $i += 1)
-    {
-        carbon-now $_.FullName -p csp-pic -t ($_.BaseName+$_.Extension+"--$i") -s ($i * 25) -e (($i * 25) + 24)
-    }
-}
+# Generate code pictures
+GeneratePics "*.tsx"
+GeneratePics "*.css"
 
 # Output markdown file
 $MarkdownFile = ""
