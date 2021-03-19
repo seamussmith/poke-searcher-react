@@ -25,7 +25,7 @@ Get-ChildItem -Path "../src" -Filter "*.css" -Recurse -File | ForEach-Object {
 $MarkdownFile = ""
 
 Get-Childitem -Path "." -Filter "*.png" -File | ForEach-Object {
-    $MarkdownFile = $MarkdownFile + [string]::Format($CodePicTemplate, $_.BaseName+$_.Extension, $_.BaseName+$_.Extension)
+    $MarkdownFile = $MarkdownFile + [string]::Format($CodePicTemplate, $_.BaseName, $_.BaseName+$_.Extension)
 }
 
 Out-File -FilePath .\Document.md -InputObject $MarkdownFile -Encoding utf8
