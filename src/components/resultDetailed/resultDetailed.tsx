@@ -20,10 +20,10 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
         const pokemon = this.props.pokemon
         // Get the latest flavor text
         let latestFlavorText = species.flavor_text_entries
-                                        .filter((e: any) => e.language.name === "en")
-                                        .reverse()[0]
-                                        .flavor_text.replaceAll("\u000C", ' ')
-                                        .replaceAll(/(\r\n|\n|\r)/gm," ")
+                .filter((e: any) => e.language.name === "en")
+                .reverse()[0]
+                .flavor_text.replaceAll("\u000C", ' ')
+                .replaceAll(/(\r\n|\n|\r)/gm," ")
         return (
             <div className='result-detailed'>
                 {/* Pokemon name, Portrait, Flairs, Type */}
