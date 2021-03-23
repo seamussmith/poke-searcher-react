@@ -41,7 +41,7 @@ class App extends React.Component<App_props, App_state>
         this.setState({
             detailedResult: null
         })
-        this.queryIndex = this.queryIndex+1
+        this.queryIndex += 1
         let thisQueryIndex = this.queryIndex
         query = escapeRegExp(query.toLowerCase().replaceAll(" ", "-").replaceAll(/:|\.|'/g, ''))
         if (query === "") // If no query...
