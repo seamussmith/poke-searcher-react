@@ -47,8 +47,10 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 {/* Stats, Info, Gender Ratios */}
                 <div className='result-detailed__division result-detailed__division--info'>
                     <BaseStatList stats={pokemon.stats} />
-                    <PkmnInfo pokemon={pokemon} species={species} />
                     <PkmnGenderRatio genderRatio={species.gender_rate} />
+                </div>
+                <div className="result-detailed__division">
+                    <PkmnInfo pokemon={pokemon} species={species} />
                 </div>
                 <PokedexEntry flavorText={latestFlavorText} />
                 {/* TODO: Insert egg group compatability here */}
