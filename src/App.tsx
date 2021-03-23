@@ -88,7 +88,6 @@ class App extends React.Component<App_props, App_state>
                     detailedResult: <ResultDetailed pokemon={pkmnData} pkmnSpecies={species} />
                 })
             })
-        
     }
     componentDidMount()
     {
