@@ -92,10 +92,11 @@ class App extends React.Component<App_props, App_state>
     }
     componentDidMount()
     {
+        // Handling pkmn query string variable
         let url_string = window.location.href
         let url = new URL(url_string)
         let pkmn = url.searchParams.get("pkmn")
-        if (pkmn !== null)
+        if (pkmn !== null) // If variable pkmn is in the query string
         {
             // Grab the pokemon
             let pokeIndex = this.props.pokemonIndex.results.find((i: any) => i.name === pkmn)
