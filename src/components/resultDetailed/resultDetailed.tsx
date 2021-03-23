@@ -150,11 +150,29 @@ function PkmnInfo(props: {
     if (!eggGroupText.join("")) // Check if there are no egg groups (failsafe)
         eggGroupText = ["N/A"]
     return (
-        <div>
-            <p>ID #{props.pokemon.id}</p>
-            <p>Weight: {props.pokemon.weight/10}kg</p>
-            <p className='result-detailed__habitat'>Likes {props.pokemon.habitat ?? "no"} environments</p>
-            <p className='result-detailed__egg-group'>Egg groups: {eggGroupText.join(", ")}</p>
+        <div className="result-detailed__pkmn-info-base">
+            <div className="result-detailed__pkmn-info">
+                <div className="result-detailed__pkmn-info-stat">
+                    <span className="result-detailed__pkmn-info-icon">
+                        <i className="fas fa-hashtag"></i>
+                    </span> <span>ID #{props.pokemon.id} </span>
+                </div>
+                <div className="result-detailed__pkmn-info-stat">
+                    <span className="result-detailed__pkmn-info-icon">
+                        <i className="fas fa-weight-hanging"></i>
+                    </span> <span> Weight: {props.pokemon.weight/10}kg </span>
+                </div>
+                <div className="result-detailed__pkmn-info-stat">
+                    <span className="result-detailed__pkmn-info-icon">
+                        <i className="fas fa-tree"></i>
+                    </span>  <span> Likes {props.pokemon.habitat ?? "no"} environments </span>
+                </div>
+                <div className="result-detailed__pkmn-info-stat">
+                    <span className="result-detailed__pkmn-info-icon">
+                        <i className="fas fa-egg"></i>
+                    </span> <span> Egg groups: {eggGroupText.join(", ")} </span>
+                </div>
+            </div>
         </div>
     )
 }

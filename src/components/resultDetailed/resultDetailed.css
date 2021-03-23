@@ -144,3 +144,35 @@
 .result-detailed__flairs {
     padding-bottom: 10px;
 }
+
+.result-detailed__pkmn-info-base {
+    padding: 10px;
+}
+
+.result-detailed__pkmn-info {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    background-color: var(--layer-1);
+    border-radius: var(--division-radius);
+    box-shadow: 1px 1px 1px var(--shadow-color);
+}
+
+.result-detailed__pkmn-info-stat {
+    background-color: var(--layer-2);
+    box-shadow: 1px 1px 1px var(--shadow-color);
+    padding: 10px 0;
+    margin: 5px;
+    text-align: left;
+}
+
+.result-detailed__pkmn-info-icon {
+    background-color: var(--layer-3);
+    box-shadow: 1px 1px 1px var(--shadow-color);
+    /* flexbox abuse 😳 */
+    display: inline-flex;
+    justify-content: center;
+    width: 15px;
+    padding: 15px;
+    margin: 0px 1ch;
+}
