@@ -159,6 +159,8 @@
 }
 
 .result-detailed__pkmn-info-stat {
+    display: flex;
+    align-items: center;
     background-color: var(--layer-2);
     box-shadow: 1px 1px 1px var(--shadow-color);
     padding: 10px 0;
