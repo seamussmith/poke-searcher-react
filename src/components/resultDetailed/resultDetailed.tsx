@@ -80,12 +80,15 @@ function BaseStatList(props: {
 })
 {
     return (
-        <div className='result-detailed__base-stats'>
-            {
-            props.stats.map((stat: any) =>
-                <PkmnStat name={capitalize(stat.stat.name).replace("-", " ")} stat={stat.base_stat} />
-            )
-            }
+        <div>
+            <h1 className="result-detailed__label">Stats: </h1>
+            <div className='result-detailed__base-stats'>
+                {
+                props.stats.map((stat: any) =>
+                    <PkmnStat name={capitalize(stat.stat.name).replace("-", " ")} stat={stat.base_stat} />
+                )
+                }
+            </div>
         </div>
     )
 }
@@ -120,8 +123,11 @@ function PkmnGenderRatio(props: {
     }
         
     return (
-        <div className='result-detailed__gender-rates'>
-            {genderElements}
+        <div>
+            <h1 className="result-detailed__label">Gender ratio: </h1>
+            <div className='result-detailed__gender-rates'>
+                {genderElements}
+            </div>
         </div>
     )
 }

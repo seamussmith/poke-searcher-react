@@ -178,3 +178,13 @@
     padding: 15px;
     margin: 0px 1ch;
 }
+
+.result-detailed__label {
+    background-color: var(--layer-3);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    margin: 10px auto;
+    padding: 0.25ch 1ch;
+    box-shadow: 1px 1px 1px black;
+    width: fit-content;
+}
