@@ -168,17 +168,17 @@ function PkmnInfo(props: {
                 <div className="result-detailed__pkmn-info-stat">
                     <span className="result-detailed__pkmn-info-icon">
                         <i className="fas fa-weight-hanging"></i>
-                    </span> <span> Weight: {props.pokemon.weight/10}kg </span>
+                    </span> <span>Weight: {props.pokemon.weight/10}kg</span>
                 </div>
                 <div className="result-detailed__pkmn-info-stat">
                     <span className="result-detailed__pkmn-info-icon">
                         <i className="fas fa-tree"></i>
-                    </span>  <span> Likes {props.species.habitat?.name ?? "no"} environments </span>
+                    </span> <span>Likes {props.species.habitat?.name ?? "no"} environments</span>
                 </div>
                 <div className="result-detailed__pkmn-info-stat">
                     <span className="result-detailed__pkmn-info-icon">
                         <i className="fas fa-egg"></i>
-                    </span> <span> Egg groups: {eggGroupText.join(", ")} </span>
+                    </span> <span>Egg groups: {eggGroupText.join(", ")}</span>
                 </div>
             </div>
         </div>
