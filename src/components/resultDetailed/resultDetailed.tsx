@@ -173,7 +173,7 @@ function PkmnInfo(props: {
                 <div className="result-detailed__pkmn-info-stat">
                     <span className="result-detailed__pkmn-info-icon">
                         <i className="fas fa-tree"></i>
-                    </span>  <span> Likes {props.pokemon.habitat ?? "no"} environments </span>
+                    </span>  <span> Likes {props.species.habitat?.name ?? "no"} environments </span>
                 </div>
                 <div className="result-detailed__pkmn-info-stat">
                     <span className="result-detailed__pkmn-info-icon">
