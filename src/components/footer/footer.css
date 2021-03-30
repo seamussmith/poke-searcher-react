@@ -21,6 +21,13 @@ footer::before {
     border-image-slice: 1;
 }
 
+@media (max-width: 1000px)
+{
+    footer::before {
+        width: 80vw;
+    }
+}
+
 .footer__content {
     font-size: 12pt;
     margin: 5px 0;
