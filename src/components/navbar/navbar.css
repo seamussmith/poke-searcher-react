@@ -125,13 +125,13 @@
 }
 
 .navbar--minature .navbar__ulist-item {
-    margin-left: 0;
-    margin-right: 20px;
+    margin: 0 10px;
 }
 
 .navbar--minature {
     border: 0;
     padding: 0 20px;
+    background-color: transparent;
     box-shadow: none;
 }
 

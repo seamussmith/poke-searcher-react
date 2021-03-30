@@ -2,18 +2,27 @@
 footer {
     bottom: 0;
     padding: 10px 0;
-    background-color: var(--layer-1);
-    border-top: solid 2px var(--layer-3);
     width: 100%;
     min-height: 120px;
-    box-shadow: 0 2px 8px var(--shadow-color);
     display: flex;
+    align-items: center;
     flex-direction: column;
     justify-content: space-evenly;
 }
-  
+
+footer::before {
+    border-top: solid 1px transparent;
+    padding: 0;
+    margin: 0;
+    border-image: radial-gradient(rgb(255, 255, 255) 0%, transparent 95%);
+    content: "";
+    width: 40vw;
+    padding: 5px;
+    border-image-slice: 1;
+}
+
 .footer__content {
-    padding-left: 20px;
+    font-size: 12pt;
     margin: 5px 0;
     flex-grow: 2;
 }
