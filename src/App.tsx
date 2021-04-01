@@ -120,7 +120,9 @@ class App extends React.Component<App_props, App_state>
                     <div className="search__result-container">
                         {this.state.searchResults}
                     </div>
-                    {this.state.detailedResult}
+                    <div className="search__result-detailed-container">
+                        {this.state.detailedResult}
+                    </div>
                 </div>
             </div>
         )
