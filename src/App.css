@@ -68,7 +68,7 @@ body {
 .search__result-container {
     display: grid;
 
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: repeat(auto-fit, 180px);
     grid-auto-rows: 255px;
     justify-content: center;
     /* width: ;
@@ -83,6 +83,7 @@ body {
 {
     .search__result-container {
         margin: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     }
 }
 
