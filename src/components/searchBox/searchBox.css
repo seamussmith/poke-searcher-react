@@ -18,6 +18,7 @@
 
 @media (max-width: 720px) {
     .search-box__input {
+        padding: 10px 20px;
         width: 80vw;
         font-size: 20pt
     }
