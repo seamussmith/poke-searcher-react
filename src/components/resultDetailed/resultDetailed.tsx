@@ -49,7 +49,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                     <BaseStatList stats={pokemon.stats} />
                     <PkmnGenderRatio genderRatio={species.gender_rate} />
                 </div>
-                <div className="result-detailed__division">
+                <div className="result-detailed__division result-detailed__division--wide">
                     <PkmnInfo pokemon={pokemon} species={species} />
                 </div>
                 <PokedexEntry flavorText={latestFlavorText} />
@@ -138,7 +138,7 @@ function PokedexEntry(props: {
 })
 {
     return (
-        <div className='result-detailed__division'>
+        <div className='result-detailed__division result-detailed__division--wide'>
             <p className='result-detailed__flavor-text'>"{props.flavorText}"<br/> - Pokedex</p>
         </div>
     )

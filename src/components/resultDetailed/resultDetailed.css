@@ -7,7 +7,7 @@
     gap: 10px;
 
     --pokemon-color: none;
-    width: 50vw;
+    width: 800px;
     transform-origin: top;
     animation: emphasis 0.25s ease;
     border-color: var(--pokemon-color);
@@ -24,13 +24,22 @@
     box-shadow: 1px 1px 1px var(--shadow-color);
 }
 
-.result-detailed__divsion--tall {
-    grid-row: span 2 / auto;
+@media (min-width: 720px) {
+    .result-detailed__divsion--tall {
+        grid-row: span 2 / auto;
+    }
+    
+    .result-detailed__division--wide {
+        grid-column: span 2 / auto;
+    }
 }
 
-.result-detailed__division--wide {
-    grid-column: span 2 / auto;
+@media (max-width: 720px) {
+    .result-detailed__division {
+        grid-column: span 2 / auto;
+    }
 }
+
 
 .result-detailed__name-detailed {
     font-size: 30pt;
