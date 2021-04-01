@@ -138,7 +138,7 @@ function PokedexEntry(props: {
 })
 {
     return (
-        <div className='result-detailed__division result-detailed__division--pokedex'>
+        <div className='result-detailed__division'>
             <p className='result-detailed__flavor-text'>"{props.flavorText}"<br/> - Pokedex</p>
         </div>
     )
@@ -243,7 +243,7 @@ function SharePokemon(props: {
 })
 {
     return (
-        <div className='result-detailed__division result-detailed__division--info'>
+        <div className='result-detailed__division result-detailed__division--wide'>
             <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
                 <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${props.name}`} />
             </p>

@@ -1,30 +1,35 @@
 /** Detailed Pokemon Search Result */
 .result-detailed {
     text-align: center;
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); 
+
+    gap: 10px;
+
     --pokemon-color: none;
+    width: 50vw;
     transform-origin: top;
-    width: 800px;
-    min-height: none;
-    justify-content: center;
-    align-items: stretch;
     animation: emphasis 0.25s ease;
     border-color: var(--pokemon-color);
     background-color: var(--layer-1);
     border-radius: var(--division-radius);
     box-shadow: 0px 0px 5px var(--shadow-color);
-    padding: 5px;
+    padding: 10px;
     margin: 1% 0;
 }
 
 .result-detailed__division {
-    width: 46%;
-    margin: 5px;
-    flex-grow: 1;
     background-color: var(--layer-2);
     border-radius: var(--division-radius);
     box-shadow: 1px 1px 1px var(--shadow-color);
+}
+
+.result-detailed__divsion--tall {
+    grid-row: span 2 / auto;
+}
+
+.result-detailed__division--wide {
+    grid-column: span 2 / auto;
 }
 
 .result-detailed__name-detailed {
