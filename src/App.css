@@ -67,18 +67,21 @@ body {
 /** Container for the search results */
 .search__result-container {
     display: grid;
+
+    grid-template-columns: repeat(auto-fit, 180px);
+    grid-auto-rows: auto;
+    justify-content: center;
+    /* width: ;
+    min-height: 255px; */
+    gap: 10px;
+
+    margin: 20px;
 }
 
 @media(max-width: 720px)
 {
     .search__result-container {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        padding: 10px 0;
+        margin: 5px;
     }
 }
 

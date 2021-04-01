@@ -118,9 +118,9 @@ class App extends React.Component<App_props, App_state>
                 <div className="search">
                     <SearchBox keyUp={this.queryPokeAPI} />
                     <div className="search__result-container">
-                        {this.state.detailedResult}
                         {this.state.searchResults}
                     </div>
+                    {this.state.detailedResult}
                 </div>
             </div>
         )

@@ -1,18 +1,16 @@
 .search-result {
-        color: white;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        text-align: center;
-        margin: 5px;
-        padding: 5px;
-        width: 180px;
-        min-height: 255px;
-        border-radius: 0px;
-        background-color: var(--layer-1);
-        transition: 0.10s all;
-        animation: emphasis 0.25s ease forwards;
-        box-shadow: 2px 2px 2px var(--shadow-color);
+    
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    
+    border-radius: 0px;
+    background-color: var(--layer-1);
+    transition: 0.10s all;
+    animation: emphasis 0.25s ease forwards;
+    box-shadow: 2px 2px 2px var(--shadow-color);
 }
     
 .search-result:hover {
