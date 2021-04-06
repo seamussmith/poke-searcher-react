@@ -12,7 +12,7 @@ type App_state = {
     detailedResult: JSX.Element | null
 }
 type App_props = {
-    pokemonIndex: INamedApiResourceList<any>
+    pokemonIndex: INamedApiResourceList<IPokemon>
 }
 class App extends React.Component<App_props, App_state>
 {
