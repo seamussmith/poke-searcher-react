@@ -85,6 +85,7 @@ class App extends React.Component<App_props, App_state>
         (this.speciesCache[pkmnData.species.url] = fetch(pkmnData.species.url).then(blob => blob.json())))  // Else, fetch the data then put
             .then(species => {                                                                              // the promise in the cache
                 this.setState({
+                    searchResults: [],
                     detailedResult: <ResultDetailed pokemon={pkmnData} pkmnSpecies={species} />
                 })
             })
