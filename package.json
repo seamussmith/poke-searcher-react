@@ -16,6 +16,7 @@
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.1",
     "copy-to-clipboard": "^3.3.1",
+    "pokeapi-typescript": "^2.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.3",
