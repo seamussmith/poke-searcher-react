@@ -4,6 +4,7 @@ import SearchResult from './components/searchResult/searchResult'
 import ResultDetailed from './components/resultDetailed/resultDetailed'
 import './App.css'
 import { escapeRegExp } from './components/util/util'
+import { IPokemon, IPokemonSpecies, INamedApiResource, INamedApiResourceList } from "pokeapi-typescript";
 
 type App_state = {
     // TODO: Replace generic JSX.Element with React component type
@@ -11,14 +12,14 @@ type App_state = {
     detailedResult: JSX.Element | null
 }
 type App_props = {
-    pokemonIndex: any
+    pokemonIndex: INamedApiResourceList<any>
 }
 class App extends React.Component<App_props, App_state>
 {
     // PokeAPI Cache
     // <url, Promise<pokedata>>
-    private pokemonCache: Record<string, Promise<any>>
-    private speciesCache: Record<string, Promise<any>>
+    private pokemonCache: Record<string, Promise<IPokemon>>
+    private speciesCache: Record<string, Promise<IPokemonSpecies>>
     // Number that prevents previous queries overriding the latest one
     private queryIndex: number
     constructor(props: App_props)
@@ -52,12 +53,12 @@ class App extends React.Component<App_props, App_state>
             })
             return
         }
-        let matches = this.props.pokemonIndex.results.filter((i: any) => i.name.match(query) !== null).slice(0, 24)
+        let matches = this.props.pokemonIndex.results.filter((i) => i.name.match(query) !== null).slice(0, 24)
         Promise.all(matches.map(
             // Return the promise for the query if cached
-            (i:any) => (this.pokemonCache[i.url] ?? (this.pokemonCache[i.url] = fetch(i.url).then(blob => blob.json())))
+            (i) => (this.pokemonCache[i.url] ?? (this.pokemonCache[i.url] = fetch(i.url).then(blob => blob.json())))
                                             // Else, fetch the pokemon needed and put the Promise in the query cache
-        )).then(result => {
+        )).then((result: IPokemon[]) => {
             if (thisQueryIndex < this.queryIndex)
                 return
             // set search results to empty array because that breaks the animations
@@ -73,7 +74,7 @@ class App extends React.Component<App_props, App_state>
         })
     }
     // Display the detailed information for a selected pokemon
-    detailHandler(pkmnData: any)
+    detailHandler(pkmnData: IPokemon)
     {
         this.setState({
             searchResults: [],
@@ -99,7 +100,7 @@ class App extends React.Component<App_props, App_state>
         if (pkmn !== null) // If variable pkmn is in the query string
         {
             // Grab the pokemon
-            let pokeIndex = this.props.pokemonIndex.results.find((i: any) => i.name === pkmn)
+            let pokeIndex = this.props.pokemonIndex.results.find((i) => i.name === pkmn)
             // if it exists...
             if (pokeIndex !== undefined && pokeIndex !== null)
             {

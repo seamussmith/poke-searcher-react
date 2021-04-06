@@ -2,11 +2,12 @@ import React from 'react'
 import {capitalize, stylePokemonName} from '../util/util'
 import './searchResult.css'
 import '../typeColorClasses/typeColorClasses.css'
+import { IPokemon } from 'pokeapi-typescript'
 
 type SearchResult_props = {
     pokeURL: string
-    pokeData: any
-    detailHandler: (pkmnData: any) => void
+    pokeData: IPokemon
+    detailHandler: (pkmnData: IPokemon) => void
 }
 class SearchResult extends React.Component<SearchResult_props, {}>
 {
