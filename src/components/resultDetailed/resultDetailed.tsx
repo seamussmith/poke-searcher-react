@@ -3,7 +3,7 @@ import { capitalize, stylePokemonName } from '../util/util'
 import '../typeColorClasses/typeColorClasses.css'
 import CopyClicker from '../copyClicker/copyClicker'
 import './resultDetailed.css'
-import { IPokemon, IPokemonSpecies, IPokemonStat, IPokemonType } from "pokeapi-typescript";
+import { IPokemon, IPokemonSpecies, IPokemonStat, IPokemonType } from "pokeapi-typescript"
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
