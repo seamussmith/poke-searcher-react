@@ -4,7 +4,7 @@ import SearchResult from './components/searchResult/searchResult'
 import ResultDetailed from './components/resultDetailed/resultDetailed'
 import './App.css'
 import { escapeRegExp } from './components/util/util'
-import { IPokemon, IPokemonSpecies, INamedApiResource, INamedApiResourceList } from "pokeapi-typescript";
+import { IPokemon, IPokemonSpecies, INamedApiResourceList } from "pokeapi-typescript";
 
 type App_state = {
     // TODO: Replace generic JSX.Element with React component type
