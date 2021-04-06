@@ -35,8 +35,9 @@ class SearchResult extends React.Component<SearchResult_props, {}>
                     alt={`${pokeData.name} sprite`}/>
                 </div>
                 <p className='search-result-types'>
-                    <span className={pokeData.types[0].type.name}>{capitalize(pokeData.types[0].type.name)} </span>
-                    <span className={(pokeData.types[1]?.type.name ?? "")}>{capitalize(pokeData.types[1]?.type.name ?? "")}</span>
+                    {pokeData.types.map((i) =>
+                        <span className={i.type.name}>{capitalize(i.type.name)} </span>
+                    )}
                 </p>
             </div>
         )

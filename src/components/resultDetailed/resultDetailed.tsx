@@ -234,8 +234,9 @@ function PkmnTypes(props: {
 {
     return (
         <p className='result-detailed__types-detailed'>
-            <span className={props.types[0].type.name}>{capitalize(props.types[0].type.name)} </span>
-            <span className={(props.types[1]?.type.name ?? "")}>{capitalize(props.types[1]?.type.name ?? "")}</span>
+            {props.types.map((i) =>
+                <span className={i.type.name}>{capitalize(i.type.name)} </span>
+            )}
         </p>
     )
 }
