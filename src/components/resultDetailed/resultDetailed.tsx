@@ -3,12 +3,13 @@ import { capitalize, stylePokemonName } from '../util/util'
 import '../typeColorClasses/typeColorClasses.css'
 import CopyClicker from '../copyClicker/copyClicker'
 import './resultDetailed.css'
+import { IPokemon, IPokemonSpecies, IPokemonStat, IPokemonType } from "pokeapi-typescript";
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
 type ResultDetailed_props = {
-    pokemon: any
-    pkmnSpecies: any
+    pokemon: IPokemon
+    pkmnSpecies: IPokemonSpecies
 }
 type ResultDetailed_state = {}
 class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetailed_state>
@@ -20,7 +21,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
         const pokemon = this.props.pokemon
         // Get the latest flavor text
         let latestFlavorText = species.flavor_text_entries
-                .filter((e: any) => e.language.name === "en")   // get all english entries
+                .filter((e) => e.language.name === "en")   // get all english entries
                 .reverse()[0]                                   // Get the last element
                 .flavor_text.replaceAll("\u000C", ' ')          // Remove weird char that exists in some entries
                 .replaceAll(/(\r\n|\n|\r)/gm," ")               // Remove newline chars
@@ -34,7 +35,8 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                     <div>
                         <img
                         className='pokeimg'
-                        src={ pokemon.sprites.other["official-artwork"].front_default ??
+                        // other.official-artwork not in interface for some reason
+                        src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
                               pokemon.sprites.front_default ??
                               NO_IMAGE }
                         alt={pokemon.name} />
@@ -76,7 +78,7 @@ function PkmnStat(props: {
 
 // Element that generates all the elements for a pokemon's stats
 function BaseStatList(props: {
-    stats: any[]
+    stats: IPokemonStat[]
 })
 {
     return (
@@ -84,7 +86,7 @@ function BaseStatList(props: {
             <h1 className="result-detailed__label">Stats: </h1>
             <div className='result-detailed__base-stats'>
                 {
-                props.stats.map((stat: any) =>
+                props.stats.map((stat) =>
                     <PkmnStat name={capitalize(stat.stat.name).replace("-", " ")} stat={stat.base_stat} />
                 )
                 }
@@ -146,14 +148,14 @@ function PokedexEntry(props: {
 
 // Element that displays the pokemon's extra info 
 function PkmnInfo(props: {
-    pokemon: any
-    species: any
+    pokemon: IPokemon
+    species: IPokemonSpecies
 })
 {
             // Format all the egg group names
     let eggGroupText = props.species.egg_groups
                                     .map(
-                                        (e: any) => capitalize(e.name === "no-eggs" ? "undiscovered" : e.name)
+                                        (e) => capitalize(e.name === "no-eggs" ? "undiscovered" : e.name)
                                     ) // Map out the egg groups the pokemon is in
     if (!eggGroupText.join("")) // Check if there are no egg groups (failsafe)
         eggGroupText = ["N/A"]
@@ -187,7 +189,7 @@ function PkmnInfo(props: {
 
 // Element that displays any special attributes the pokemon has (legendary, mega evolution, etc...)
 function PkmnFlairs(props: {
-    species: any
+    species: any // is_legendary and is_mythical is not in IPokemonSpecies
     pkmnName: string
 })
 {
@@ -202,19 +204,19 @@ function PkmnFlairs(props: {
     {
         flairs.push(<p className='result-detailed__flair result-detailed__is-mythical'>Mythical Pokemon</p>)
     }
-    if (splitName.some((e: any) => e === "mega"))
+    if (splitName.some((e) => e === "mega"))
     {
         flairs.push(<p className='result-detailed__flair result-detailed__is-mega-evo'>Mega Evolution</p>)
     }
-    if (splitName.some((e: any) => e === "gmax"))
+    if (splitName.some((e) => e === "gmax"))
     {
         flairs.push(<p className='result-detailed__flair result-detailed__is-gigamax'>Gigamax Form</p>)
     }
-    if (splitName.some((e: any) => e === "alola"))
+    if (splitName.some((e) => e === "alola"))
     {
         flairs.push(<p className='result-detailed__flair result-detailed__is-alola'>Alola Form</p>)
     }
-    if (splitName.some((e: any) => e === "galar"))
+    if (splitName.some((e) => e === "galar"))
     {
         flairs.push(<p className='result-detailed__flair result-detailed__is-galarian'>Galarian Form</p>)
     }
@@ -227,7 +229,7 @@ function PkmnFlairs(props: {
 
 // Element that display's the pokemon's types
 function PkmnTypes(props: {
-    types: any[]
+    types: IPokemonType[]
 })
 {
     return (
