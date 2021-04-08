@@ -4,6 +4,7 @@ import '../typeColorClasses/typeColorClasses.css'
 import CopyClicker from '../copyClicker/copyClicker'
 import './resultDetailed.css'
 import { IPokemon, IPokemonSpecies, IPokemonStat, IPokemonType } from "pokeapi-typescript"
+import SearchResult from "../searchResult/searchResult"
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
@@ -22,9 +23,9 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
         // Get the latest flavor text
         let latestFlavorText = species.flavor_text_entries
                 .filter((e) => e.language.name === "en")   // get all english entries
-                .reverse()[0]                                   // Get the last element
-                .flavor_text.replaceAll("\u000C", ' ')          // Remove weird char that exists in some entries
-                .replaceAll(/(\r\n|\n|\r)/gm," ")               // Remove newline chars
+                .reverse()[0]                              // Get the last element
+                .flavor_text.replaceAll("\u000C", ' ')     // Remove weird char that exists in some entries
+                .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
         return (
             <div className='result-detailed'>
                 {/* Pokemon name, Portrait, Flairs, Type */}
@@ -125,12 +126,12 @@ function PkmnGenderRatio(props: {
     }
         
     return (
-        <div>
+        <>
             <h1 className="result-detailed__label">Gender ratio: </h1>
             <div className='result-detailed__gender-rates'>
                 {genderElements}
             </div>
-        </div>
+        </>
     )
 }
 
@@ -258,6 +259,15 @@ function SharePokemon(props: {
             </p>
         </div>
     )
+}
+
+function PkmnEvolutions(props: {
+    evourl: string
+})
+{
+    (async function(){
+        
+    })   
 }
 
 export default ResultDetailed
