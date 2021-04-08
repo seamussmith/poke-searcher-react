@@ -1,6 +1,6 @@
 
 type EventHandler<EventArgs> = (args: EventArgs) => void
-class CustomEvent<EventArgs>
+export class CustomEvent<EventArgs>
 {
     private subscribers: Array<EventHandler<EventArgs>>
     constructor()
@@ -20,4 +20,3 @@ class CustomEvent<EventArgs>
     }
 }
 
-export default CustomEvent
