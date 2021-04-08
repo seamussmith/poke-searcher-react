@@ -3,11 +3,12 @@ import {capitalize, stylePokemonName} from '../util/util'
 import './searchResult.css'
 import '../typeColorClasses/typeColorClasses.css'
 import { IPokemon } from 'pokeapi-typescript'
+import { InvokeQueryResult } from "../singletons/singletons"
 
 type SearchResult_props = {
     pokeURL: string
     pokeData: IPokemon
-    detailHandler: (pkmnData: IPokemon) => void
+    //detailHandler: (pkmnData: IPokemon) => void
 }
 class SearchResult extends React.Component<SearchResult_props, {}>
 {
@@ -18,7 +19,8 @@ class SearchResult extends React.Component<SearchResult_props, {}>
     }
     onClick()
     {
-        this.props.detailHandler(this.props.pokeData)
+        InvokeQueryResult.Invoke({ pokemon: this.props.pokeData })
+        //this.props.detailHandler(this.props.pokeData)
     }
     render()
     {

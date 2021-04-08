@@ -5,6 +5,7 @@ import ResultDetailed from './components/resultDetailed/resultDetailed'
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies, INamedApiResourceList } from "pokeapi-typescript"
+import { InvokeQueryResult } from "./components/singletons/singletons"
 
 type App_state = {
     // TODO: Replace generic JSX.Element with React component type
@@ -25,6 +26,7 @@ class App extends React.Component<App_props, App_state>
     constructor(props: App_props)
     {
         super(props)
+        InvokeQueryResult.Subscribe((args) => this.detailHandler(args.pokemon))
         this.pokemonCache = {}
         this.speciesCache = {}
         this.queryIndex = 0
@@ -68,7 +70,7 @@ class App extends React.Component<App_props, App_state>
             this.setState({
                 // Map the search results into <SearchResult /> components and then display them
                 searchResults: result.map(
-                    (e, i) => <SearchResult pokeURL={matches[i].url} pokeData={e} detailHandler={this.detailHandler}/>
+                    (e, i) => <SearchResult pokeURL={matches[i].url} pokeData={e}/>
                 )
             })
         })
