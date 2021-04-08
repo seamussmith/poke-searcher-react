@@ -261,13 +261,4 @@ function SharePokemon(props: {
     )
 }
 
-function PkmnEvolutions(props: {
-    evourl: string
-})
-{
-    (async function(){
-        
-    })   
-}
-
 export default ResultDetailed
