@@ -24,7 +24,7 @@ export function stylePokemonName(str: string): JSX.Element
         genderSymbol = <i className="fas fa-venus --force-inheritence"></i>
     }
     return (
-        <span className="--force-inheritence">{splitStr.join(" ")} {genderSymbol}</span>
+        <>{splitStr.join(" ")} {genderSymbol}</>
     )
 }
 
