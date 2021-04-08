@@ -146,6 +146,17 @@ function PokedexEntry(props: {
     )
 }
 
+function InfoStat(props: { icoName: string, children: React.ReactFragment }) 
+{
+    return (
+        <div className="result-detailed__pkmn-info-stat">
+            <span className="result-detailed__pkmn-info-icon">
+                <i className={props.icoName}></i>
+            </span> <span>{props.children}</span>
+        </div>
+    )
+}
+
 // Element that displays the pokemon's extra info 
 function PkmnInfo(props: {
     pokemon: IPokemon
@@ -162,26 +173,18 @@ function PkmnInfo(props: {
     return (
         <div className="result-detailed__pkmn-info-base">
             <div className="result-detailed__pkmn-info">
-                <div className="result-detailed__pkmn-info-stat">
-                    <span className="result-detailed__pkmn-info-icon">
-                        <i className="fas fa-hashtag"></i>
-                    </span> <span>ID #{props.pokemon.id} </span>
-                </div>
-                <div className="result-detailed__pkmn-info-stat">
-                    <span className="result-detailed__pkmn-info-icon">
-                        <i className="fas fa-weight-hanging"></i>
-                    </span> <span>Weight: {props.pokemon.weight/10}kg</span>
-                </div>
-                <div className="result-detailed__pkmn-info-stat">
-                    <span className="result-detailed__pkmn-info-icon">
-                        <i className="fas fa-tree"></i>
-                    </span> <span>Likes {props.species.habitat?.name ?? "no"} environments</span>
-                </div>
-                <div className="result-detailed__pkmn-info-stat">
-                    <span className="result-detailed__pkmn-info-icon">
-                        <i className="fas fa-egg"></i>
-                    </span> <span>Egg groups: {eggGroupText.join(", ")}</span>
-                </div>
+                <InfoStat icoName="fas fa-hashtag">
+                    ID #{props.pokemon.id}
+                </InfoStat>
+                <InfoStat icoName="fas fa-weight-hanging">
+                    Weight: {props.pokemon.weight/10}kg
+                </InfoStat>
+                <InfoStat icoName="fas fa-tree">
+                    Likes {props.species.habitat?.name ?? "no"} environments
+                </InfoStat>
+                <InfoStat icoName="fas fa-egg">
+                    Egg groups: {eggGroupText.join(", ")}
+                </InfoStat>
             </div>
         </div>
     )
