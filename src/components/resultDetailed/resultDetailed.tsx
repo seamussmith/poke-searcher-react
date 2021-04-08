@@ -146,7 +146,10 @@ function PokedexEntry(props: {
     )
 }
 
-function InfoStat(props: { icoName: string, children: React.ReactFragment }) 
+function InfoStat(props: {
+    icoName: string,
+    children: React.ReactNode
+})
 {
     return (
         <div className="result-detailed__pkmn-info-stat">
