@@ -6,6 +6,7 @@ import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies, INamedApiResourceList } from "pokeapi-typescript"
 import { InvokeQueryResult } from "./components/singletons/singletons"
+import { GetPokemon, GetPokemonSpecies } from "./components/util/PokeAPICache"
 
 type App_state = {
     // TODO: Replace generic JSX.Element with React component type
@@ -19,16 +20,16 @@ class App extends React.Component<App_props, App_state>
 {
     // PokeAPI Cache
     // <url, Promise<pokedata>>
-    private pokemonCache: Record<string, Promise<IPokemon>>
-    private speciesCache: Record<string, Promise<IPokemonSpecies>>
+    //private pokemonCache: Record<string, Promise<IPokemon>>
+    //private speciesCache: Record<string, Promise<IPokemonSpecies>>
     // Number that prevents previous queries overriding the latest one
     private queryIndex: number
     constructor(props: App_props)
     {
         super(props)
         InvokeQueryResult.Subscribe((args) => this.detailHandler(args.pokemon))
-        this.pokemonCache = {}
-        this.speciesCache = {}
+        //this.pokemonCache = {}
+        //this.speciesCache = {}
         this.queryIndex = 0
         this.state = {
             searchResults: [],
@@ -58,7 +59,7 @@ class App extends React.Component<App_props, App_state>
         let matches = this.props.pokemonIndex.results.filter((i) => i.name.match(query) !== null).slice(0, 24)
         Promise.all(matches.map(
             // Return the promise for the query if cached
-            (i) => (this.pokemonCache[i.url] ?? (this.pokemonCache[i.url] = fetch(i.url).then(blob => blob.json())))
+            (i) => GetPokemon(i.url)//(this.pokemonCache[i.url] ?? (this.pokemonCache[i.url] = fetch(i.url).then(blob => blob.json())))
                                             // Else, fetch the pokemon needed and put the Promise in the query cache
         )).then((result: IPokemon[]) => {
             if (thisQueryIndex < this.queryIndex)
@@ -81,15 +82,14 @@ class App extends React.Component<App_props, App_state>
         this.setState({
             searchResults: [],
             detailedResult: <h1>Loading details....</h1>
-        });
+        })
         // Fetch species data from pokemon because
         // it is needed by <ResultDetailed />
-        (this.speciesCache[pkmnData.species.url] ?? // If cached, use that data
-        (this.speciesCache[pkmnData.species.url] = fetch(pkmnData.species.url).then(blob => blob.json())))  // Else, fetch the data then put
-            .then(species => {                                                                              // the promise in the cache
+        GetPokemonSpecies(pkmnData.species.url)  // Else, fetch the data then put
+            .then(species => {                   // the promise in the cache
                 this.setState({
-                    searchResults: [],
-                    detailedResult: <ResultDetailed pokemon={pkmnData} pkmnSpecies={species} />
+                   searchResults: [],
+                   detailedResult: <ResultDetailed pokemon={pkmnData} pkmnSpecies={species} />
                 })
             })
     }
@@ -107,7 +107,7 @@ class App extends React.Component<App_props, App_state>
             if (pokeIndex !== undefined && pokeIndex !== null)
             {
                 // Grab the pokemon data
-                (this.pokemonCache[pokeIndex.url] = fetch(pokeIndex.url).then(blob => blob.json()))
+                GetPokemon(pokeIndex.url)
                     .then((data) => {
                         // Pass it to detail handler to render the pokemon
                         this.detailHandler(data)
