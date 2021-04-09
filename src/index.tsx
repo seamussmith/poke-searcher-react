@@ -7,11 +7,9 @@ import Footer from './components/footer/footer'
 
 async function main()
 {
-    const pokeList = await fetch("https://pokeapi.co/api/v2/pokemon/?limit=9999")
-                            .then(blob => blob.json())
     ReactDOM.render(
         <React.StrictMode>
-            <App pokemonIndex={pokeList}/>
+            <App/>
             <Footer />
         </React.StrictMode>,
         document.getElementById('root')

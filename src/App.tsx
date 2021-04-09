@@ -6,16 +6,14 @@ import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, INamedApiResourceList } from "pokeapi-typescript"
 import { InvokeQueryResult } from "./components/singletons/singletons"
-import { GetPokemon, GetPokemonSpecies, MatchQuery } from "./components/util/PokeAPICache"
+import { GetPokemon, GetPokemonSpecies, MatchQuery, POKEMON_ENDPOINT } from "./components/util/PokeAPICache"
 
 type App_state = {
     // TODO: Replace generic JSX.Element with React component type
     searchResults: JSX.Element[]
     detailedResult: JSX.Element | null
 }
-type App_props = {
-    pokemonIndex: INamedApiResourceList<IPokemon>
-}
+type App_props = {}
 class App extends React.Component<App_props, App_state>
 {
     // PokeAPI Cache
@@ -103,18 +101,13 @@ class App extends React.Component<App_props, App_state>
         let pkmn = url.searchParams.get("pkmn")
         if (pkmn !== null) // If variable pkmn is in the query string
         {
-            // Grab the pokemon
-            let pokeIndex = this.props.pokemonIndex.results.find((i) => i.name === pkmn)
-            // if it exists...
-            if (pokeIndex !== undefined && pokeIndex !== null)
-            {
-                // Grab the pokemon data
-                GetPokemon(pokeIndex.url)
-                    .then((data) => {
-                        // Pass it to detail handler to render the pokemon
-                        this.detailHandler(data)
-                    })
-            }
+            // Grab the pokemon data
+            GetPokemon(POKEMON_ENDPOINT+pkmn)
+                .then((data) => {
+                    // Pass it to detail handler to render the pokemon
+                    this.detailHandler(data)
+                })
+                .catch(() => console.log(`Failed to grab ${pkmn}`))
         }
     }
     render()
