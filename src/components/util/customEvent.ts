@@ -9,10 +9,9 @@ export class CustomEvent<EventArgs>
     }
     async Invoke(eventArgs: EventArgs)
     {
-        for (let subscriber of this.subscribers)
-        {
+        this.subscribers.forEach(subscriber => {
             subscriber(eventArgs)
-        }
+        })
     }
 }
 
