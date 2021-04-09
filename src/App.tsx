@@ -99,16 +99,14 @@ class App extends React.Component<App_props, App_state>
         let url_string = window.location.href
         let url = new URL(url_string)
         let pkmn = url.searchParams.get("pkmn")
-        if (pkmn !== null) // If variable pkmn is in the query string
-        {
-            // Grab the pokemon data
-            GetPokemon(POKEMON_ENDPOINT+pkmn)
-                .then((data) => {
-                    // Pass it to detail handler to render the pokemon
-                    this.detailHandler(data)
-                })
-                .catch(() => console.log(`Failed to grab ${pkmn}`))
-        }
+        if (pkmn === null) // If variable pkmn is in the query string
+            return
+        GetPokemon(POKEMON_ENDPOINT+pkmn)
+            .then((data) => {
+                // Pass it to detail handler to render the pokemon
+                this.detailHandler(data)
+            })
+            .catch(() => console.log(`Failed to grab ${pkmn}`))
     }
     render()
     {
