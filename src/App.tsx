@@ -101,6 +101,7 @@ class App extends React.Component<App_props, App_state>
         let pkmn = url.searchParams.get("pkmn")
         if (pkmn === null) // If variable pkmn is in the query string
             return
+
         GetPokemon(POKEMON_ENDPOINT+pkmn)
             .then((data) => {
                 // Pass it to detail handler to render the pokemon
