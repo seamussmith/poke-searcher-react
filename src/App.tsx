@@ -4,7 +4,7 @@ import SearchResult from './components/searchResult/searchResult'
 import ResultDetailed from './components/resultDetailed/resultDetailed'
 import './App.css'
 import { escapeRegExp } from './components/util/util'
-import { IPokemon, IPokemonSpecies, INamedApiResourceList } from "pokeapi-typescript"
+import { IPokemon, INamedApiResourceList } from "pokeapi-typescript"
 import { InvokeQueryResult } from "./components/singletons/singletons"
 import { GetPokemon, GetPokemonSpecies, MatchQuery } from "./components/util/PokeAPICache"
 
@@ -57,7 +57,7 @@ class App extends React.Component<App_props, App_state>
             return
         }
         // query pokeapi for the pokemon
-        MatchQuery(query, 25)
+        MatchQuery(query, 27)
             .then(results => {
                 // accumulate all the matches then fetch the pokemon
                 Promise.all(results.map(i => GetPokemon(i.url)))
@@ -72,7 +72,7 @@ class App extends React.Component<App_props, App_state>
                         this.setState({
                             // Map the search results into <SearchResult /> components and then display them
                             searchResults: pokemon.map(
-                                (e, i) => <SearchResult pokeURL={results[i].url} pokeData={e}/>
+                                (e, i) => <SearchResult pokeURL={results[i].url} pokeData={e} />
                             )
                         })
                     })
