@@ -6,7 +6,7 @@ import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies, INamedApiResourceList } from "pokeapi-typescript"
 import { InvokeQueryResult } from "./components/singletons/singletons"
-import { GetPokemon, GetPokemonSpecies } from "./components/util/PokeAPICache"
+import { GetPokemon, GetPokemonSpecies, MatchQuery } from "./components/util/PokeAPICache"
 
 type App_state = {
     // TODO: Replace generic JSX.Element with React component type
@@ -56,25 +56,27 @@ class App extends React.Component<App_props, App_state>
             })
             return
         }
-        let matches = this.props.pokemonIndex.results.filter((i) => i.name.match(query) !== null).slice(0, 24)
-        Promise.all(matches.map(
-            // Return the promise for the query if cached
-            (i) => GetPokemon(i.url)//(this.pokemonCache[i.url] ?? (this.pokemonCache[i.url] = fetch(i.url).then(blob => blob.json())))
-                                            // Else, fetch the pokemon needed and put the Promise in the query cache
-        )).then((result: IPokemon[]) => {
-            if (thisQueryIndex < this.queryIndex)
-                return
-            // set search results to empty array because that breaks the animations
-            this.setState({
-                searchResults: []
+        // query pokeapi for the pokemon
+        MatchQuery(query, 25)
+            .then(results => {
+                // accumulate all the matches then fetch the pokemon
+                Promise.all(results.map(i => GetPokemon(i.url)))
+                    .then((pokemon: IPokemon[]) => {
+                        // if this is an earlier query, abort
+                        if (thisQueryIndex < this.queryIndex)
+                            return
+                        // set search results to empty array because that breaks the animations
+                        this.setState({
+                            searchResults: []
+                        })
+                        this.setState({
+                            // Map the search results into <SearchResult /> components and then display them
+                            searchResults: pokemon.map(
+                                (e, i) => <SearchResult pokeURL={results[i].url} pokeData={e}/>
+                            )
+                        })
+                    })
             })
-            this.setState({
-                // Map the search results into <SearchResult /> components and then display them
-                searchResults: result.map(
-                    (e, i) => <SearchResult pokeURL={matches[i].url} pokeData={e}/>
-                )
-            })
-        })
     }
     // Display the detailed information for a selected pokemon
     detailHandler(pkmnData: IPokemon)
