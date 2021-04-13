@@ -30,6 +30,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
         return (
             <div className='result-detailed'>
                 {/* Pokemon name, Portrait, Flairs, Type */}
+                
                 <div className='result-detailed__division result-detailed__division--pokemon'>
                     <h2 className='result-detailed__name-detailed'>
                         <span className={pokemon.types[0].type.name}>{stylePokemonName(pokemon.name)}</span>
@@ -48,15 +49,21 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                         <PkmnTypes types={pokemon.types} />
                     </div>
                 </div>
+
                 {/* Stats, Info, Gender Ratios */}
-                <div className='result-detailed__division result-detailed__division--info'>
-                    <BaseStatList stats={pokemon.stats} />
-                    <PkmnGenderRatio genderRatio={species.gender_rate} />
-                </div>
+                <Division wide={false}>
+                    <div className="result-detailed__division--info">    
+                        <BaseStatList stats={pokemon.stats} />
+                        <PkmnGenderRatio genderRatio={species.gender_rate} />
+                    </div>
+                </Division>
+
                 <PokedexEntry flavorText={latestFlavorText} />
-                <div className="result-detailed__division result-detailed__division--wide">
+
+                <Division wide={true}>
                     <PkmnInfo pokemon={pokemon} species={species} />
-                </div>
+                </Division>
+
                 <Evolutions species={species}/>
                 {/* TODO: Insert egg group compatability here */}
                 <SharePokemon name={pokemon.name} />
@@ -280,11 +287,23 @@ function Evolutions(props: {
     }
 
     return (
-        <div className="result-detailed__division result-detailed__division--wide">
+        <Division wide={true}>
             <h1>Evolutions/Variants</h1>
             <div className="result-detailed__pokemon-grid">
                 {pokemon?.map((pkmn) => <SearchResult pokeData={pkmn}/>) ?? "Loading..."}
             </div>
+        </Division>
+    )
+}
+
+function Division(props: {
+    children: React.ReactNode
+    wide: boolean
+})
+{
+    return (
+        <div className={`result-detailed__division ${props.wide ? "result-detailed__division--wide" : ""}`}>
+            {props.children}
         </div>
     )
 }
