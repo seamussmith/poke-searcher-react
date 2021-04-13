@@ -114,6 +114,18 @@ function Division(props: {
     )
 }
 
+function Type(props: {
+    type: string
+    children: React.ReactNode
+})
+{
+    return (
+        <span className={`result-detailed__type ${props.type}`}>
+            {props.children}
+        </span>
+    )
+}
+
 // Element for displaying Pokemon stats
 function PkmnStat(props: {
     name: string
