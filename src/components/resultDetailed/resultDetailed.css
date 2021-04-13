@@ -160,24 +160,22 @@
 .result-detailed__pkmn-info {
     display: flex;
     flex-direction: column;
-    padding: 10px;
-    background-color: var(--layer-1);
-    border-radius: var(--division-radius);
-    box-shadow: 1px 1px 1px var(--shadow-color);
 }
 
 .result-detailed__pkmn-info-stat {
     display: flex;
     align-items: center;
-    background-color: var(--layer-2);
+    background-color: var(--layer-1);
     box-shadow: 1px 1px 1px var(--shadow-color);
+    border-radius: var(--mini-divison-radius);
     padding: 10px 0;
     margin: 5px;
     text-align: left;
 }
 
 .result-detailed__pkmn-info-icon {
-    background-color: var(--layer-3);
+    background-color: var(--layer-2);
+    border-radius: var(--mini-divison-radius);
     box-shadow: 1px 1px 1px var(--shadow-color);
     /* flexbox abuse 😳 */
     display: inline-flex;
