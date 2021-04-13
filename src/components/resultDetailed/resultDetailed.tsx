@@ -27,8 +27,8 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 .reverse()[0]                              // Get the last element
                 .flavor_text.replaceAll("\u000C", ' ')     // Remove weird char that exists in some entries
                 .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
-        return (
-            <div className='result-detailed'>
+                return (
+                    <div className='result-detailed'>
                 {/* [ROW 1] */}
 
                 {/* Pokemon name, Portrait, Flairs, Type */}
@@ -42,8 +42,8 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                             className='pokeimg'
                             // other.official-artwork not in interface for some reason
                             src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
-                                pokemon.sprites.front_default ??
-                                NO_IMAGE }
+                            pokemon.sprites.front_default ??
+                            NO_IMAGE }
                             alt={pokemon.name} />
                         </div>
                         <div className='result-detailed__flairs'>
@@ -84,6 +84,24 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
             </div>
         )
     }
+}
+
+function Division(props: {
+    children: React.ReactNode
+    width: number
+    height: number
+})
+{
+    let styles = {
+        "--grid-width": props.width,
+        "--grid-height": props.height
+    } as React.CSSProperties
+
+    return (
+        <div className="result-detailed__division" style={styles}>
+            {props.children}
+        </div>
+    )
 }
 
 // Element for displaying Pokemon stats
@@ -306,23 +324,6 @@ function Evolutions(props: {
     )
 }
 
-function Division(props: {
-    children: React.ReactNode
-    width: number
-    height: number
-})
-{
-    let styles = {
-        "--grid-width": props.width,
-        "--grid-height": props.height
-    } as React.CSSProperties
-
-    return (
-        <div className="result-detailed__division" style={styles}>
-            {props.children}
-        </div>
-    )
-}
 
 async function unwrapChain(evoChain: IEvolutionChain)
 {
