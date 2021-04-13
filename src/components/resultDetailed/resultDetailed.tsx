@@ -27,8 +27,8 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 .reverse()[0]                              // Get the last element
                 .flavor_text.replaceAll("\u000C", ' ')     // Remove weird char that exists in some entries
                 .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
-                return (
-                    <div className='result-detailed'>
+        return (
+            <div className='result-detailed'>
                 {/* [ROW 1] */}
 
                 {/* Pokemon name, Portrait, Flairs, Type */}
@@ -63,7 +63,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
 
                 {/* [ROW 2] */}
 
-                <Division width={5} height={25}>
+                <Division width={5} height={3}>
                     <Evolutions species={species}/>
                 </Division>
 
@@ -71,7 +71,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                     <PkmnInfo pokemon={pokemon} species={species} />
                 </Division>
 
-                <Division width={3} height={24}>
+                <Division width={3} height={1}>
                     <PokedexEntry flavorText={latestFlavorText} />
                 </Division>
 
