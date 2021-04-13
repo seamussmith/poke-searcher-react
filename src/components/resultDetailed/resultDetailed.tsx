@@ -242,6 +242,7 @@ function PkmnInfo(props: {
         eggGroupText = ["N/A"]
     return (
         <div className="result-detailed__pkmn-info-base">
+            <h2 className="result-detailed__label">Pokemon Info</h2>
             <div className="result-detailed__pkmn-info">
                 <InfoStat icoName="fas fa-hashtag">
                     ID {
