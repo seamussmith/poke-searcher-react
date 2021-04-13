@@ -30,43 +30,50 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
         return (
             <div className='result-detailed'>
                 {/* Pokemon name, Portrait, Flairs, Type */}
-                
-                <div className='result-detailed__division result-detailed__division--pokemon'>
-                    <h2 className='result-detailed__name-detailed'>
-                        <span className={pokemon.types[0].type.name}>{stylePokemonName(pokemon.name)}</span>
-                    </h2>
-                    <div>
-                        <img
-                        className='pokeimg'
-                        // other.official-artwork not in interface for some reason
-                        src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
-                              pokemon.sprites.front_default ??
-                              NO_IMAGE }
-                        alt={pokemon.name} />
-                    </div>
-                    <div className='result-detailed__flairs'>
-                        <PkmnFlairs species={species} pkmnName={pokemon.name} />
-                        <PkmnTypes types={pokemon.types} />
-                    </div>
-                </div>
+                <Division width={2}>
+                    <div className='result-detailed__division--pokemon'>
+                        <h2 className='result-detailed__name-detailed'>
+                            <span className={pokemon.types[0].type.name}>{stylePokemonName(pokemon.name)}</span>
+                        </h2>
+                        <div>
+                            <img
+                            className='pokeimg'
+                            // other.official-artwork not in interface for some reason
+                            src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
+                                pokemon.sprites.front_default ??
+                                NO_IMAGE }
+                            alt={pokemon.name} />
+                        </div>
+                        <div className='result-detailed__flairs'>
+                            <PkmnFlairs species={species} pkmnName={pokemon.name} />
+                            <PkmnTypes types={pokemon.types} />
+                        </div>
+                    </div>                   
+                </Division>
 
                 {/* Stats, Info, Gender Ratios */}
-                <Division wide={false}>
+                <Division width={2}>
                     <div className="result-detailed__division--info">    
                         <BaseStatList stats={pokemon.stats} />
                         <PkmnGenderRatio genderRatio={species.gender_rate} />
                     </div>
                 </Division>
 
-                <PokedexEntry flavorText={latestFlavorText} />
+                <Division width={4}>
+                    <PokedexEntry flavorText={latestFlavorText} />
+                </Division>
 
-                <Division wide={true}>
+                <Division width={1}>
                     <PkmnInfo pokemon={pokemon} species={species} />
                 </Division>
 
-                <Evolutions species={species}/>
+                <Division width={3}>
+                    <Evolutions species={species}/>
+                </Division>
                 {/* TODO: Insert egg group compatability here */}
-                <SharePokemon name={pokemon.name} />
+                <Division width={4}>
+                    <SharePokemon name={pokemon.name} />
+                </Division>
             </div>
         )
     }
@@ -150,9 +157,7 @@ function PokedexEntry(props: {
 })
 {
     return (
-        <div className='result-detailed__division result-detailed__division--wide'>
-            <p className='result-detailed__flavor-text'>"{props.flavorText}"<br/> - Pokedex</p>
-        </div>
+        <p className='result-detailed__flavor-text'>"{props.flavorText}"<br/> - Pokedex</p>
     )
 }
 
@@ -262,11 +267,9 @@ function SharePokemon(props: {
 })
 {
     return (
-        <div className='result-detailed__division result-detailed__division--wide'>
-            <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-                <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${props.name}`} />
-            </p>
-        </div>
+        <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
+            <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${props.name}`} />
+        </p>
     )
 }
 
@@ -287,22 +290,22 @@ function Evolutions(props: {
     }
 
     return (
-        <Division wide={true}>
+        <>
             <h1>Evolutions/Variants</h1>
             <div className="result-detailed__pokemon-grid">
                 {pokemon?.map((pkmn) => <SearchResult pokeData={pkmn}/>) ?? "Loading..."}
             </div>
-        </Division>
+        </>
     )
 }
 
 function Division(props: {
     children: React.ReactNode
-    wide: boolean
+    width: 1 | 2 | 3 | 4
 })
 {
     return (
-        <div className={`result-detailed__division ${props.wide ? "result-detailed__division--wide" : ""}`}>
+        <div className={`result-detailed__division result-detailed__division--grid-width-${props.width}`}>
             {props.children}
         </div>
     )

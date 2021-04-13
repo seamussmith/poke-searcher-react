@@ -2,12 +2,12 @@
 .result-detailed {
     text-align: center;
     display: grid;
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(4, 1fr); 
 
     gap: 10px;
 
     --pokemon-color: none;
-    width: 800px;
+    width: 1000px;
     transform-origin: top;
     border-color: var(--pokemon-color);
     background-color: var(--layer-1);
@@ -24,19 +24,42 @@
     box-shadow: 1px 1px 1px var(--shadow-color);
 }
 
-@media (min-width: 720px) {
-    .result-detailed__divsion--tall {
-        grid-row: span 2 / auto;
-    }
-    
-    .result-detailed__division--wide {
-        grid-column: span 2 / auto;
-    }
+/* Scss would probably be desirable...... */
+.result-detailed__division--grid-width-1 {
+    grid-column: span 1 / auto;
+}
+
+.result-detailed__division--grid-width-2 {
+    grid-column: span 2 / auto;
+}
+
+.result-detailed__division--grid-width-3 {
+    grid-column: span 3 / auto;
+}
+
+.result-detailed__division--grid-width-4 {
+    grid-column: span 4 / auto;
+}
+
+.result-detailed__division--grid-height-1 {
+    grid-row: span 1 / auto;
+}
+
+.result-detailed__division--grid-height-2 {
+    grid-row: span 2 / auto;
+}
+
+.result-detailed__division--grid-height-3 {
+    grid-row: span 3 / auto;
+}
+
+.result-detailed__division--grid-height-4 {
+    grid-row: span 4 / auto;
 }
 
 @media (max-width: 720px) {
     .result-detailed__division {
-        grid-column: span 2 / auto;
+        grid-column: span 4 / auto;
     }
 }
 
