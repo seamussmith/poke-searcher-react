@@ -30,7 +30,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
         return (
             <div className='result-detailed'>
                 {/* Pokemon name, Portrait, Flairs, Type */}
-                <Division width={2}>
+                <Division width={4} height={1}>
                     <div className='result-detailed__division--pokemon'>
                         <h2 className='result-detailed__name-detailed'>
                             <span className={pokemon.types[0].type.name}>{stylePokemonName(pokemon.name)}</span>
@@ -52,26 +52,27 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 </Division>
 
                 {/* Stats, Info, Gender Ratios */}
-                <Division width={2}>
+                <Division width={4} height={1}>
                     <div className="result-detailed__division--info">    
                         <BaseStatList stats={pokemon.stats} />
                         <PkmnGenderRatio genderRatio={species.gender_rate} />
                     </div>
                 </Division>
 
-                <Division width={4}>
-                    <PokedexEntry flavorText={latestFlavorText} />
+                <Division width={5} height={2}>
+                    <Evolutions species={species}/>
                 </Division>
 
-                <Division width={1}>
+                <Division width={3} height={1}>
                     <PkmnInfo pokemon={pokemon} species={species} />
                 </Division>
 
-                <Division width={3}>
-                    <Evolutions species={species}/>
+                <Division width={3} height={1}>
+                    <PokedexEntry flavorText={latestFlavorText} />
                 </Division>
+
                 {/* TODO: Insert egg group compatability here */}
-                <Division width={4}>
+                <Division width={8} height={1}>
                     <SharePokemon name={pokemon.name} />
                 </Division>
             </div>
@@ -301,11 +302,17 @@ function Evolutions(props: {
 
 function Division(props: {
     children: React.ReactNode
-    width: 1 | 2 | 3 | 4
+    width: number
+    height: number
 })
 {
+    let styles = {
+        "--grid-width": props.width,
+        "--grid-height": props.height
+    } as React.CSSProperties
+
     return (
-        <div className={`result-detailed__division result-detailed__division--grid-width-${props.width}`}>
+        <div className="result-detailed__division" style={styles}>
             {props.children}
         </div>
     )
