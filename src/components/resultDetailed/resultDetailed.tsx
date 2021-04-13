@@ -59,6 +59,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 <PokedexEntry flavorText={latestFlavorText} />
                 {/* TODO: Insert egg group compatability here */}
                 <SharePokemon name={pokemon.name} />
+                <Evolutions species={species}/>
             </div>
         )
     }
@@ -263,31 +264,26 @@ function SharePokemon(props: {
 }
 
 function Evolutions(props: {
-    pokemon: IPokemon
     species: IPokemonSpecies
 })
 {
     const [pokemon, setPokemon] = useState<IPokemon[]|null>(null)
 
-    GetEvolutionTree(props.species.evolution_chain.url)
-        .then(result => {
-            // let unwrapped = unwrapChain(result)
-            // let promises: Promise<IPokemonSpecies>[] = []
-            // unwrapped.forEach(url => {
-            //     promises.push(GetPokemonSpecies(url))
-            // })
-            // Promise.all(promises)
-            //     .then(results => {
-            //         let reallyPokemon: Promise<IPokemon>[] = []
-            //         results.forEach(species => {
-            //             reallyPokemon.push(GetPokemon(species.))
-            //         })
-            //     })
-        })
+    // Oh my god if this actually works...
+    if (pokemon == null)
+    {
+        GetEvolutionTree(props.species.evolution_chain.url)
+            .then(result => {
+                unwrapChain(result)
+                    .then(pokemons => {
+                        setPokemon(pokemons)
+                    })
+            })
+    }
 
     return (
         <div className="result-detailed__division">
-            {pokemon?.map((pkmn) => <SearchResult pokeData={pkmn}/>)}
+            {pokemon?.map((pkmn) => <SearchResult pokeData={pkmn}/>) ?? "Loading..."}
         </div>
     )
 }
@@ -302,6 +298,7 @@ async function unwrapChain(evoChain: IEvolutionChain)
     // push the first evolution onto the stack
     evoStack.push(evoChain.chain)
     // while the stack isnt empty
+    console.log("Unwrapping chain...")
     while (evoStack.length !== 0)
     {
         // pop the first evolution off the evo stack
@@ -312,16 +309,19 @@ async function unwrapChain(evoChain: IEvolutionChain)
         evoStack.push(...item!.evolves_to)
     }
 
+    console.log("Getting species...")
     let speciesEntriesPromise = Promise.all(urls.map(url => GetPokemonSpecies(url)))
     
     let speciesEntries = await speciesEntriesPromise
 
+    console.log("Getting Pokemon...")
     // *external screaming*
     let pokemonPromise = Promise.all(
         speciesEntries.map(
             entry => [...entry.varieties.map(v => GetPokemon(v.pokemon.url))]
             ).flat())
 
+    console.log("Awaiting fetches...")
     // FINALLY! IM OUT OF HELL! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     return await pokemonPromise
 }
