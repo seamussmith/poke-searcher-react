@@ -244,7 +244,11 @@ function PkmnInfo(props: {
         <div className="result-detailed__pkmn-info-base">
             <div className="result-detailed__pkmn-info">
                 <InfoStat icoName="fas fa-hashtag">
-                    ID {props.pokemon.id < 10_000 ? `#${props.pokemon.id}` : "N/A"}
+                    ID {
+                        props.pokemon.id < 10_000 ?
+                        `#${props.pokemon.id}` :
+                        "N/A"
+                    }
                 </InfoStat>
                 <InfoStat icoName="fas fa-weight-hanging">
                     Weight: {props.pokemon.weight/10}kg
