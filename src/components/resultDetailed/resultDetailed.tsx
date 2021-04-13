@@ -120,9 +120,23 @@ function Type(props: {
 })
 {
     return (
-        <span className={`result-detailed__type ${props.type}`}>
+        <p className={`result-detailed__type ${props.type}`}>
             {props.children}
-        </span>
+        </p>
+    )
+}
+
+// Element that display's the pokemon's types
+function PkmnTypes(props: {
+    types: IPokemonType[]
+})
+{
+    return (
+        <p className='result-detailed__types-detailed'>
+            {props.types.map((i) =>
+                <Type type={i.type.name}><span>{capitalize(i.type.name)}</span></Type>
+            )}
+        </p>
     )
 }
 
@@ -302,20 +316,6 @@ function PkmnFlairs(props: {
         <div>
             {flairs}
         </div>
-    )
-}
-
-// Element that display's the pokemon's types
-function PkmnTypes(props: {
-    types: IPokemonType[]
-})
-{
-    return (
-        <p className='result-detailed__types-detailed'>
-            {props.types.map((i) =>
-                <span className={i.type.name}>{capitalize(i.type.name)} </span>
-            )}
-        </p>
     )
 }
 
