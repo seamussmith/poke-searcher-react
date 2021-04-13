@@ -206,7 +206,10 @@ function PokedexEntry(props: {
 })
 {
     return (
-        <p className='result-detailed__flavor-text'>"{props.flavorText}"<br/> - Pokedex</p>
+        <>
+            <h2 className="result-detailed__label">Pokedex Desc.</h2>
+            <p className='result-detailed__flavor-text'>"{props.flavorText}"</p>
+        </>
     )
 }
 
@@ -241,7 +244,7 @@ function PkmnInfo(props: {
         <div className="result-detailed__pkmn-info-base">
             <div className="result-detailed__pkmn-info">
                 <InfoStat icoName="fas fa-hashtag">
-                    ID #{props.pokemon.id}
+                    ID {props.pokemon.id < 10_000 ? `#${props.pokemon.id}` : "N/A"}
                 </InfoStat>
                 <InfoStat icoName="fas fa-weight-hanging">
                     Weight: {props.pokemon.weight/10}kg
