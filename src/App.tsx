@@ -105,7 +105,9 @@ class App extends React.Component<App_props, App_state>
         GetPokemon(POKEMON_ENDPOINT+pkmn)
             .then((data) => {
                 // Pass it to detail handler to render the pokemon
-                this.detailHandler(data)
+                InvokeQueryResult.Invoke({
+                    pokemon: data
+                })
             })
             .catch(() => console.log(`Failed to grab ${pkmn}`))
     }
