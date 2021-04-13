@@ -53,13 +53,13 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                     <BaseStatList stats={pokemon.stats} />
                     <PkmnGenderRatio genderRatio={species.gender_rate} />
                 </div>
+                <PokedexEntry flavorText={latestFlavorText} />
                 <div className="result-detailed__division result-detailed__division--wide">
                     <PkmnInfo pokemon={pokemon} species={species} />
                 </div>
-                <PokedexEntry flavorText={latestFlavorText} />
+                <Evolutions species={species}/>
                 {/* TODO: Insert egg group compatability here */}
                 <SharePokemon name={pokemon.name} />
-                <Evolutions species={species}/>
             </div>
         )
     }
@@ -282,8 +282,11 @@ function Evolutions(props: {
     }
 
     return (
-        <div className="result-detailed__division">
-            {pokemon?.map((pkmn) => <SearchResult pokeData={pkmn}/>) ?? "Loading..."}
+        <div className="result-detailed__division result-detailed__division--wide">
+            <h1>Evolutions/Variants</h1>
+            <div className="result-detailed__pokemon-grid">
+                {pokemon?.map((pkmn) => <SearchResult pokeData={pkmn}/>) ?? "Loading..."}
+            </div>
         </div>
     )
 }
@@ -298,7 +301,6 @@ async function unwrapChain(evoChain: IEvolutionChain)
     // push the first evolution onto the stack
     evoStack.push(evoChain.chain)
     // while the stack isnt empty
-    console.log("Unwrapping chain...")
     while (evoStack.length !== 0)
     {
         // pop the first evolution off the evo stack
@@ -309,19 +311,16 @@ async function unwrapChain(evoChain: IEvolutionChain)
         evoStack.push(...item!.evolves_to)
     }
 
-    console.log("Getting species...")
     let speciesEntriesPromise = Promise.all(urls.map(url => GetPokemonSpecies(url)))
     
     let speciesEntries = await speciesEntriesPromise
 
-    console.log("Getting Pokemon...")
     // *external screaming*
     let pokemonPromise = Promise.all(
         speciesEntries.map(
             entry => [...entry.varieties.map(v => GetPokemon(v.pokemon.url))]
             ).flat())
 
-    console.log("Awaiting fetches...")
     // FINALLY! IM OUT OF HELL! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
     return await pokemonPromise
 }

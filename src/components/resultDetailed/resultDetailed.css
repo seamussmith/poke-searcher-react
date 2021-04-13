@@ -9,7 +9,6 @@
     --pokemon-color: none;
     width: 800px;
     transform-origin: top;
-    animation: emphasis 0.25s ease;
     border-color: var(--pokemon-color);
     background-color: var(--layer-1);
     border-radius: var(--division-radius);
@@ -19,6 +18,7 @@
 }
 
 .result-detailed__division {
+    padding: 10px;
     background-color: var(--layer-2);
     border-radius: var(--division-radius);
     box-shadow: 1px 1px 1px var(--shadow-color);
@@ -201,4 +201,13 @@
     padding: 0.25ch 1ch;
     box-shadow: 1px 1px 1px black;
     width: fit-content;
+}
+
+.result-detailed__pokemon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 180px);
+    grid-auto-rows: 255px;
+    justify-content: center;
+
+    gap: 10px;
 }
