@@ -18,6 +18,7 @@ class SearchResult extends React.Component<SearchResult_props, {}>
     }
     onClick()
     {
+        window.scrollTo(0, 0)
         InvokeQueryResult.Invoke({ pokemon: this.props.pokeData })
         //this.props.detailHandler(this.props.pokeData)
     }
