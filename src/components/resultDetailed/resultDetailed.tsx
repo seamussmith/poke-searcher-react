@@ -324,7 +324,6 @@ function Evolutions(props: {
     )
 }
 
-
 async function unwrapChain(evoChain: IEvolutionChain)
 {
     // each species named url
@@ -345,17 +344,19 @@ async function unwrapChain(evoChain: IEvolutionChain)
         evoStack.push(...item!.evolves_to)
     }
 
+    // Fetch all the pokemon species data
     let speciesEntriesPromise = Promise.all(urls.map(url => GetPokemonSpecies(url)))
     
     let speciesEntries = await speciesEntriesPromise
 
     // *external screaming*
+    // Fetch all the pokemon data
     let pokemonPromise = Promise.all(
-        speciesEntries.map(
-            entry => [...entry.varieties.map(v => GetPokemon(v.pokemon.url))]
-            ).flat())
+        speciesEntries.map( // Each species has an array of varieties
+            entry => entry.varieties.map(v => GetPokemon(v.pokemon.url)) // Fetch each variety in the species
+            ).flat()) // Flatten the array
 
-    // FINALLY! IM OUT OF HELL! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    // Return the resulting pokemons
     return await pokemonPromise
 }
 
