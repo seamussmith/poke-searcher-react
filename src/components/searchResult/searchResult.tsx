@@ -6,7 +6,6 @@ import { IPokemon } from 'pokeapi-typescript'
 import { InvokeQueryResult } from "../singletons/singletons"
 
 type SearchResult_props = {
-    pokeURL: string
     pokeData: IPokemon
     //detailHandler: (pkmnData: IPokemon) => void
 }

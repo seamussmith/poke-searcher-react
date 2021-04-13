@@ -70,7 +70,7 @@ class App extends React.Component<App_props, App_state>
                         this.setState({
                             // Map the search results into <SearchResult /> components and then display them
                             searchResults: pokemon.map(
-                                (e, i) => <SearchResult pokeURL={results[i].url} pokeData={e} />
+                                (e, i) => <SearchResult pokeData={e} />
                             )
                         })
                     })
