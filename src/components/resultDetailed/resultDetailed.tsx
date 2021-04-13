@@ -208,7 +208,7 @@ function PokedexEntry(props: {
     return (
         <>
             <h2 className="result-detailed__label">Pokedex Desc.</h2>
-            <p className='result-detailed__flavor-text'>"{props.flavorText}"</p>
+            <p className='result-detailed__flavor-text'>{props.flavorText}</p>
         </>
     )
 }
