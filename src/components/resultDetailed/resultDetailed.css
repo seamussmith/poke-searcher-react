@@ -20,7 +20,7 @@
 .result-detailed__division {
     grid-column: span var(--grid-width) / auto;
     grid-row: span var(--grid-height) / auto;
-    padding: 10px;
+    padding: 5px;
     background-color: var(--layer-2);
     border-radius: var(--division-radius);
     box-shadow: 1px 1px 1px var(--shadow-color);
@@ -203,6 +203,7 @@
     justify-content: center;
 
     gap: 10px;
+    padding-bottom: 20px;
 }
 
 @media(max-width: 720px)
