@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { capitalize, stylePokemonName } from '../util/util'
 import '../typeColorClasses/typeColorClasses.css'
 import CopyClicker from '../copyClicker/copyClicker'
 import './resultDetailed.css'
-import { IPokemon, IPokemonSpecies, IPokemonStat, IPokemonType } from "pokeapi-typescript"
+import { IPokemon, IPokemonSpecies, IPokemonStat, IPokemonType, IEvolutionChain, IChainLink } from "pokeapi-typescript"
 import SearchResult from "../searchResult/searchResult"
+import { GetEvolutionTree, GetPokemon, GetPokemonSpecies } from '../util/PokeAPICache'
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
@@ -259,6 +260,70 @@ function SharePokemon(props: {
             </p>
         </div>
     )
+}
+
+function Evolutions(props: {
+    pokemon: IPokemon
+    species: IPokemonSpecies
+})
+{
+    const [pokemon, setPokemon] = useState<IPokemon[]|null>(null)
+
+    GetEvolutionTree(props.species.evolution_chain.url)
+        .then(result => {
+            // let unwrapped = unwrapChain(result)
+            // let promises: Promise<IPokemonSpecies>[] = []
+            // unwrapped.forEach(url => {
+            //     promises.push(GetPokemonSpecies(url))
+            // })
+            // Promise.all(promises)
+            //     .then(results => {
+            //         let reallyPokemon: Promise<IPokemon>[] = []
+            //         results.forEach(species => {
+            //             reallyPokemon.push(GetPokemon(species.))
+            //         })
+            //     })
+        })
+
+    return (
+        <div className="result-detailed__division">
+            {pokemon?.map((pkmn) => <SearchResult pokeData={pkmn}/>)}
+        </div>
+    )
+}
+
+async function unwrapChain(evoChain: IEvolutionChain)
+{
+    // each species named url
+    let urls: string[] = []
+    // stack of evolves_to properties
+    let evoStack: IChainLink[] = []
+
+    // push the first evolution onto the stack
+    evoStack.push(evoChain.chain)
+    // while the stack isnt empty
+    while (evoStack.length !== 0)
+    {
+        // pop the first evolution off the evo stack
+        let item = evoStack.pop()
+        // push the evolution's species data into result
+        urls.push(item!.species.url)
+        // push all evolutions to the stack
+        evoStack.push(...item!.evolves_to)
+    }
+
+    let speciesEntriesPromise = Promise.all(urls.map(url => GetPokemonSpecies(url)))
+    
+    let speciesEntries = await speciesEntriesPromise
+
+    // *external screaming*
+    let pokemonPromise = Promise.all(
+        speciesEntries.map(
+            entry => [...entry.varieties.map(v => GetPokemon(v.pokemon.url))]
+            ).flat())
+
+    // FINALLY! IM OUT OF HELL! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+    return await pokemonPromise
 }
 
 export default ResultDetailed
