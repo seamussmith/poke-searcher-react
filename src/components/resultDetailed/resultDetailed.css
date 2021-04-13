@@ -26,18 +26,23 @@
     box-shadow: 1px 1px 1px var(--shadow-color);
 }
 
+.result-detailed__name-detailed {
+    font-size: 30pt;
+    /* color: var(--pokemon-color); Pokemon with black pokedex colors dont look very nice... */
+}
+
 @media (max-width: 720px) {
     .result-detailed__division {
         grid-column: span 8 / auto;
         grid-row: span 8 / auto;
     }
+    .result-detailed__name-detailed {
+        font-size: 25pt;
+        /* color: var(--pokemon-color); Pokemon with black pokedex colors dont look very nice... */
+    }
 }
 
 
-.result-detailed__name-detailed {
-    font-size: 30pt;
-    /* color: var(--pokemon-color); Pokemon with black pokedex colors dont look very nice... */
-}
 
 .result-detailed__types-detailed {
     font-size: 25pt;
@@ -89,7 +94,7 @@
 }
 
 .result-detailed__flavor-text {
-    padding: 0 15%;
+    padding: 0 2ch;
 }
 
 .result-detailed__base-stats,
@@ -190,7 +195,7 @@
     border-image: radial-gradient(currentColor 20%, transparent 100%);
     border-image-slice: 1;
     margin: 10px auto;
-    padding: 0.25ch 5ch;
+    padding: 0.25ch 1ch;
     width: fit-content;
 }
 
