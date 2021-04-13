@@ -40,5 +40,3 @@ export async function MatchQuery(query: string, limit = -1)
     }
     return results
 }
-
-
