@@ -29,6 +29,8 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
         return (
             <div className='result-detailed'>
+                {/* [ROW 1] */}
+
                 {/* Pokemon name, Portrait, Flairs, Type */}
                 <Division width={4} height={1}>
                     <div className='result-detailed__division--pokemon'>
@@ -59,6 +61,8 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                     </div>
                 </Division>
 
+                {/* [ROW 2] */}
+
                 <Division width={5} height={10}>
                     <Evolutions species={species}/>
                 </Division>
@@ -70,6 +74,8 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 <Division width={3} height={9}>
                     <PokedexEntry flavorText={latestFlavorText} />
                 </Division>
+
+                {/* [ROW 3] */}
 
                 {/* TODO: Insert egg group compatability here */}
                 <Division width={8} height={1}>
