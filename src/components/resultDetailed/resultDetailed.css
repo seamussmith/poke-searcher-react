@@ -188,11 +188,11 @@
 }
 
 .result-detailed__label {
-    background-color: var(--layer-1);
-    border: 1px solid transparent;
+    border-bottom: solid 2px transparent;
+    border-image: radial-gradient(currentColor 20%, transparent 100%);
+    border-image-slice: 1;
     margin: 10px auto;
-    padding: 0.25ch 1ch;
-    box-shadow: 1px 1px 1px black;
+    padding: 0.25ch 5ch;
     width: fit-content;
 }
 

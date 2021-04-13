@@ -45,7 +45,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                 <Division width={4} height={1}>
                     <div className='result-detailed__division--pokemon'>
                         <h2 className='result-detailed__name-detailed'>
-                            <span className={pokemon.types[0].type.name}>{stylePokemonName(pokemon.name)}</span>
+                            <span className={`${pokemon.types[0].type.name} result-detailed__label`}>{stylePokemonName(pokemon.name)}</span>
                         </h2>
                         <div>
                             <img
@@ -135,7 +135,7 @@ function BaseStatList(props: {
 {
     return (
         <div>
-            <h1 className="result-detailed__label">Stats: </h1>
+            <h1 className="result-detailed__label">Stats </h1>
             <div className='result-detailed__base-stats'>
                 {
                 props.stats.map((stat) =>
@@ -180,7 +180,7 @@ function PkmnGenderRatio(props: {
         
     return (
         <>
-            <h1 className="result-detailed__label">Gender ratio: </h1>
+            <h1 className="result-detailed__label">Gender ratio </h1>
             <div className='result-detailed__gender-rates'>
                 {genderElements}
             </div>
@@ -328,7 +328,7 @@ function Evolutions(props: {
 
     return (
         <>
-            <h1>Evolutions/Variants</h1>
+            <h1 className="result-detailed__label">Evolutions/Variants</h1>
             <div className="result-detailed__pokemon-grid">
                 {pokemon?.map((pkmn) => <SearchResult pokeData={pkmn}/>) ?? "Loading..."}
             </div>
