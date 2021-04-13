@@ -5,6 +5,8 @@
     flex-direction: column;
     justify-content: space-between;
     text-align: center;
+    min-width: 180px;
+    min-height: 255px;
     
     border-radius: 0px;
     background-color: var(--layer-1);
