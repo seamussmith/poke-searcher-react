@@ -144,26 +144,28 @@ function PkmnGenderRatio(props: {
 {
     let femaleRatio = props.genderRatio/8 * 100 // gender is stored in eighths
     let maleRatio = 100 - femaleRatio // Get male ratio
-    let genderElements: JSX.Element[] = []
+    let genderElements: JSX.Element
 
     if (props.genderRatio === -1)
     {
-        genderElements = [(
+        genderElements = (
             <div className='result-detailed__gender'>
                 <h1>Genderless</h1>
             </div>
-        )]
+        )
     }
     else
     {
-        genderElements = [
-            <div className='result-detailed__gender result-detailed__gender--male'>
-                <h1><i className="fas fa-mars --force-inheritence"></i> {maleRatio}%</h1>
-            </div>,
-            <div className='result-detailed__gender result-detailed__gender--female'>
-                <h1><i className="fas fa-venus --force-inheritence"></i> {femaleRatio}%</h1>
-            </div>
-        ]
+        genderElements = (
+            <>
+                <div className='result-detailed__gender result-detailed__gender--male'>
+                    <h1><i className="fas fa-mars --force-inheritence"></i> {maleRatio}%</h1>
+                </div>
+                <div className='result-detailed__gender result-detailed__gender--female'>
+                    <h1><i className="fas fa-venus --force-inheritence"></i> {femaleRatio}%</h1>
+                </div>
+            </>
+        )
     }
         
     return (
