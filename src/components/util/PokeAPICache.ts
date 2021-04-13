@@ -25,6 +25,7 @@ export async function GetPokemonSpecies(query: string)
 {
     return SpeciesCache[query] ?? (SpeciesCache[query] = fetch(query).then(blob => blob.json()))
 }
+
 export async function GetEvolutionTree(query: string)
 {
     return EvolutionCache[query] ?? (EvolutionCache[query] = fetch(query).then(blob => blob.json()))
