@@ -63,7 +63,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
 
                 {/* [ROW 2] */}
 
-                <Division width={5} height={10}>
+                <Division width={5} height={25}>
                     <Evolutions species={species}/>
                 </Division>
 
@@ -71,7 +71,7 @@ class ResultDetailed extends React.Component<ResultDetailed_props, ResultDetaile
                     <PkmnInfo pokemon={pokemon} species={species} />
                 </Division>
 
-                <Division width={3} height={9}>
+                <Division width={3} height={24}>
                     <PokedexEntry flavorText={latestFlavorText} />
                 </Division>
 
