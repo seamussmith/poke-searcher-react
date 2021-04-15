@@ -16,8 +16,8 @@ function App(props: {})
     const [detailedResult, setDetailedResult] = useState<JSX.Element|null>(null)
     
     const queryPokeAPI = (query: string) => {
-        setSearchResults([])
         setDetailedResult(null)
+
         queryIndex.current += 1
         let thisQueryIndex = queryIndex.current
         query = escapeRegExp(query.toLowerCase().replaceAll(" ", "-").replaceAll(/:|\.|'/g, ''))
@@ -28,11 +28,13 @@ function App(props: {})
             // accumulate all the matches then fetch the pokemon
             .then(results => Promise.all(results.map(i => GetPokemon(i.url))))
             .then(pokemon => {
+                // Fix pop animations
+                setSearchResults([])
                 // if this is an earlier query, abort
                 if (thisQueryIndex < queryIndex.current)
                     return
                 // Map the search results into <SearchResult /> components and then display them
-                setSearchResults(pokemon.map((e, i) => <SearchResult pokeData={e} />))
+                setSearchResults(pokemon.map((e, i) => <SearchResult pokeData={e} key={e.name}/>))
             })
     }
     
