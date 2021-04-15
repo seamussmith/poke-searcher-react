@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useRef } from 'react'
 
 import '../typeColorClasses/typeColorClasses.css'
 import './resultDetailed.css'
@@ -32,17 +32,23 @@ function ResultDetailed(props: {
     const [pokemon, setPokemon] = useState(props.pokemon)
     const [species, setSpecies] = useState(props.pkmnSpecies)
 
+    const self = useRef<HTMLDivElement>(null)
+
     const onPokemonUpdate = (pokemonData: IPokemon) => {
         GetPokemonSpecies(pokemonData.species.url)
             .then(speciesData => {
                 setPokemon(pokemonData)
                 setSpecies(speciesData)
+                if (window.screen.width < 720)
+                {
+                    self.current?.scrollIntoView()
+                }
             })
     }
 
     // Get the latest flavor text
     return (
-        <div className='result-detailed'>
+        <div className='result-detailed' ref={self}>
             <PokemonProvider.Provider value={{
                 pokemon: pokemon,
                 species: species
