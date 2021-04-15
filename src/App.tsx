@@ -20,9 +20,11 @@ function App(props: {})
 
         queryIndex.current += 1
         let thisQueryIndex = queryIndex.current
+
         query = escapeRegExp(query.toLowerCase().replaceAll(" ", "-").replaceAll(/:|\.|'/g, ''))
         if (query === "") // If no query...
             return
+        
         // query pokeapi for the pokemon
         MatchQuery(query, 27)
             // accumulate all the matches then fetch the pokemon
@@ -41,6 +43,7 @@ function App(props: {})
     const detailHandler = (pokemon: IPokemon) => {
         setSearchResults([])
         setDetailedResult(<h1>Loading details...</h1>)
+
         // Fetch species data from pokemon because
         // it is needed by <ResultDetailed />
         GetPokemonSpecies(pokemon.species.url)  // Else, fetch the data then put
@@ -50,7 +53,9 @@ function App(props: {})
     }
 
     useEffect(() => {
+        // Subscribe to QueryResult Event
         InvokeQueryResult.Subscribe((args) => detailHandler(args.pokemon))
+
         // Handling pkmn query string variable
         let url_string = window.location.href
         let url = new URL(url_string)
