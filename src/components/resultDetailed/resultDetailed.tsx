@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 import '../typeColorClasses/typeColorClasses.css'
 import './resultDetailed.css'
@@ -336,13 +336,13 @@ function Evolutions(props: {
 {
     const [pokemon, setPokemon] = useState<IPokemon[]|null>(null)
 
-    // Oh my god if this actually works...
-    if (pokemon == null)
-    {
+    // when the component mounts
+    // componentDidMount
+    useEffect(() => {
         GetEvolutionTree(props.species.evolution_chain.url)
             .then(result => unwrapChain(result))
             .then(pokemons => setPokemon(pokemons))
-    }
+    }, [])
 
     return (
         <>
