@@ -18,7 +18,7 @@ function SearchResult(props: {
     }
     let pokeData = props.pokeData
     return (
-        <div className={`search-result ${"search-result--disabled"}`} onClick={onClick}>
+        <div className={`${props.disabled ? "search-result--disabled":""} search-result`} onClick={onClick}>
             <h2 className='search-result-name'>
                 <span className={pokeData.types[0].type.name}>{stylePokemonName(pokeData.name)}</span>
             </h2>

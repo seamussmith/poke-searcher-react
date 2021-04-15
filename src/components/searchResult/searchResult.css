@@ -30,10 +30,18 @@
 }
 
 .search-result--disabled {
-    filter: grayscale();
+    filter: brightness(50%);
+    transform: translate(-2px, -2px);
+    box-shadow: 0px 1px 1px var(--shadow-color);
 }
-.search-result--disabled:active {}
-.search-result--disabled:hover {}
+.search-result--disabled:active {
+    filter: brightness(50%) !important;
+    background-color: var(--layer-1);
+}
+.search-result--disabled:hover {
+    filter: brightness(50%) !important;
+    background-color: var(--layer-1);
+}
 
 .search-result__image {
     width: 96px;
