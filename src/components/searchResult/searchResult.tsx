@@ -13,7 +13,6 @@ function SearchResult(props: {
     const onClick = () => {
         if (props.disabled)
             return
-        window.scrollTo(0, 0)
         InvokeQueryResult.Invoke({ pokemon: props.pokeData })
     }
     let pokeData = props.pokeData
