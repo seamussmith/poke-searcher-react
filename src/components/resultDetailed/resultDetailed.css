@@ -170,13 +170,18 @@
 }
 
 .result-detailed__pokemon-grid {
+    background-color: var(--layer-0);
     display: grid;
     grid-template-columns: repeat(auto-fit, 180px);
     grid-auto-rows: 255px;
     justify-content: center;
 
     gap: 10px;
-    padding-bottom: 20px;
+    padding: 5px;
+    margin: 10px;
+    border: 2px solid var(--layer-1);
+    overflow: auto;
+    max-height: 550px;
 }
 
 @media(max-width: 720px)
