@@ -27,7 +27,6 @@ function App(props: {})
             setSearchResults([])
             return
         }
-
         
         // query pokeapi for the pokemon
         MatchQuery(query, 27)
