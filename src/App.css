@@ -1,5 +1,9 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
 
+html {
+    scroll-behavior: smooth;
+}
+
 :root {
     --layer-0: rgb(15, 15, 15);
     --layer-1: rgb(22, 22, 22);
