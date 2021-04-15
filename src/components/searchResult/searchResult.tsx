@@ -2,11 +2,12 @@ import React from 'react'
 import {capitalize, stylePokemonName} from '../util/util'
 import './searchResult.css'
 import '../typeColorClasses/typeColorClasses.css'
-import { IPokemon } from 'pokeapi-typescript'
+import { IPokemon, IPokemonSpecies } from 'pokeapi-typescript'
 import { InvokeQueryResult } from "../singletons/singletons"
 
 function SearchResult(props: {
     pokemon: IPokemon
+    species?: IPokemonSpecies
     onClick: (pokemon: IPokemon) => void
     disabled?: boolean
 })
