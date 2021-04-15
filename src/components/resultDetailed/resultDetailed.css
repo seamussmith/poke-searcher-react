@@ -181,7 +181,8 @@
     margin: 10px;
     border: 2px solid var(--layer-1);
     overflow: auto;
-    max-height: 550px;
+    max-height: 520px;
+    height: 520px;
 }
 
 .result-detailed__pokemon-grid::-webkit-scrollbar {
