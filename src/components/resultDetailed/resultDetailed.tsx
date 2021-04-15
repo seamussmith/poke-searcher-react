@@ -19,6 +19,11 @@ import {
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
+const PokemonProvider = React.createContext<{
+    pokemon: IPokemon
+    species: IPokemonSpecies
+}|null>(null)
+
 function ResultDetailed(props: {
     pokemon: IPokemon
     pkmnSpecies: IPokemonSpecies
@@ -35,58 +40,63 @@ function ResultDetailed(props: {
             .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
     return (
         <div className='result-detailed'>
-            {/* [ROW 1] */}
+            <PokemonProvider.Provider value={{
+                pokemon: pokemon,
+                species: species
+            }}>
+                {/* [ROW 1] */}
 
-            {/* Pokemon name, Portrait, Flairs, Type */}
-            <Division width={4} height={1}>
-                <div className='result-detailed__division--pokemon'>
-                    <h2 className='result-detailed__name-detailed'>
-                        <span className={`${pokemon.types[0].type.name} result-detailed__label`}>{stylePokemonName(pokemon.name)}</span>
-                    </h2>
-                    <div>
-                        <img
-                        className='pokeimg'
-                        // other.official-artwork not in interface for some reason
-                        src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
-                        pokemon.sprites.front_default ??
-                        NO_IMAGE }
-                        alt={pokemon.name} />
+                {/* Pokemon name, Portrait, Flairs, Type */}
+                <Division width={4} height={1}>
+                    <div className='result-detailed__division--pokemon'>
+                        <h2 className='result-detailed__name-detailed'>
+                            <span className={`${pokemon.types[0].type.name} result-detailed__label`}>{stylePokemonName(pokemon.name)}</span>
+                        </h2>
+                        <div>
+                            <img
+                            className='pokeimg'
+                            // other.official-artwork not in interface for some reason
+                            src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
+                            pokemon.sprites.front_default ??
+                            NO_IMAGE }
+                            alt={pokemon.name} />
+                        </div>
+                        <div className='result-detailed__flairs'>
+                            <PkmnFlairs species={species} pkmnName={pokemon.name} />
+                            <PkmnTypes types={pokemon.types} />
+                        </div>
+                    </div>                   
+                </Division>
+
+                {/* Stats, Info, Gender Ratios */}
+                <Division width={4} height={1}>
+                    <div className="result-detailed__division--info">    
+                        <BaseStatList stats={pokemon.stats} />
+                        <PkmnGenderRatio genderRatio={species.gender_rate} />
                     </div>
-                    <div className='result-detailed__flairs'>
-                        <PkmnFlairs species={species} pkmnName={pokemon.name} />
-                        <PkmnTypes types={pokemon.types} />
-                    </div>
-                </div>                   
-            </Division>
+                </Division>
 
-            {/* Stats, Info, Gender Ratios */}
-            <Division width={4} height={1}>
-                <div className="result-detailed__division--info">    
-                    <BaseStatList stats={pokemon.stats} />
-                    <PkmnGenderRatio genderRatio={species.gender_rate} />
-                </div>
-            </Division>
+                {/* [ROW 2] */}
 
-            {/* [ROW 2] */}
+                <Division width={5} height={3}>
+                    <Evolutions species={species}/>
+                </Division>
 
-            <Division width={5} height={3}>
-                <Evolutions species={species}/>
-            </Division>
+                <Division width={3} height={1}>
+                    <PkmnInfo pokemon={pokemon} species={species} />
+                </Division>
 
-            <Division width={3} height={1}>
-                <PkmnInfo pokemon={pokemon} species={species} />
-            </Division>
+                <Division width={3} height={1}>
+                    <PokedexEntry flavorText={latestFlavorText} />
+                </Division>
 
-            <Division width={3} height={1}>
-                <PokedexEntry flavorText={latestFlavorText} />
-            </Division>
+                {/* [ROW 3] */}
 
-            {/* [ROW 3] */}
-
-            {/* TODO: Insert egg group compatability here */}
-            <Division width={8} height={1}>
-                <SharePokemon name={pokemon.name} />
-            </Division>
+                {/* TODO: Insert egg group compatability here */}
+                <Division width={8} height={1}>
+                    <SharePokemon name={pokemon.name} />
+                </Division>
+            </PokemonProvider.Provider>
         </div>
     )
 }
@@ -350,7 +360,9 @@ function Evolutions(props: {
         <>
             <h1 className="result-detailed__label">Evolutions/Variants</h1>
             <div className="result-detailed__pokemon-grid">
-                {pokemon?.map((pkmn) => <SearchResult pokeData={pkmn}/>) ?? "Loading..."}
+                {pokemon?.map((pkmn) => {
+                    <SearchResult pokeData={pkmn} disabled={false}/>
+                }) ?? "Loading..."}
             </div>
         </>
     )
