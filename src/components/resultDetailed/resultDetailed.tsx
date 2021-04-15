@@ -132,7 +132,7 @@ function PkmnTypes(props: {})
     const pokeinfo = useContext(PokemonProvider)
     return (
         <p className='result-detailed__types-detailed'>
-            {pokeinfo!.pokemon.types.map((i) =>
+            {pokeinfo.pokemon.types.map((i) =>
                 <Type type={i.type.name}><span>{capitalize(i.type.name)}</span></Type>
             )}
         </p>
@@ -162,7 +162,7 @@ function BaseStatList(props: {})
             <h1 className="result-detailed__label">Stats </h1>
             <div className='result-detailed__base-stats'>
                 {
-                pokeinfo!.pokemon.stats.map((stat) =>
+                pokeinfo.pokemon.stats.map((stat) =>
                     <PkmnStat name={capitalize(stat.stat.name).replace("-", " ")} stat={stat.base_stat} />
                 )
                 }
@@ -176,7 +176,7 @@ function PkmnGenderRatio(props: {})
 {
     const pokeinfo = useContext(PokemonProvider)
 
-    const genderRatio = pokeinfo!.species.gender_rate
+    const genderRatio = pokeinfo.species.gender_rate
 
     const femaleRatio = genderRatio/8 * 100 // gender is stored in eighths
     const maleRatio = 100 - femaleRatio // Get male ratio
@@ -218,7 +218,7 @@ function PkmnGenderRatio(props: {})
 function PokedexEntry(props: {})
 {
     const pokeinfo = useContext(PokemonProvider)
-    let latestFlavorText = pokeinfo!.species.flavor_text_entries
+    let latestFlavorText = pokeinfo.species.flavor_text_entries
             .filter((e) => e.language.name === "en")   // get all english entries
             .reverse()[0]                              // Get the last element
             .flavor_text.replaceAll("\u000C", ' ')     // Remove weird char that exists in some entries
@@ -250,7 +250,7 @@ function PkmnInfo(props: {})
 {
     const pokeinfo = useContext(PokemonProvider)
             // Format all the egg group names
-    let eggGroupText = pokeinfo!.species.egg_groups
+    let eggGroupText = pokeinfo.species.egg_groups
                                     .map(
                                         (e) => capitalize(e.name === "no-eggs" ? "undiscovered" : e.name)
                                     ) // Map out the egg groups the pokemon is in
@@ -262,16 +262,16 @@ function PkmnInfo(props: {})
             <div className="result-detailed__pkmn-info">
                 <InfoStat icoName="fas fa-hashtag">
                     ID {
-                        pokeinfo!.pokemon.id < 10_000 ?
-                        `#${pokeinfo!.pokemon.id}` :
+                        pokeinfo.pokemon.id < 10_000 ?
+                        `#${pokeinfo.pokemon.id}` :
                         "N/A"
                     }
                 </InfoStat>
                 <InfoStat icoName="fas fa-weight-hanging">
-                    Weight: {pokeinfo!.pokemon.weight/10}kg
+                    Weight: {pokeinfo.pokemon.weight/10}kg
                 </InfoStat>
                 <InfoStat icoName="fas fa-tree">
-                    Likes {pokeinfo!.species.habitat?.name ?? "no"} environments
+                    Likes {pokeinfo.species.habitat?.name ?? "no"} environments
                 </InfoStat>
                 <InfoStat icoName="fas fa-egg">
                     Egg groups: {eggGroupText.join(", ")}
@@ -300,8 +300,8 @@ function Flair(props: {
 function PkmnFlairs(props: {})
 {
     const pokeinfo = useContext(PokemonProvider)
-    const looseSpecies = pokeinfo!.species as any
-    let splitName = pokeinfo!.pokemon.name.split("-")
+    const looseSpecies = pokeinfo.species as any
+    let splitName = pokeinfo.pokemon.name.split("-")
     // Generate the flairs for the pokemon
     let flairs = []
     if (looseSpecies.is_legendary)
@@ -332,7 +332,7 @@ function SharePokemon(props: {})
     const pokeinfo = useContext(PokemonProvider)
     return (
         <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-            <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${pokeinfo!.pokemon.name}`} />
+            <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${pokeinfo.pokemon.name}`} />
         </p>
     )
 }
@@ -357,7 +357,7 @@ function Evolutions(props: {
             <h1 className="result-detailed__label">Evolutions/Variants</h1>
             <div className="result-detailed__pokemon-grid">
                 {pokemon?.map((pkmn) => 
-                    <SearchResult pokeData={pkmn} disabled={pokedata!.pokemon.name === pkmn.name}/>)
+                    <SearchResult pokeData={pkmn} disabled={pokedata.pokemon.name === pkmn.name}/>)
                     ?? "Loading..."}
             </div>
         </>
