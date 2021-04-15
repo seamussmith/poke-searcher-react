@@ -200,12 +200,12 @@ function PkmnGenderRatio(props: {
     }
         
     return (
-        <>
+        <div>
             <h1 className="result-detailed__label">Gender ratio </h1>
             <div className='result-detailed__gender-rates'>
                 {genderElements}
             </div>
-        </>
+        </div>
     )
 }
 
