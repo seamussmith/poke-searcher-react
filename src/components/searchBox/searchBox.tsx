@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { InvokeQueryResult } from "../singletons/singletons"
 import { capitalize } from "../util/util"
 import './searchBox.css'
@@ -12,8 +12,10 @@ function SearchBox(props: {
         props.keyUp(event.currentTarget.value)
         setValue(event.currentTarget.value)
     }
-    InvokeQueryResult.Subscribe((args) => setValue(capitalize(args.pokemon.name)))
-
+    useEffect(() => {
+        InvokeQueryResult.Subscribe((args) => setValue(capitalize(args.pokemon.name)))
+    }, [])
+    
     return (
         <div className="search-box">
             <h1 className="search-box__title">PokeSearcher!</h1>
