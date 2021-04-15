@@ -340,10 +340,8 @@ function Evolutions(props: {
     if (pokemon == null)
     {
         GetEvolutionTree(props.species.evolution_chain.url)
-            .then(result =>
-                unwrapChain(result)
-                    .then(pokemons => setPokemon(pokemons))
-            )
+            .then(result => unwrapChain(result))
+            .then(pokemons => setPokemon(pokemons))
     }
 
     return (
