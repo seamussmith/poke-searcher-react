@@ -33,11 +33,6 @@ function ResultDetailed(props: {
     const species = props.pkmnSpecies
     const pokemon = props.pokemon
     // Get the latest flavor text
-    let latestFlavorText = species.flavor_text_entries
-            .filter((e) => e.language.name === "en")   // get all english entries
-            .reverse()[0]                              // Get the last element
-            .flavor_text.replaceAll("\u000C", ' ')     // Remove weird char that exists in some entries
-            .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
     return (
         <div className='result-detailed'>
             <PokemonProvider.Provider value={{
@@ -62,8 +57,8 @@ function ResultDetailed(props: {
                             alt={pokemon.name} />
                         </div>
                         <div className='result-detailed__flairs'>
-                            <PkmnFlairs species={species} pkmnName={pokemon.name} />
-                            <PkmnTypes types={pokemon.types} />
+                            <PkmnFlairs />
+                            <PkmnTypes />
                         </div>
                     </div>                   
                 </Division>
@@ -71,8 +66,8 @@ function ResultDetailed(props: {
                 {/* Stats, Info, Gender Ratios */}
                 <Division width={4} height={1}>
                     <div className="result-detailed__division--info">    
-                        <BaseStatList stats={pokemon.stats} />
-                        <PkmnGenderRatio genderRatio={species.gender_rate} />
+                        <BaseStatList />
+                        <PkmnGenderRatio />
                     </div>
                 </Division>
 
@@ -83,18 +78,18 @@ function ResultDetailed(props: {
                 </Division>
 
                 <Division width={3} height={1}>
-                    <PkmnInfo pokemon={pokemon} species={species} />
+                    <PkmnInfo />
                 </Division>
 
                 <Division width={3} height={1}>
-                    <PokedexEntry flavorText={latestFlavorText} />
+                    <PokedexEntry />
                 </Division>
 
                 {/* [ROW 3] */}
 
                 {/* TODO: Insert egg group compatability here */}
                 <Division width={8} height={1}>
-                    <SharePokemon name={pokemon.name} />
+                    <SharePokemon />
                 </Division>
             </PokemonProvider.Provider>
         </div>
@@ -132,13 +127,12 @@ function Type(props: {
 }
 
 // Element that display's the pokemon's types
-function PkmnTypes(props: {
-    types: IPokemonType[]
-})
+function PkmnTypes(props: {})
 {
+    const pokeinfo = useContext(PokemonProvider)
     return (
         <p className='result-detailed__types-detailed'>
-            {props.types.map((i) =>
+            {pokeinfo!.pokemon.types.map((i) =>
                 <Type type={i.type.name}><span>{capitalize(i.type.name)}</span></Type>
             )}
         </p>
@@ -160,16 +154,15 @@ function PkmnStat(props: {
 }
 
 // Element that generates all the elements for a pokemon's stats
-function BaseStatList(props: {
-    stats: IPokemonStat[]
-})
+function BaseStatList(props: {})
 {
+    const pokeinfo = useContext(PokemonProvider)
     return (
         <div>
             <h1 className="result-detailed__label">Stats </h1>
             <div className='result-detailed__base-stats'>
                 {
-                props.stats.map((stat) =>
+                pokeinfo!.pokemon.stats.map((stat) =>
                     <PkmnStat name={capitalize(stat.stat.name).replace("-", " ")} stat={stat.base_stat} />
                 )
                 }
@@ -179,15 +172,17 @@ function BaseStatList(props: {
 }
 
 // Element that displays the pokemon's gender ratio or genderlessness
-function PkmnGenderRatio(props: {
-    genderRatio: number
-})
+function PkmnGenderRatio(props: {})
 {
-    let femaleRatio = props.genderRatio/8 * 100 // gender is stored in eighths
-    let maleRatio = 100 - femaleRatio // Get male ratio
+    const pokeinfo = useContext(PokemonProvider)
+
+    const genderRatio = pokeinfo!.species.gender_rate
+
+    const femaleRatio = genderRatio/8 * 100 // gender is stored in eighths
+    const maleRatio = 100 - femaleRatio // Get male ratio
     let genderElements: JSX.Element
 
-    if (props.genderRatio === -1)
+    if (genderRatio === -1)
     {
         genderElements = (
             <div className='result-detailed__gender'>
@@ -220,14 +215,18 @@ function PkmnGenderRatio(props: {
 }
 
 // Element for the pokemon's Pokedex flavor text
-function PokedexEntry(props: {
-    flavorText: string
-})
+function PokedexEntry(props: {})
 {
+    const pokeinfo = useContext(PokemonProvider)
+    let latestFlavorText = pokeinfo!.species.flavor_text_entries
+            .filter((e) => e.language.name === "en")   // get all english entries
+            .reverse()[0]                              // Get the last element
+            .flavor_text.replaceAll("\u000C", ' ')     // Remove weird char that exists in some entries
+            .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
     return (
         <>
             <h2 className="result-detailed__label">Pokedex Desc.</h2>
-            <p className='result-detailed__flavor-text'>{props.flavorText}</p>
+            <p className='result-detailed__flavor-text'>{latestFlavorText}</p>
         </>
     )
 }
@@ -247,13 +246,11 @@ function InfoStat(props: {
 }
 
 // Element that displays the pokemon's extra info 
-function PkmnInfo(props: {
-    pokemon: IPokemon
-    species: IPokemonSpecies
-})
+function PkmnInfo(props: {})
 {
+    const pokeinfo = useContext(PokemonProvider)
             // Format all the egg group names
-    let eggGroupText = props.species.egg_groups
+    let eggGroupText = pokeinfo!.species.egg_groups
                                     .map(
                                         (e) => capitalize(e.name === "no-eggs" ? "undiscovered" : e.name)
                                     ) // Map out the egg groups the pokemon is in
@@ -265,16 +262,16 @@ function PkmnInfo(props: {
             <div className="result-detailed__pkmn-info">
                 <InfoStat icoName="fas fa-hashtag">
                     ID {
-                        props.pokemon.id < 10_000 ?
-                        `#${props.pokemon.id}` :
+                        pokeinfo!.pokemon.id < 10_000 ?
+                        `#${pokeinfo!.pokemon.id}` :
                         "N/A"
                     }
                 </InfoStat>
                 <InfoStat icoName="fas fa-weight-hanging">
-                    Weight: {props.pokemon.weight/10}kg
+                    Weight: {pokeinfo!.pokemon.weight/10}kg
                 </InfoStat>
                 <InfoStat icoName="fas fa-tree">
-                    Likes {props.species.habitat?.name ?? "no"} environments
+                    Likes {pokeinfo!.species.habitat?.name ?? "no"} environments
                 </InfoStat>
                 <InfoStat icoName="fas fa-egg">
                     Egg groups: {eggGroupText.join(", ")}
@@ -300,19 +297,18 @@ function Flair(props: {
 }
 
 // Element that displays any special attributes the pokemon has (legendary, mega evolution, etc...)
-function PkmnFlairs(props: {
-    species: any // is_legendary and is_mythical is not in IPokemonSpecies
-    pkmnName: string
-})
+function PkmnFlairs(props: {})
 {
-    let splitName = props.pkmnName.split("-")
+    const pokeinfo = useContext(PokemonProvider)
+    const looseSpecies = pokeinfo!.species as any
+    let splitName = pokeinfo!.pokemon.name.split("-")
     // Generate the flairs for the pokemon
     let flairs = []
-    if (props.species.is_legendary)
+    if (looseSpecies.is_legendary)
     {
         flairs.push(<Flair color="#ffd700">Legendary Pokemon</Flair> )
     }
-    if (props.species.is_mythical)
+    if (looseSpecies.is_mythical)
     {
         flairs.push(<Flair color="#e70de7">Mythical Pokemon</Flair>)
     }
@@ -331,13 +327,12 @@ function PkmnFlairs(props: {
     )
 }
 
-function SharePokemon(props: {
-    name: string
-})
+function SharePokemon(props: {})
 {
+    const pokeinfo = useContext(PokemonProvider)
     return (
         <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-            <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${props.name}`} />
+            <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${pokeinfo!.pokemon.name}`} />
         </p>
     )
 }
