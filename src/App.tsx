@@ -25,7 +25,6 @@ class App extends React.Component<App_props, App_state>
     constructor(props: App_props)
     {
         super(props)
-        InvokeQueryResult.Subscribe((args) => this.detailHandler(args.pokemon))
         //this.pokemonCache = {}
         //this.speciesCache = {}
         this.queryIndex = 0
@@ -95,6 +94,7 @@ class App extends React.Component<App_props, App_state>
     }
     componentDidMount()
     {
+        InvokeQueryResult.Subscribe((args) => this.detailHandler(args.pokemon))
         // Handling pkmn query string variable
         let url_string = window.location.href
         let url = new URL(url_string)
