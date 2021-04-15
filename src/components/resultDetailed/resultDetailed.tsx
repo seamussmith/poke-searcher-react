@@ -383,7 +383,7 @@ function Evolutions(props: {
                 {pokemonList?.map((pkmn) => 
                     <SearchResult
                     onClick={props.onClick}
-                    pokeData={pkmn}
+                    pokemon={pkmn}
                     disabled={pokemon.name === pkmn.name}
                     key={pkmn.name}/>)
                     ?? "Loading..."}

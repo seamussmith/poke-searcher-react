@@ -6,17 +6,17 @@ import { IPokemon } from 'pokeapi-typescript'
 import { InvokeQueryResult } from "../singletons/singletons"
 
 function SearchResult(props: {
-    pokeData: IPokemon
+    pokemon: IPokemon
     onClick: (pokemon: IPokemon) => void
     disabled?: boolean
 })
 {
-    const pokeData = props.pokeData
+    const pokeData = props.pokemon
     const onClick = () => {
         if (props.disabled)
             return
         props.onClick(pokeData)
-        InvokeQueryResult.Invoke({ pokemon: props.pokeData })
+        InvokeQueryResult.Invoke({ pokemon: props.pokemon })
     }
     return (
         <div className={`${props.disabled ? "search-result--disabled":""} search-result`} onClick={onClick}>

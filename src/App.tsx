@@ -41,7 +41,7 @@ function App(props: {})
                 setSearchResults([])
                 // Map the search results into <SearchResult /> components and then display them
                 setSearchResults(pokemonFullData.map(([pokemon]) =>
-                    <SearchResult pokeData={pokemon} key={pokemon.name} onClick={pokemon => detailHandler(pokemon)}/>))
+                    <SearchResult pokemon={pokemon} key={pokemon.name} onClick={pokemon => detailHandler(pokemon)}/>))
             })
     }
     
