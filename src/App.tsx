@@ -4,7 +4,7 @@ import SearchResult from './components/searchResult/searchResult'
 import ResultDetailed from './components/resultDetailed/resultDetailed'
 import './App.css'
 import { escapeRegExp } from './components/util/util'
-import { IPokemon, INamedApiResourceList } from "pokeapi-typescript"
+import { IPokemon } from "pokeapi-typescript"
 import { InvokeQueryResult } from "./components/singletons/singletons"
 import { GetPokemon, GetPokemonSpecies, MatchQuery, POKEMON_ENDPOINT } from "./components/util/PokeAPICache"
 

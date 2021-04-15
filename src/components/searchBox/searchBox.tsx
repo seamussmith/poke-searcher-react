@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { InvokeQueryResult } from "../singletons/singletons"
-import { capitalize, formatPokemonName } from "../util/util"
+import { formatPokemonName } from "../util/util"
 import './searchBox.css'
 
 function SearchBox(props: {
