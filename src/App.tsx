@@ -23,7 +23,11 @@ function App(props: {})
 
         query = escapeRegExp(query.toLowerCase().replaceAll(" ", "-").replaceAll(/:|\.|'/g, ''))
         if (query === "") // If no query...
+        {
+            setSearchResults([])
             return
+        }
+
         
         // query pokeapi for the pokemon
         MatchQuery(query, 27)
