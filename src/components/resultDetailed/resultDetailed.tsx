@@ -374,7 +374,7 @@ function Evolutions(props: {
         GetEvolutionTree(species.evolution_chain.url)
             .then(result => unwrapChain(result))
             .then(pokemons => setPokemonList(pokemons))
-    }, [])
+    }, [species.evolution_chain.url])
 
     return (
         <>
