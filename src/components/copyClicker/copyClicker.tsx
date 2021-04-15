@@ -1,47 +1,33 @@
-import React from 'react'
+import React, { useState, useRef } from 'react'
 import copy from 'copy-to-clipboard'
 import './copyClicker.css'
 import '../tooltip/tooltip.css'
 
-type CopyClicker_props = {
+const INITAL_TXT = "Click to copy!"
+const CLICKED_TXT = "Copied!"
+function CopyClicker(props: {
     copyTxt: string
-}
-type CopyClicker_state = {
-    hoverTxt: string
-}
-class CopyClicker extends React.Component<CopyClicker_props, CopyClicker_state>
+})
 {
-    constructor(props: CopyClicker_props)
-    {
-        super(props)
-        this.state = {
-            hoverTxt: "Click to copy"
-        }
-        this.onClick = this.onClick.bind(this)
+    const [hoverTxt, setHoverTxt] = useState(INITAL_TXT)
+    const timeoutid = useRef(-1)
+    const onClick = () => {
+        window.clearTimeout(timeoutid.current)
+        setHoverTxt(CLICKED_TXT)
+        copy(props.copyTxt)
+        timeoutid.current =
+            window.setTimeout(() => {
+                setHoverTxt(INITAL_TXT)
+            }, 500)
     }
-    onClick()
-    {
-        this.setState({
-            hoverTxt: "Copied!"
-        })
-        copy(this.props.copyTxt)
-        window.setTimeout(() => {
-            this.setState({
-                hoverTxt: "Click to copy"
-            })
-        }, 500)
-    }
-    render()
-    {
-        return (
-            <span
-            className="copy-clicker tooltip"
-            data-hover-txt={this.state.hoverTxt}
-            onClick={this.onClick}>
-                {this.props.copyTxt}
-            </span>
-        )
-    }
+    return (
+        <span
+        className="copy-clicker tooltip"
+        data-hover-txt={hoverTxt}
+        onClick={onClick}>
+            {props.copyTxt}
+        </span>
+    )
 }
 
 export default CopyClicker
