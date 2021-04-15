@@ -32,6 +32,14 @@ function ResultDetailed(props: {
     const [pokemon, setPokemon] = useState(props.pokemon)
     const [species, setSpecies] = useState(props.pkmnSpecies)
 
+    const imgElement = <img
+                        className='pokeimg'
+                        // other.official-artwork not in interface for some reason
+                        src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
+                        pokemon.sprites.front_default ??
+                        NO_IMAGE }
+                        alt={pokemon.name} />
+
     const onPokemonUpdate = (pokemonData: IPokemon) => {
         GetPokemonSpecies(pokemonData.species.url)
             .then(speciesData => {
@@ -56,13 +64,7 @@ function ResultDetailed(props: {
                             <span className={`${pokemon.types[0].type.name} result-detailed__label`}>{stylePokemonName(pokemon.name)}</span>
                         </h2>
                         <div>
-                            <img
-                            className='pokeimg'
-                            // other.official-artwork not in interface for some reason
-                            src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
-                            pokemon.sprites.front_default ??
-                            NO_IMAGE }
-                            alt={pokemon.name} />
+                            {imgElement}
                         </div>
                         <div className='result-detailed__flairs'>
                             <PkmnFlairs />
