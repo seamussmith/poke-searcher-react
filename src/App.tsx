@@ -34,10 +34,10 @@ function App(props: {})
             .then(results => Promise.all(results.map(i => GetPokemon(i.url))))
             .then(pokemon => {
                 // Fix pop animations
-                setSearchResults([])
                 // if this is an earlier query, abort
                 if (thisQueryIndex < queryIndex.current)
                     return
+                setSearchResults([])
                 // Map the search results into <SearchResult /> components and then display them
                 setSearchResults(pokemon.map((e, i) => <SearchResult pokeData={e} key={e.name} onClick={pokemon => detailHandler(pokemon)}/>))
             })
