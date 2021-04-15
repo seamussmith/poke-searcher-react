@@ -40,9 +40,7 @@ function ResultDetailed(props: {
                 setPokemon(pokemonData)
                 setSpecies(speciesData)
                 if (window.screen.width < 720)
-                {
                     self.current?.scrollIntoView()
-                }
             })
     }
 
