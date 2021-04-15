@@ -29,9 +29,17 @@ function ResultDetailed(props: {
     pkmnSpecies: IPokemonSpecies
 })
 {
-    // Don't like typing this.props...
-    const species = props.pkmnSpecies
-    const pokemon = props.pokemon
+    const [pokemon, setPokemon] = useState(props.pokemon)
+    const [species, setSpecies] = useState(props.pkmnSpecies)
+
+    const onPokemonUpdate = (pokemonData: IPokemon) => {
+        GetPokemonSpecies(pokemonData.species.url)
+            .then(speciesData => {
+                setPokemon(pokemonData)
+                setSpecies(speciesData)
+            })
+    }
+
     // Get the latest flavor text
     return (
         <div className='result-detailed'>
@@ -74,7 +82,7 @@ function ResultDetailed(props: {
                 {/* [ROW 2] */}
 
                 <Division width={5} height={3}>
-                    <Evolutions species={species}/>
+                    <Evolutions species={species} onClick={onPokemonUpdate} />
                 </Division>
 
                 <Division width={3} height={1}>
@@ -339,6 +347,7 @@ function SharePokemon(props: {})
 
 function Evolutions(props: {
     species: IPokemonSpecies
+    onClick: (pokemon: IPokemon) => void
 })
 {
     const [pokemon, setPokemon] = useState<IPokemon[]|null>(null)
@@ -357,7 +366,7 @@ function Evolutions(props: {
             <h1 className="result-detailed__label">Evolutions/Variants</h1>
             <div className="result-detailed__pokemon-grid">
                 {pokemon?.map((pkmn) => 
-                    <SearchResult pokeData={pkmn} disabled={pokedata.pokemon.name === pkmn.name}/>)
+                    <SearchResult onClick={props.onClick} pokeData={pkmn} disabled={pokedata.pokemon.name === pkmn.name}/>)
                     ?? "Loading..."}
             </div>
         </>

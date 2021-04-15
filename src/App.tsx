@@ -39,7 +39,7 @@ function App(props: {})
                 if (thisQueryIndex < queryIndex.current)
                     return
                 // Map the search results into <SearchResult /> components and then display them
-                setSearchResults(pokemon.map((e, i) => <SearchResult pokeData={e} key={e.name}/>))
+                setSearchResults(pokemon.map((e, i) => <SearchResult pokeData={e} key={e.name} onClick={pokemon => detailHandler(pokemon)}/>))
             })
     }
     
@@ -56,9 +56,6 @@ function App(props: {})
     }
 
     useEffect(() => {
-        // Subscribe to QueryResult Event
-        InvokeQueryResult.Subscribe((args) => detailHandler(args.pokemon))
-
         // Handling pkmn query string variable
         let url_string = window.location.href
         let url = new URL(url_string)
