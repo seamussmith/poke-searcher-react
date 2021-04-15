@@ -184,6 +184,10 @@
     max-height: 550px;
 }
 
+.result-detailed__pokemon-grid::-webkit-scrollbar {
+    width: 0.7em;
+}
+
 @media(max-width: 720px)
 {
     .result-detailed__pokemon-grid {
