@@ -28,6 +28,14 @@ export function stylePokemonName(str: string): JSX.Element
     )
 }
 
+export function formatPokemonName(str: string): string
+{
+    if (str !== "ho-oh") // WHY IS THERE A POKEMON WITH A HYPHEN IN THEIR NAME?? WHY IS HO-OH THE ONLY ONE????
+        return str.split("-").map(e => capitalize(e)).join(" ")
+    else
+        return capitalize(str)
+}
+
 export function escapeRegExp(str: string): string
 {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
