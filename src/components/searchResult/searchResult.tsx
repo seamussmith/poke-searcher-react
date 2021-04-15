@@ -31,7 +31,7 @@ function SearchResult(props: {
             </div>
             <p className='search-result-types'>
                 {pokeData.types.map((i) =>
-                    <span className={i.type.name}>{capitalize(i.type.name)} </span>
+                    <span className={i.type.name} key={i.type.name}>{capitalize(i.type.name)} </span>
                 )}
             </p>
         </div>

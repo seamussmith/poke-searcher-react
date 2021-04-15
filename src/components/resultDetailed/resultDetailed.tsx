@@ -154,7 +154,7 @@ function PkmnTypes(props: {})
     return (
         <p className='result-detailed__types-detailed'>
             {pokeinfo.pokemon.types.map((i) =>
-                <Type type={i.type.name}><span>{capitalize(i.type.name)}</span></Type>
+                <Type type={i.type.name} key={i.type.name}><span>{capitalize(i.type.name)}</span></Type>
             )}
         </p>
     )
@@ -184,7 +184,7 @@ function BaseStatList(props: {})
             <div className='result-detailed__base-stats'>
                 {
                 pokeinfo.pokemon.stats.map((stat) =>
-                    <PkmnStat name={capitalize(stat.stat.name).replace("-", " ")} stat={stat.base_stat} />
+                    <PkmnStat name={capitalize(stat.stat.name).replace("-", " ")} stat={stat.base_stat} key={stat.stat.name}/>
                 )
                 }
             </div>
@@ -327,19 +327,19 @@ function PkmnFlairs(props: {})
     let flairs = []
     if (looseSpecies.is_legendary)
     {
-        flairs.push(<Flair color="#ffd700">Legendary Pokemon</Flair> )
+        flairs.push(<Flair color="#ffd700" key="legendary">Legendary Pokemon</Flair> )
     }
     if (looseSpecies.is_mythical)
     {
-        flairs.push(<Flair color="#e70de7">Mythical Pokemon</Flair>)
+        flairs.push(<Flair color="#e70de7" key="mythical">Mythical Pokemon</Flair>)
     }
     if (splitName.some((e) => e === "mega"))
     {
-        flairs.push(<Flair color="#00a9cc">Mega evolution</Flair>)
+        flairs.push(<Flair color="#00a9cc" key="mega">Mega evolution</Flair>)
     }
     if (splitName.some((e) => e === "gmax"))
     {
-        flairs.push(<Flair color="#c02727">Gigamax Form</Flair>)
+        flairs.push(<Flair color="#c02727" key="giga">Gigamax Form</Flair>)
     }
     return (
         <div>
@@ -379,7 +379,11 @@ function Evolutions(props: {
             <h1 className="result-detailed__label">Evolutions/Variants</h1>
             <div className="result-detailed__pokemon-grid">
                 {pokemon?.map((pkmn) => 
-                    <SearchResult onClick={props.onClick} pokeData={pkmn} disabled={pokedata.pokemon.name === pkmn.name}/>)
+                    <SearchResult
+                    onClick={props.onClick}
+                    pokeData={pkmn}
+                    disabled={pokedata.pokemon.name === pkmn.name}
+                    key={pkmn.name}/>)
                     ?? "Loading..."}
             </div>
         </>
