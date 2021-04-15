@@ -375,9 +375,7 @@ async function unwrapChain(evoChain: IEvolutionChain)
     }
 
     // Fetch all the pokemon species data
-    let speciesEntriesPromise = Promise.all(urls.map(url => GetPokemonSpecies(url)))
-    
-    let speciesEntries = await speciesEntriesPromise
+    let speciesEntries = await Promise.all(urls.map(url => GetPokemonSpecies(url)))
 
     // *external screaming*
     // Fetch all the pokemon data
