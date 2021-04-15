@@ -274,6 +274,21 @@ function PkmnInfo(props: {
     )
 }
 
+function Flair(props: {
+    color: string
+    children: React.ReactNode
+})
+{
+    const styles = {
+        "--flair-color": props.color
+    } as React.CSSProperties
+    return (
+        <p className="result-detailed__flair" style={styles}>
+            {props.children}
+        </p>
+    )
+}
+
 // Element that displays any special attributes the pokemon has (legendary, mega evolution, etc...)
 function PkmnFlairs(props: {
     species: any // is_legendary and is_mythical is not in IPokemonSpecies
@@ -285,27 +300,19 @@ function PkmnFlairs(props: {
     let flairs = []
     if (props.species.is_legendary)
     {
-        flairs.push(<p className='result-detailed__flair result-detailed__is-legendary'>Legendary Pokemon</p>)
+        flairs.push(<Flair color="#ffd700">Legendary Pokemon</Flair> )
     }
     if (props.species.is_mythical)
     {
-        flairs.push(<p className='result-detailed__flair result-detailed__is-mythical'>Mythical Pokemon</p>)
+        flairs.push(<Flair color="#e70de7">Mythical Pokemon</Flair>)
     }
     if (splitName.some((e) => e === "mega"))
     {
-        flairs.push(<p className='result-detailed__flair result-detailed__is-mega-evo'>Mega Evolution</p>)
+        flairs.push(<Flair color="#00a9cc">Mega evolution</Flair>)
     }
     if (splitName.some((e) => e === "gmax"))
     {
-        flairs.push(<p className='result-detailed__flair result-detailed__is-gigamax'>Gigamax Form</p>)
-    }
-    if (splitName.some((e) => e === "alola"))
-    {
-        flairs.push(<p className='result-detailed__flair result-detailed__is-alola'>Alola Form</p>)
-    }
-    if (splitName.some((e) => e === "galar"))
-    {
-        flairs.push(<p className='result-detailed__flair result-detailed__is-galarian'>Galarian Form</p>)
+        flairs.push(<Flair color="#c02727">Gigamax Form</Flair>)
     }
     return (
         <div>

@@ -52,45 +52,14 @@
 
 .result-detailed__flair {
     color: var(--text-color-inverse);
+    --flair-color: none;
+    background-color: var(--flair-color);
+    border: solid var(--flair-color) 5px;
     font-size: 20pt;
     font-weight: bold;
     margin: 5px 10%;
     border-radius: 100px;
     display: block;
-}
-
-.result-detailed__flair--true {
-    display: block;
-}
-
-.result-detailed__is-mythical {
-    background-color: rgb(231, 13, 231);
-    border: solid rgb(231, 13, 231) 5px;
-}
-
-.result-detailed__is-legendary {
-    background-color: gold;
-    border: solid gold 5px;
-}
-
-.result-detailed__is-mega-evo {
-    background-color: #00a9cc;
-    border: solid #00a9cc 5px;
-}
-
-.result-detailed__is-gigamax {
-    background-color: rgb(192, 39, 39);
-    border: solid rgb(192, 39, 39) 5px;
-}
-
-.result-detailed__is-alola {
-    background-color: #e8be95;
-    border: solid #e8be95 5px;
-}
-
-.result-detailed__is-galarian {
-    background-color: #6227d1;
-    border: solid #6227d1 5px;
 }
 
 .result-detailed__flavor-text {
