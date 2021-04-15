@@ -11,18 +11,18 @@ import { GetEvolutionTree, GetPokemon, GetPokemonSpecies } from '../util/PokeAPI
 import {
     IPokemon,
     IPokemonSpecies,
-    IPokemonStat,
-    IPokemonType,
     IEvolutionChain,
     IChainLink
 } from "pokeapi-typescript"
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
-const PokemonProvider = React.createContext<{
+interface PokemonProviderData
+{
     pokemon: IPokemon
     species: IPokemonSpecies
-}|null>(null)
+}
+const PokemonProvider = React.createContext<PokemonProviderData>({} as PokemonProviderData) // not an accident waiting to happen ;)
 
 function ResultDetailed(props: {
     pokemon: IPokemon
