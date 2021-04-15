@@ -12,7 +12,7 @@
     background-color: var(--layer-1);
     transition: 0.10s all;
     animation: emphasis 0.25s ease forwards;
-    box-shadow: 2px 2px 2px var(--shadow-color);
+    box-shadow: 2px 2px 0px var(--shadow-color);
 }
     
 .search-result:hover {
@@ -24,14 +24,12 @@
 .search-result:active {
     filter: brightness(90%);
     outline: none;
-    transform: translate(-2px, -2px);
-    box-shadow: 0px 1px 1px var(--shadow-color);
+    box-shadow: 1px 1px 0px var(--shadow-color);
     /* border: solid transparent 3px; */
 }
 
 .search-result--disabled {
     filter: brightness(50%);
-    transform: translate(-2px, -2px);
     box-shadow: 0px 1px 1px var(--shadow-color);
 }
 .search-result--disabled:active {
