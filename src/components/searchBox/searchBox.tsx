@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { InvokeQueryResult } from "../singletons/singletons"
 import { capitalize } from "../util/util"
 import './searchBox.css'
@@ -9,7 +9,7 @@ type SearchBox_props = {
 type SearchBox_state = {
     query: string
 }
-class SearchBox extends React.Component<SearchBox_props, SearchBox_state>
+class SearchBoxOld extends React.Component<SearchBox_props, SearchBox_state>
 {
     constructor(props: SearchBox_props)
     {
@@ -49,6 +49,31 @@ class SearchBox extends React.Component<SearchBox_props, SearchBox_state>
             </div>
         )
     }
+}
+
+function SearchBox(props: {
+    keyUp: (query: string) => void
+})
+{
+    const [value, setValue] = useState("")
+    const onChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        props.keyUp(event.currentTarget.value)
+        setValue(event.currentTarget.value)
+    }
+    InvokeQueryResult.Subscribe((args) => setValue(capitalize(args.pokemon.name)))
+
+    return (
+        <div className="search-box">
+            <h1 className="search-box__title">PokeSearcher!</h1>
+            <input
+            type="text"
+            className="search-box__input"
+            placeholder="Search for a Pokemon!"
+            spellCheck={false}
+            value={value}
+            onChange={onChange}/>
+        </div>
+    )
 }
 
 export default SearchBox;
