@@ -66,7 +66,7 @@ function App(props: {})
                 })
             })
             .catch(() => console.log(`Failed to grab ${pkmn}`))
-    })
+    }, [])
 
     return (
         <div className="App">
