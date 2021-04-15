@@ -32,14 +32,16 @@ function App(props: {})
         MatchQuery(query, 27)
             // accumulate all the matches then fetch the pokemon
             .then(results => Promise.all(results.map(i => GetPokemon(i.url))))
-            .then(pokemon => {
+            .then(pokemonData => Promise.all(pokemonData.map(p => Promise.all([p, GetPokemonSpecies(p.species.url)]))))
+            .then((pokemonFullData) => {
                 // Fix pop animations
                 // if this is an earlier query, abort
                 if (thisQueryIndex < queryIndex.current)
                     return
                 setSearchResults([])
                 // Map the search results into <SearchResult /> components and then display them
-                setSearchResults(pokemon.map((e, i) => <SearchResult pokeData={e} key={e.name} onClick={pokemon => detailHandler(pokemon)}/>))
+                setSearchResults(pokemonFullData.map(([pokemon]) =>
+                    <SearchResult pokeData={pokemon} key={pokemon.name} onClick={pokemon => detailHandler(pokemon)}/>))
             })
     }
     
