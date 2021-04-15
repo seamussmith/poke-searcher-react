@@ -17,12 +17,12 @@ import {
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
-interface PokemonProviderData
+interface PokemonContextData
 {
     pokemon: IPokemon
     species: IPokemonSpecies
 }
-const PokemonProvider = React.createContext<PokemonProviderData>({} as PokemonProviderData) // not an accident waiting to happen ;)
+const PokemonContext = React.createContext<PokemonContextData>({} as PokemonContextData) // not an accident waiting to happen ;)
 
 function ResultDetailed(props: {
     pokemon: IPokemon
@@ -47,7 +47,7 @@ function ResultDetailed(props: {
     // Get the latest flavor text
     return (
         <div className='result-detailed' ref={self}>
-            <PokemonProvider.Provider value={{
+            <PokemonContext.Provider value={{
                 pokemon: pokemon,
                 species: species
             }}>
@@ -88,7 +88,7 @@ function ResultDetailed(props: {
                 <Division width={8} height={1}>
                     <SharePokemon />
                 </Division>
-            </PokemonProvider.Provider>
+            </PokemonContext.Provider>
         </div>
     )
 }
@@ -125,7 +125,7 @@ function Type(props: {
 
 function PkmnMainBanner(props: {})
 {
-    const { pokemon, species } = useContext(PokemonProvider)
+    const { pokemon, species } = useContext(PokemonContext)
     const imgElement = <img
                         className='pokeimg'
                         // other.official-artwork not in interface for some reason
@@ -153,7 +153,7 @@ function PkmnMainBanner(props: {})
 // Element that display's the pokemon's types
 function PkmnTypes(props: {})
 {
-    const { pokemon, species } = useContext(PokemonProvider)
+    const { pokemon, species } = useContext(PokemonContext)
     return (
         <p className='result-detailed__types-detailed'>
             {pokemon.types.map((i) =>
@@ -180,7 +180,7 @@ function PkmnStat(props: {
 // Element that generates all the elements for a pokemon's stats
 function BaseStatList(props: {})
 {
-    const { pokemon, species } = useContext(PokemonProvider)
+    const { pokemon, species } = useContext(PokemonContext)
     return (
         <div>
             <h1 className="result-detailed__label">Stats </h1>
@@ -198,7 +198,7 @@ function BaseStatList(props: {})
 // Element that displays the pokemon's gender ratio or genderlessness
 function PkmnGenderRatio(props: {})
 {
-    const { pokemon, species } = useContext(PokemonProvider)
+    const { pokemon, species } = useContext(PokemonContext)
 
     const genderRatio = species.gender_rate
 
@@ -241,7 +241,7 @@ function PkmnGenderRatio(props: {})
 // Element for the pokemon's Pokedex flavor text
 function PokedexEntry(props: {})
 {
-    const { pokemon, species } = useContext(PokemonProvider)
+    const { pokemon, species } = useContext(PokemonContext)
     let latestFlavorText = species.flavor_text_entries
             .filter((e) => e.language.name === "en")   // get all english entries
             .reverse()[0]                              // Get the last element
@@ -272,7 +272,7 @@ function InfoStat(props: {
 // Element that displays the pokemon's extra info 
 function PkmnInfo(props: {})
 {
-    const { pokemon, species } = useContext(PokemonProvider)
+    const { pokemon, species } = useContext(PokemonContext)
             // Format all the egg group names
     let eggGroupText = species.egg_groups
                                     .map(
@@ -323,7 +323,7 @@ function Flair(props: {
 // Element that displays any special attributes the pokemon has (legendary, mega evolution, etc...)
 function PkmnFlairs(props: {})
 {
-    const { pokemon, species } = useContext(PokemonProvider)
+    const { pokemon, species } = useContext(PokemonContext)
     const looseSpecies = species as any
     let splitName = pokemon.name.split("-")
     // Generate the flairs for the pokemon
@@ -353,7 +353,7 @@ function PkmnFlairs(props: {})
 
 function SharePokemon(props: {})
 {
-    const { pokemon, species } = useContext(PokemonProvider)
+    const { pokemon, species } = useContext(PokemonContext)
     return (
         <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
             <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${pokemon.name}`} />
@@ -367,7 +367,7 @@ function Evolutions(props: {
 })
 {
     const [pokemonList, setPokemonList] = useState<IPokemon[]|null>(null)
-    const { pokemon, species } = useContext(PokemonProvider)
+    const { pokemon, species } = useContext(PokemonContext)
 
     // when the component mounts
     // componentDidMount
