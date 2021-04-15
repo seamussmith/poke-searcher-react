@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 
 import '../typeColorClasses/typeColorClasses.css'
 import './resultDetailed.css'
@@ -347,6 +347,7 @@ function Evolutions(props: {
 })
 {
     const [pokemon, setPokemon] = useState<IPokemon[]|null>(null)
+    const pokedata = useContext(PokemonProvider)
 
     // when the component mounts
     // componentDidMount
@@ -360,9 +361,9 @@ function Evolutions(props: {
         <>
             <h1 className="result-detailed__label">Evolutions/Variants</h1>
             <div className="result-detailed__pokemon-grid">
-                {pokemon?.map((pkmn) => {
-                    <SearchResult pokeData={pkmn} disabled={false}/>
-                }) ?? "Loading..."}
+                {pokemon?.map((pkmn) => 
+                    <SearchResult pokeData={pkmn} disabled={pokedata!.pokemon.name === pkmn.name}/>)
+                    ?? "Loading..."}
             </div>
         </>
     )
