@@ -29,6 +29,12 @@
     /* border: solid transparent 3px; */
 }
 
+.search-result--disabled {
+    filter: grayscale();
+}
+.search-result--disabled:active {}
+.search-result--disabled:hover {}
+
 .search-result__image {
     width: 96px;
     height: 96px;

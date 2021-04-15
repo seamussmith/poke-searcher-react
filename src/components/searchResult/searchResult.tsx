@@ -7,15 +7,18 @@ import { InvokeQueryResult } from "../singletons/singletons"
 
 function SearchResult(props: {
     pokeData: IPokemon
+    disabled?: boolean
 })
 {
     const onClick = () => {
+        if (props.disabled)
+            return
         window.scrollTo(0, 0)
         InvokeQueryResult.Invoke({ pokemon: props.pokeData })
     }
     let pokeData = props.pokeData
     return (
-        <div className='search-result' onClick={onClick}>
+        <div className={`search-result ${"search-result--disabled"}`} onClick={onClick}>
             <h2 className='search-result-name'>
                 <span className={pokeData.types[0].type.name}>{stylePokemonName(pokeData.name)}</span>
             </h2>
