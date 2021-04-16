@@ -112,12 +112,12 @@ function Division(props: {
 }
 
 function Type(props: {
-    type: string
+    type: string | null
     children: React.ReactNode
 })
 {
     return (
-        <p className={`result-detailed__type ${props.type}`}>
+        <p className={`result-detailed__type ${props.type ?? "result-detailed__type--none"}`}>
             {props.children}
         </p>
     )
@@ -156,9 +156,8 @@ function PkmnTypes(props: {})
     const { pokemon } = useContext(PokemonContext)
     return (
         <p className='result-detailed__types-detailed'>
-            {pokemon.types.map((i) =>
-                <Type type={i.type.name} key={i.type.name}><span>{capitalize(i.type.name)}</span></Type>
-            )}
+            <Type type={pokemon.types[0].type.name} key={pokemon.types[0].type.name}><span>{capitalize(pokemon.types[0].type.name)}</span></Type>
+            <Type type={pokemon.types[1]?.type.name} key={pokemon.types[1]?.type.name}><span>{capitalize(pokemon.types[1]?.type.name ?? "???")}</span></Type>
         </p>
     )
 }

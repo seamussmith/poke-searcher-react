@@ -205,3 +205,8 @@
     margin: 5px;
     width: 8ch;
 }
+
+.result-detailed__type--none {
+    background-color: transparent;
+    box-shadow: 0 0 10px inset white;
+}
