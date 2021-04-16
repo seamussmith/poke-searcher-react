@@ -19,20 +19,25 @@ function SearchResult(props: {
     }
     return (
         <div className={`${props.disabled ? "search-result--disabled":""} search-result`} onClick={onClick}>
-            <h2 className='search-result-name'>
-                <span className={pokeData.types[0].type.name}>{stylePokemonName(pokeData.name)}</span>
-            </h2>
-            <div>
+            <div className="search-result__img-container">
                 <img
                 className="search-result__image nofilter"
                 src={pokeData.sprites.front_default}
                 alt={`${pokeData.name} sprite`}/>
             </div>
-            <p className='search-result-types'>
-                {pokeData.types.map((i) =>
-                    <span className={i.type.name} key={i.type.name}>{capitalize(i.type.name)} </span>
-                )}
-            </p>
+
+            <div className="search-result__info-container">
+                <h2 className='search-result-name'>
+                    <span className={pokeData.types[0].type.name}>{stylePokemonName(pokeData.name)}</span>
+                </h2>
+                
+                <p className='search-result-types'>
+                    {pokeData.types.map((i) =>
+                        <span className={i.type.name} key={i.type.name}>{capitalize(i.type.name)} </span>
+                    )}
+                </p>
+            </div>
+            
         </div>
     )
 }
