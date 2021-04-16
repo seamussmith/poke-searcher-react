@@ -372,8 +372,8 @@ function Evolutions(props: {
     // componentDidMount
     useEffect(() => {
         GetEvolutionTree(species.evolution_chain.url)
-            .then(result => unwrapChain(result))
-            .then(pokemons => setPokemonList(pokemons))
+            .then(result => unwrapChain(result)) // vv Push default variants to the top of the list
+            .then(pokemons => setPokemonList(pokemons.sort((a: any, b: any) => b.is_default - a.is_default)))
     }, [species.evolution_chain.url])
 
     return (
