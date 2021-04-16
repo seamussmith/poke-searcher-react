@@ -17,7 +17,7 @@ html {
     scroll-behavior: smooth;
 }
 
-:root {
+.dark {
     --layer-0: rgb(15, 15, 15);
     --layer-1: rgb(22, 22, 22);
     --layer-2: rgb(32, 32, 32);
