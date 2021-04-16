@@ -27,9 +27,9 @@ function SearchResult(props: {
             </div>
 
             <div className="search-result__info-container">
-                <h2 className='search-result-name'>
-                    <span className={pokeData.types[0].type.name}>{stylePokemonName(pokeData.name)}</span>
-                </h2>
+                <div className='search-result-name'>
+                    <h2 className={pokeData.types[0].type.name}>{stylePokemonName(pokeData.name)}</h2>
+                </div>
                 
                 <p className='search-result-types'>
                     <Type type={pokeData.types[0].type.name} key={pokeData.types[0].type.name}>{capitalize(pokeData.types[0].type.name)} </Type>
