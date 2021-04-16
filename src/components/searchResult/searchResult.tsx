@@ -3,7 +3,6 @@ import {capitalize, stylePokemonName} from '../util/util'
 import './searchResult.css'
 import '../typeColorClasses/typeColorClasses.css'
 import { IPokemon, IPokemonSpecies } from 'pokeapi-typescript'
-import { InvokeQueryResult } from "../singletons/singletons"
 
 function SearchResult(props: {
     pokemon: IPokemon
