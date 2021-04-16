@@ -372,7 +372,7 @@ function Evolutions(props: {
     useEffect(() => {
         GetEvolutionTree(species.evolution_chain.url)
             .then(result => unwrapChain(result)) // vv Push default variants to the top of the list
-            .then(pokemons => setPokemonList(pokemons.sort((a: any, b: any) => b.is_default - a.is_default)))
+            .then(pokemons => setPokemonList(pokemons.sort((a, b) => Number(b.is_default) - Number(a.is_default))))
     }, [species.evolution_chain.url])
 
     return (
