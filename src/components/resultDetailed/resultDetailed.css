@@ -172,16 +172,17 @@
 .result-detailed__pokemon-grid {
     background-color: var(--layer-0);
     display: grid;
-    grid-template-columns: repeat(auto-fit, 180px);
-    grid-auto-rows: 255px;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+    grid-auto-rows: 150px;
     justify-content: center;
+    align-content: space-between;
 
     gap: 10px;
     padding: 5px;
     margin: 10px;
     border: 2px solid var(--layer-1);
     overflow: auto;
-    max-height: 520px;
+    max-height: 480px;
     height: 520px;
 }
 
@@ -192,7 +193,7 @@
 @media(max-width: 720px)
 {
     .result-detailed__pokemon-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        grid-template-columns: 1fr;
     }
 }
 
