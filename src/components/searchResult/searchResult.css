@@ -65,6 +65,22 @@
   width: 100%;
 }
 
+.search-result__type {
+    display: inline-block;
+    background-color: currentColor;
+    text-shadow: 0px 0px 5px black;
+    border-radius: 10px;
+    font-size: 10pt;
+    padding: 5px;
+    margin: 2px;
+    width: 8ch;
+}
+
+.search-result__type--none {
+    background-color: transparent;
+    box-shadow: 0 0 5px inset white;
+}
+
 @keyframes emphasis {
     0% {
         transform: scale(0.95);

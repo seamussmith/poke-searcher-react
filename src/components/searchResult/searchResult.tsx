@@ -32,13 +32,24 @@ function SearchResult(props: {
                 </h2>
                 
                 <p className='search-result-types'>
-                    {pokeData.types.map((i) =>
-                        <span className={i.type.name} key={i.type.name}>{capitalize(i.type.name)} </span>
-                    )}
+                    <Type type={pokeData.types[0].type.name} key={pokeData.types[0].type.name}>{capitalize(pokeData.types[0].type.name)} </Type>
+                    <Type type={pokeData.types[1]?.type.name} key={pokeData.types[1]?.type.name}>{capitalize(pokeData.types[1]?.type.name ?? "???")} </Type>
                 </p>
             </div>
             
         </div>
+    )
+}
+
+function Type(props: {
+    type: string | null
+    children: React.ReactNode
+})
+{
+    return (
+        <span className={`search-result__type ${props.type ?? "search-result__type--none"}`}>
+            <span>{props.children}</span>
+        </span>
     )
 }
 
