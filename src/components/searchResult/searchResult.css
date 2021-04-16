@@ -1,14 +1,16 @@
 .search-result {
-    
+    --current-radius: 20px;  
+  
     color: white;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
     text-align: center;
-    min-width: 180px;
-    min-height: 255px;
-    
-    border-radius: 0px;
+    min-width: 300px;
+    min-height: 150px;
+  
+  
+    border-radius: var(--current-radius);
     background-color: var(--layer-1);
     transition: 0.10s all;
     animation: emphasis 0.25s ease forwards;
@@ -44,6 +46,24 @@
 .search-result__image {
     width: 96px;
     height: 96px;
+}
+
+.search-result__img-container {
+    background: var(--layer-2);
+    display: grid;
+    place-items: center;
+    height: 100%;
+    padding: 0 0.7em;
+    border-radius: var(--current-radius) 0 0 var(--current-radius);
+    box-shadow: 1px 0 2px var(--shadow-color);
+}
+
+.search-result__info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 @keyframes emphasis {
