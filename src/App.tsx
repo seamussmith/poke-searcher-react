@@ -28,7 +28,7 @@ function App(props: {})
         }
         
         // query pokeapi for the pokemon
-        MatchQuery(query, 27)
+        MatchQuery(query, 30)
             // accumulate all the matches then fetch the pokemon
             .then(results => Promise.all(results.map(i => GetPokemon(i.url))))
             .then(pokemonData => Promise.all(pokemonData.map(p => Promise.all([p, GetPokemonSpecies(p.species.url)]))))
