@@ -11,7 +11,7 @@ import { GetPokemon, GetPokemonSpecies, MatchQuery, POKEMON_ENDPOINT } from "./c
 function App(props: {})
 {
     const queryIndex = useRef(0)
-    
+
     const [searchResults, setSearchResults] = useState<JSX.Element[]>([])
     const [detailedResult, setDetailedResult] = useState<JSX.Element|null>(null)
     
@@ -68,9 +68,7 @@ function App(props: {})
         GetPokemon(POKEMON_ENDPOINT+pkmn)
             .then((data) => {
                 // Pass it to detail handler to render the pokemon
-                InvokeQueryResult.Invoke({
-                    pokemon: data
-                })
+                detailHandler(data)
             })
             .catch(() => console.log(`Failed to grab ${pkmn}`))
     }, [])

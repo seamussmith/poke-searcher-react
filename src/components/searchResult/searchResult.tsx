@@ -17,7 +17,6 @@ function SearchResult(props: {
         if (props.disabled)
             return
         props.onClick(pokeData)
-        InvokeQueryResult.Invoke({ pokemon: props.pokemon })
     }
     return (
         <div className={`${props.disabled ? "search-result--disabled":""} search-result`} onClick={onClick}>

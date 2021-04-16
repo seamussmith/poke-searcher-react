@@ -12,9 +12,6 @@ function SearchBox(props: {
         props.keyUp(event.currentTarget.value)
         setValue(event.currentTarget.value)
     }
-    useEffect(() => {
-        InvokeQueryResult.Subscribe((args) => setValue(formatPokemonName(args.pokemon.name)))
-    }, [])
     
     return (
         <div className="search-box">
