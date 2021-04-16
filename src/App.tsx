@@ -7,6 +7,7 @@ import { escapeRegExp } from './components/util/util'
 import { IPokemon } from "pokeapi-typescript"
 import { InvokeQueryResult } from "./components/singletons/singletons"
 import { GetPokemon, GetPokemonSpecies, MatchQuery, POKEMON_ENDPOINT } from "./components/util/PokeAPICache"
+import Footer from "./components/footer/footer"
 
 function App(props: {})
 {
@@ -71,6 +72,10 @@ function App(props: {})
                 detailHandler(data)
             })
             .catch(() => console.log(`Failed to grab ${pkmn}`))
+    }, [])
+
+    useEffect(() => {
+        document.body.classList.add("dark")
     }, [])
 
     return (
