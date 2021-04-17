@@ -54,7 +54,7 @@
     height: 100%;
     padding: 0 0.7em;
     border-radius: var(--current-radius) 0 0 var(--current-radius);
-    box-shadow: 1px 0 2px var(--shadow-color);
+    box-shadow: 1px 0 1px var(--shadow-color);
 }
 /*  */
 .search-result__info-container {
