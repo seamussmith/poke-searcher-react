@@ -17,12 +17,12 @@ import {
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
-interface PokemonProviderData
+interface IPokemonProviderData
 {
     pokemon: IPokemon
     species: IPokemonSpecies
 }
-const PokemonContext = React.createContext<PokemonProviderData>({} as PokemonProviderData) // not an accident waiting to happen ;)
+const PokemonContext = React.createContext<IPokemonProviderData>({} as IPokemonProviderData) // not an accident waiting to happen ;)
 
 function ResultDetailed(props: {
     pokemon: IPokemon
