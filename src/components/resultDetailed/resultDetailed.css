@@ -225,11 +225,10 @@
     --tertiary: hsl(22, 75%, 20%); 
 }
 
-/* TODO: Figure out how to make a better yellow */
 .result-detailed__stat--defense {
-    --primary: hsl(60, 100%, 29%);
-    --secondary: hsl(60, 100%, 35%);
-    --tertiary: hsl(60, 100%, 21%); 
+    --primary: hsl(48, 95%, 35%);
+    --secondary: hsl(48, 100%, 35%);
+    --tertiary: hsl(48, 78%, 27%); 
 }
 
 .result-detailed__stat--special-attack {
