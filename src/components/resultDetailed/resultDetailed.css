@@ -12,7 +12,7 @@
     border-color: var(--pokemon-color);
     background-color: var(--layer-1);
     border-radius: var(--division-radius);
-    box-shadow: 0px 0px 5px var(--shadow-color);
+    box-shadow: 1px 2px 2px 1px var(--shadow-color);
     padding: 10px;
     margin: 1% 0;
 }
@@ -23,7 +23,7 @@
     padding: 5px;
     background-color: var(--layer-2);
     border-radius: var(--division-radius);
-    box-shadow: 1px 1px 1px var(--shadow-color);
+    box-shadow: 1px 2px 0px 0px var(--shadow-color);
 }
 
 .result-detailed__name-detailed {
@@ -78,7 +78,7 @@
     width: 40%;
     background-color: var(--layer-1);
     border-radius: var(--mini-divison-radius);
-    box-shadow: 1px 1px 1px var(--shadow-color);
+    box-shadow: 1px 2px 0px 0px var(--shadow-color);
     margin: 5px;
 }
 
@@ -91,7 +91,7 @@
     flex-direction: column;
     justify-content: center;
     background-color: var(--layer-1);
-    box-shadow: 1px 1px 1px var(--shadow-color);
+    box-shadow: 1px 2px 0px 0px var(--shadow-color);
     margin: 5px;
 }
 

@@ -24,12 +24,12 @@ html {
     --layer-3: rgb(43, 43, 43);
     --mouse-x: 0;
     --mouse-y: 0;
-    --division-radius: 0px;
-    --mini-divison-radius: 10px;
+    --division-radius: 10px;
+    --mini-divison-radius: 20px;
     --search-result-hover: rgb(20, 20, 20);
     --male-stat-background: rgb(32, 29, 124);
     --female-stat-background: rgb(126, 35, 81);
-    --shadow-color: #070707;
+    --shadow-color: rgb(10, 10, 10);
     --link-color: lightblue;
     --text-color: white;
     --text-color-inverse: black
