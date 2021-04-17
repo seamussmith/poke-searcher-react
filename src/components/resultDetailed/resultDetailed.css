@@ -199,7 +199,7 @@
 .result-detailed__type {
     display: inline-block;
     background-color: currentColor;
-    text-shadow: 0px 0px 5px var(--shadow-color);
+    text-shadow: 2px 2px 1px var(--shadow-color);
     border-radius: 10px;
     padding: 5px;
     margin: 5px;
