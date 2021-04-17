@@ -178,7 +178,7 @@ function PkmnStat(props: {
             </div>
             <div className="result-detailed__stat-bar-container">
                 <div className="result-detailed__stat-bar" style={styles}>
-                    {props.stat}
+                    <p className="result-detailed__stat-number">{props.stat}</p>
                 </div>
             </div>
         </div>
