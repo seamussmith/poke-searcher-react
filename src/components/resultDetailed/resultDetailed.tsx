@@ -165,11 +165,13 @@ function PkmnTypes(props: {})
 // Element for displaying Pokemon stats
 function PkmnStat(props: {
     name: string
+    outOf: number
     stat: string | number
 })
 {
     const styles = {
         "--stat": props.stat,
+        "--out-of": props.outOf
     } as React.CSSProperties
     return (
         <div className={`result-detailed__stat ${`result-detailed__stat--${props.name}`}`}>
@@ -195,9 +197,10 @@ function BaseStatList(props: {})
             <div className='result-detailed__base-stats'>
                 {
                 pokemon.stats.map((stat) =>
-                    <PkmnStat name={stat.stat.name} stat={stat.base_stat} key={stat.stat.name}/>
+                    <PkmnStat name={stat.stat.name} stat={stat.base_stat} outOf={255} key={stat.stat.name}/>
                 )
                 }
+                <PkmnStat name={"total"} stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)} outOf={1000}/>
             </div>
         </div>
     )
