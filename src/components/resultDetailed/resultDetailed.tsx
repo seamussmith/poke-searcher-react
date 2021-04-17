@@ -353,7 +353,7 @@ function PkmnFlairs(props: {})
     }
     if (splitName.some((e) => e === "gmax"))
     {
-        flairs.push(<Flair color="#c02727" key="giga">Gigamax Form</Flair>)
+        flairs.push(<Flair color="#c02727" key="giga">Gigantamax Form</Flair>)
     }
     return (
         <div>
