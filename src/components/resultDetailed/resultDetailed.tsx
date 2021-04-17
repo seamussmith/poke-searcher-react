@@ -168,10 +168,19 @@ function PkmnStat(props: {
     stat: string | number
 })
 {
+    const styles = {
+        "--stat": props.stat
+    } as React.CSSProperties
     return (
-        <div className='result-detailed__stat'>
-            <p>{props.name}:</p>
-            <p>{props.stat}</p>
+        <div className="result-detailed__stat">
+            <div className="result-detailed__stat-name">
+                <p>{props.name}</p>
+            </div>
+            <div className="result-detailed__stat-bar-container">
+                <div className="result-detailed__stat-bar" style={styles}>
+                    {props.stat}
+                </div>
+            </div>
         </div>
     )
 }
