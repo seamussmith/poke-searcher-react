@@ -169,12 +169,12 @@ function PkmnStat(props: {
 })
 {
     const styles = {
-        "--stat": props.stat
+        "--stat": props.stat,
     } as React.CSSProperties
     return (
-        <div className="result-detailed__stat">
+        <div className={`result-detailed__stat ${`result-detailed__stat--${props.name}`}`}>
             <div className="result-detailed__stat-name">
-                <p>{props.name}</p>
+                <p>{capitalize(props.name).replace("-", " ")}</p>
             </div>
             <div className="result-detailed__stat-bar-container">
                 <div className="result-detailed__stat-bar" style={styles}>
@@ -195,7 +195,7 @@ function BaseStatList(props: {})
             <div className='result-detailed__base-stats'>
                 {
                 pokemon.stats.map((stat) =>
-                    <PkmnStat name={capitalize(stat.stat.name).replace("-", " ")} stat={stat.base_stat} key={stat.stat.name}/>
+                    <PkmnStat name={stat.stat.name} stat={stat.base_stat} key={stat.stat.name}/>
                 )
                 }
             </div>
