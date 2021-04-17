@@ -40,6 +40,7 @@
 }
 .search-result--disabled:hover {
     filter: brightness(50%) !important;
+    cursor: default;
     background-color: var(--layer-1);
 }
 
