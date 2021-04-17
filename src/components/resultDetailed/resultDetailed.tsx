@@ -82,7 +82,11 @@ function ResultDetailed(props: {
                     <PokedexEntry />
                 </Division>
 
-                {/* [ROW 3] */}
+                <Division width={8} height={1}>
+                    <Abilities />
+                </Division>
+
+                {/* [ROW 4] */}
 
                 {/* TODO: Insert egg group compatability here */}
                 <Division width={8} height={1}>
@@ -358,6 +362,20 @@ function PkmnFlairs(props: {})
     return (
         <div>
             {flairs}
+        </div>
+    )
+}
+
+function Abilities(props: {})
+{
+    const { pokemon } = useContext(PokemonContext)
+
+    return (
+        <div className="result-detailed__abilities">
+            <h2 className="result-detailed__label">Abilities</h2>
+            <div className="result-detailed__abilities-container">
+
+            </div>
         </div>
     )
 }
