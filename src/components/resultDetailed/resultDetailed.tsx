@@ -200,7 +200,7 @@ function BaseStatList(props: {})
                     <PkmnStat name={stat.stat.name} stat={stat.base_stat} outOf={255} key={stat.stat.name}/>
                 )
                 }
-                <PkmnStat name={"total"} stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)} outOf={1000}/>
+                <PkmnStat name={"total"} stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)} outOf={780}/>
             </div>
         </div>
     )
