@@ -7,12 +7,14 @@ import CopyClicker from '../copyClicker/copyClicker'
 import SearchResult from "../searchResult/searchResult"
 
 import { capitalize, stylePokemonName } from '../util/util'
-import { GetEvolutionTree, GetPokemon, GetPokemonSpecies } from '../util/PokeAPICache'
+import { GetAbility, GetEvolutionTree, GetPokemon, GetPokemonSpecies } from '../util/PokeAPICache'
 import {
     IPokemon,
     IPokemonSpecies,
     IEvolutionChain,
-    IChainLink
+    IChainLink,
+    IPokemonAbility,
+    IAbility
 } from "pokeapi-typescript"
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
@@ -366,15 +368,43 @@ function PkmnFlairs(props: {})
     )
 }
 
+function Ability(props: {
+    ability: IAbility
+})
+{
+    return (
+        <div className="result-detailed__ability">
+            <div className="result-detailed__ability-name">
+                <h1>{props.ability.name}</h1>
+            </div>
+            <div className="result-detailed__ability-desc">
+                <p>
+                    {props.ability.effect_entries.filter((e) => e.language.name === "en")[0].effect}
+                </p>
+            </div>
+        </div>
+    )
+}
+
+
 function Abilities(props: {})
 {
     const { pokemon } = useContext(PokemonContext)
+
+    const [abilities, setAbilities] = useState<IAbility[]|null>(null)
+
+    useEffect(() => {
+        Promise.all(pokemon.abilities.map((e) => GetAbility(e.ability.url)))
+            .then(result => setAbilities(result))
+    }, [])
 
     return (
         <div className="result-detailed__abilities">
             <h2 className="result-detailed__label">Abilities</h2>
             <div className="result-detailed__abilities-container">
-
+                {
+                    abilities?.map((ability) => <Ability ability={ability}/>) ?? "Loading..."
+                }
             </div>
         </div>
     )
