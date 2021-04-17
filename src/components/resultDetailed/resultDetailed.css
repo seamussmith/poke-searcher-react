@@ -273,7 +273,7 @@
     align-items: center;
     height: 100%;
     width: 25ch;
-    padding: 0 2ch;
+    padding: 0 1ch;
     background-color: var(--primary);
     border-radius: 13px 0 0 13px;
 /*     border: 2px solid red; */

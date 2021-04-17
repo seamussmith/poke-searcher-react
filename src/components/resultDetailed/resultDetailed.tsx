@@ -176,7 +176,7 @@ function PkmnStat(props: {
     return (
         <div className={`result-detailed__stat ${`result-detailed__stat--${props.name}`}`}>
             <div className="result-detailed__stat-name">
-                <p>{capitalize(props.name).replace("-", " ")}</p>
+                {capitalize(props.name).replace("-", " ")}
             </div>
             <div className="result-detailed__stat-bar-container">
                 <div className="result-detailed__stat-bar" style={styles}>
@@ -200,7 +200,7 @@ function BaseStatList(props: {})
                     <PkmnStat name={stat.stat.name} stat={stat.base_stat} outOf={255} key={stat.stat.name}/>
                 )
                 }
-                <PkmnStat name={"total"} stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)} outOf={780}/>
+                <PkmnStat name={"total"} stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)} outOf={1125}/>
             </div>
         </div>
     )
