@@ -1,8 +1,9 @@
-import { IPokemon, IPokemonSpecies, IEvolutionChain, INamedApiResourceList } from "pokeapi-typescript"
+import { IPokemon, IPokemonSpecies, IEvolutionChain, INamedApiResourceList, IAbility } from "pokeapi-typescript"
 
 export const PokemonCache: Record<string, Promise<IPokemon>> = {}
 export const SpeciesCache: Record<string, Promise<IPokemonSpecies>> = {}
 export const EvolutionCache: Record<string, Promise<IEvolutionChain>> = {}
+export const AbilityCache: Record<string, Promise<IAbility>> = {}
 export let PokeList: INamedApiResourceList<IPokemon>|null = null
 
 const indexListFetchJob =
@@ -29,6 +30,11 @@ export async function GetPokemonSpecies(query: string)
 export async function GetEvolutionTree(query: string)
 {
     return EvolutionCache[query] ?? (EvolutionCache[query] = fetch(query).then(blob => blob.json()))
+}
+
+export async function GetAbility(query: string)
+{
+    return AbilityCache[query] ?? (AbilityCache[query] = fetch(query).then(blob => blob.json()))
 }
 
 export async function MatchQuery(query: string, limit = -1)
