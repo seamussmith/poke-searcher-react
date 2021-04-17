@@ -155,10 +155,10 @@ function PkmnTypes(props: {})
 {
     const { pokemon } = useContext(PokemonContext)
     return (
-        <p className='result-detailed__types-detailed'>
+        <div className='result-detailed__types-detailed'>
             <Type type={pokemon.types[0].type.name} key={pokemon.types[0].type.name}><span>{capitalize(pokemon.types[0].type.name)}</span></Type>
             <Type type={pokemon.types[1]?.type.name} key={pokemon.types[1]?.type.name}><span>{capitalize(pokemon.types[1]?.type.name ?? "???")}</span></Type>
-        </p>
+        </div>
     )
 }
 
