@@ -375,11 +375,11 @@ function Ability(props: {
     return (
         <div className="result-detailed__ability">
             <div className="result-detailed__ability-name">
-                <h2 className="result-detailed__label">{props.ability.name}</h2>
+                <h2 className="result-detailed__label">{capitalize(props.ability.name)}</h2>
             </div>
             <div className="result-detailed__ability-desc">
                 <p>
-                    {props.ability.effect_entries.filter((e) => e.language.name === "en")[0].effect}
+                    {props.ability.effect_entries.filter((e) => e.language.name === "en")[0].short_effect}
                 </p>
             </div>
         </div>
