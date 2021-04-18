@@ -328,6 +328,13 @@
     margin: 5px;
 }
 
+@media (max-width: 720px)
+{
+    .result-detailed__abilities-container {
+        grid-template-columns: 1fr;
+    }
+}
+
 .result-detailed__ability {
     text-align: center;
     display: grid;
