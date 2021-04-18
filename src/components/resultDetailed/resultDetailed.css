@@ -320,3 +320,37 @@
     margin: 0;
     padding: 0 0 0 0.5ch;
 }
+
+.result-detailed__abilities-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 5px;
+    margin: 5px;
+}
+
+.result-detailed__ability {
+    text-align: center;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    width: 100%;
+    height: 10em;
+    background-color: var(--layer-3);
+    border-radius: 10px;
+    box-shadow: 2px 2px 0 var(--shadow-color);
+}
+
+.result-detailed__ability-name {
+    text-align: left;
+    background-color: var(--layer-1);
+    border-radius: 10px 10px 0 0;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.result-detailed__ability-desc {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

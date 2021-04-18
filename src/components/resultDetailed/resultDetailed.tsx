@@ -375,7 +375,7 @@ function Ability(props: {
     return (
         <div className="result-detailed__ability">
             <div className="result-detailed__ability-name">
-                <h1>{props.ability.name}</h1>
+                <h2 className="result-detailed__label">{props.ability.name}</h2>
             </div>
             <div className="result-detailed__ability-desc">
                 <p>
@@ -400,7 +400,7 @@ function Abilities(props: {})
 
     return (
         <div className="result-detailed__abilities">
-            <h2 className="result-detailed__label">Abilities</h2>
+            <h1 className="result-detailed__label">Abilities</h1>
             <div className="result-detailed__abilities-container">
                 {
                     abilities?.map((ability) => <Ability ability={ability}/>) ?? "Loading..."
