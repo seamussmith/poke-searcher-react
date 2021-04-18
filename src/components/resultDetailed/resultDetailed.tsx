@@ -13,7 +13,6 @@ import {
     IPokemonSpecies,
     IEvolutionChain,
     IChainLink,
-    IPokemonAbility,
     IAbility
 } from "pokeapi-typescript"
 
