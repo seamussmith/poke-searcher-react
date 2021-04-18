@@ -396,7 +396,7 @@ function Abilities(props: {})
     useEffect(() => {
         Promise.all(pokemon.abilities.map((e) => GetAbility(e.ability.url)))
             .then(result => setAbilities(result))
-    }, [])
+    }, [pokemon])
 
     return (
         <div className="result-detailed__abilities">
