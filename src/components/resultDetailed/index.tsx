@@ -17,7 +17,8 @@ import {
     EvenDivision,
     TypeLabel,
     Flair,
-    StatDiv
+    StatDiv,
+    Gender
 } from "./components"
 
 import { capitalize, stylePokemonName } from '../util/util'
@@ -208,21 +209,15 @@ function PkmnGenderRatio(props: {})
     if (genderRatio === -1)
     {
         genderElements = (
-            <div className='result-detailed__gender'>
-                <h1>Genderless</h1>
-            </div>
+            <Gender />
         )
     }
     else
     {
         genderElements = (
             <>
-                <div className='result-detailed__gender result-detailed__gender--male'>
-                    <h1><i className="fas fa-mars --force-inheritence"></i> {maleRatio}%</h1>
-                </div>
-                <div className='result-detailed__gender result-detailed__gender--female'>
-                    <h1><i className="fas fa-venus --force-inheritence"></i> {femaleRatio}%</h1>
-                </div>
+                <Gender gender="male" ratio={maleRatio}/>
+                <Gender gender="female" ratio={femaleRatio}/>
             </>
         )
     }
