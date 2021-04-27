@@ -122,7 +122,7 @@ function Type(props: {
     )
 }
 
-export default function PkmnMainBanner(props: {})
+function PkmnMainBanner(props: {})
 {
     const { pokemon } = useContext(PokemonContext)
     const imgElement = <img
