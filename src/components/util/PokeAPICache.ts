@@ -7,11 +7,6 @@ type s =
     IAbility
 
 export const APICache: Record<string, Promise<any>> = {}
-
-export const PokemonCache: Record<string, Promise<IPokemon>> = {}
-export const SpeciesCache: Record<string, Promise<IPokemonSpecies>> = {}
-export const EvolutionCache: Record<string, Promise<IEvolutionChain>> = {}
-export const AbilityCache: Record<string, Promise<IAbility>> = {}
 export let PokeList: INamedApiResourceList<IPokemon>|null = null
 
 const indexListFetchJob =
