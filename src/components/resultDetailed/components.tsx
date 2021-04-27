@@ -50,6 +50,7 @@ export const Division = styled.div<{
 export const EvenDivision = styled(Division)`
     display: flex;
     justify-content: space-evenly;
+    padding: 10px;
     flex-direction: column;
 `
 
