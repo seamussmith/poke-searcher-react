@@ -15,7 +15,6 @@ function App(props: {})
         <Router>
             <RealApp />
         </Router>
-
     )
 }
 
@@ -81,7 +80,7 @@ function RealApp()
     useEffect(() => {
         document.body.classList.add("dark")
     }, [])
-    
+
     return (
         <div className="App">
             <div className="search">
@@ -90,7 +89,7 @@ function RealApp()
                 </div>
                 <SearchBox keyUp={queryPokeAPI} />
                 <Switch>
-                    <Route path="/pokemon/:pkmn">
+                    <Route path="/pokemon/:pkmn" exact>
                         <div className="search__result-detailed-container">
                             <ResultDetailed />
                         </div>
