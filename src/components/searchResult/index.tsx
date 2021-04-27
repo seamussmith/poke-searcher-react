@@ -8,7 +8,6 @@ import { Link } from "react-router-dom"
 function SearchResult(props: {
     pokemon: IPokemon
     species?: IPokemonSpecies
-    onClick?: (pokemon: IPokemon) => void
     disabled?: boolean
 })
 {
