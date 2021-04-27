@@ -142,7 +142,7 @@ function PkmnMainBanner(props: {})
             <div>
                 {imgElement}
             </div>
-            <div className='result-detailed__flairs'>
+            <div>
                 <PkmnFlairs />
                 <PkmnTypes />
             </div>
