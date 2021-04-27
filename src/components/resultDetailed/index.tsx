@@ -16,16 +16,16 @@ import {
     IChainLink,
     IAbility
 } from "pokeapi-typescript"
+import { useParams } from 'react-router'
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
-function ResultDetailed(props: {
-    pokemon: IPokemon
-    pkmnSpecies: IPokemonSpecies
-})
+function ResultDetailed(props: {})
 {
-    const [pokemon, setPokemon] = useState(props.pokemon)
-    const [species, setSpecies] = useState(props.pkmnSpecies)
+    const [pokemon, setPokemon] = useState({} as IPokemon)
+    const [species, setSpecies] = useState({} as IPokemonSpecies)
+    const params = useParams<{pkmn: string}>()
+    const [ready, setReady] = useState(false)
 
     const self = useRef<HTMLDivElement>(null)
 
@@ -40,7 +40,19 @@ function ResultDetailed(props: {
     useEffect(() => {
         if (window.screen.width < 720)
             self.current?.scrollIntoView()
+        getPkmnByEndpoint<IPokemon>("pokemon", params.pkmn)
+            .then(pkmn => {
+                getPkmnByURL<IPokemonSpecies>(pkmn.species.url)
+                    .then(spec => {
+                        setPokemon(pkmn)
+                        setSpecies(spec)
+                        setReady(true)
+                    })
+            })
     })
+
+    if (!ready)
+        return <></>
 
     // Get the latest flavor text
     return (
