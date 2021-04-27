@@ -1,5 +1,13 @@
 import { IPokemon, IPokemonSpecies, IEvolutionChain, INamedApiResourceList, IAbility } from "pokeapi-typescript"
 
+type s =
+    IPokemon |
+    IPokemonSpecies |
+    IEvolutionChain |
+    IAbility
+
+export const APICache: Record<string, Promise<any>> = {}
+
 export const PokemonCache: Record<string, Promise<IPokemon>> = {}
 export const SpeciesCache: Record<string, Promise<IPokemonSpecies>> = {}
 export const EvolutionCache: Record<string, Promise<IEvolutionChain>> = {}
@@ -16,6 +24,17 @@ export const API_ENDPOINT = "https://pokeapi.co/api/v2"
 export const POKEMON_ENDPOINT = API_ENDPOINT+"/pokemon/"
 export const SPECIES_ENDPOINT = API_ENDPOINT+"/pokemon-species/"
 export const EVOTREE_ENDPOINT = API_ENDPOINT+"/evolution/"
+
+export async function getByURL<T extends s>(query: string): Promise<T>
+{
+    return APICache[query] ?? (APICache[query] = fetch(query).then(blob => blob.json()))
+}
+
+export async function getByEndpoint<T>(endpoint: string, param: string): Promise<T>
+{
+    const query = `${API_ENDPOINT}/${endpoint}/${param}`
+    return APICache[query] ?? (APICache[query] = fetch(query).then(blob => blob.json()))
+}
 
 export async function GetPokemon(query: string)
 {
