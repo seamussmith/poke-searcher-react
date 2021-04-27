@@ -1,5 +1,7 @@
 import './index.css'
 
+// Loading spinner by https://loading.io/css/
+
 export default function LoadingSpinner(props: {
     visible: boolean
 })
