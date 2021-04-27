@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
-import SearchBox from './components/searchBox/searchBox'
-import SearchResult from './components/searchResult/searchResult'
-import ResultDetailed from './components/resultDetailed/resultDetailed'
+import SearchBox from './components/searchBox'
+import SearchResult from './components/searchResult'
+import ResultDetailed from './components/resultDetailed'
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon } from "pokeapi-typescript"

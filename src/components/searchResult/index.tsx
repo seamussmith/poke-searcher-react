@@ -1,6 +1,6 @@
 import React from 'react'
 import {capitalize, stylePokemonName} from '../util/util'
-import './searchResult.css'
+import './index.css'
 import '../typeColorClasses/typeColorClasses.css'
 import { IPokemon, IPokemonSpecies } from 'pokeapi-typescript'
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import './searchBox.css'
+import './index.css'
 
 function SearchBox(props: {
     keyUp: (query: string) => void

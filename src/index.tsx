@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 import './index.css'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import Footer from './components/footer/footer'
+import Footer from './components/footer'
 
 async function main()
 {

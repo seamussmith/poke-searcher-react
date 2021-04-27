@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react'
 import copy from 'copy-to-clipboard'
-import './copyClicker.css'
+import './index.css'
 import '../tooltip/tooltip.css'
 
 const INITAL_TXT = "Click to copy!"
