@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import SearchBox from './components/searchBox'
 import SearchResult from './components/searchResult'
 import ResultDetailed from './components/resultDetailed'
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom"
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies } from "pokeapi-typescript"
@@ -16,10 +16,12 @@ function App(props: {})
     const [searchResults, setSearchResults] = useState<JSX.Element[]>([])
     const [detailedResult, setDetailedResult] = useState<JSX.Element|null>(null)
     const [loading, setLoading] = useState(false)
+    const history = useHistory()
     
     const queryPokeAPI = (query: string) => {
         setDetailedResult(null)
         setLoading(true)
+        history.push("/")
 
         queryIndex.current += 1
         let thisQueryIndex = queryIndex.current
@@ -79,12 +81,14 @@ function App(props: {})
                     </div>
                     <SearchBox keyUp={queryPokeAPI} />
                     <Switch>
-                        <div className="search__result-container">
-                            {searchResults}
-                        </div>
                         <Route path="/pokemon/:pkmn">
                             <div className="search__result-detailed-container">
-                                    <ResultDetailed />
+                                <ResultDetailed />
+                            </div>
+                        </Route>
+                        <Route path="/">
+                            <div className="search__result-container">
+                                {searchResults}
                             </div>
                         </Route>
                     </Switch>
