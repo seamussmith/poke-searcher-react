@@ -1,7 +1,6 @@
 
 /** The search inputs  */
 .search-box {
-    margin-top: 20vh;
     display: flex;
     flex-direction: column;
     justify-content: center;

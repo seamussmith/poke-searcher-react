@@ -112,6 +112,14 @@ body {
     justify-content: center;
 }
 
+.loading-container {
+    margin-top: 10vh;
+    margin-bottom: 2vh;
+    height: 7vh;
+    display: grid;
+    place-items: center;
+}
+
 .pokeimg {
     max-width: 100%;
     min-height: 300px;

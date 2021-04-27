@@ -85,12 +85,14 @@ function App(props: {})
     return (
         <div className="App">
             <div className="search">
+                <div className="loading-container">
+                    <LoadingSpinner visible={loading}/>
+                </div>
                 <SearchBox keyUp={queryPokeAPI} />
                 <div className="search__result-container">
                     {searchResults}
                 </div>
                 <div className="search__result-detailed-container">
-                    <LoadingSpinner visible={loading}/>
                     {detailedResult}
                 </div>
             </div>
