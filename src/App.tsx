@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import SearchBox from './components/searchBox'
 import SearchResult from './components/searchResult'
 import ResultDetailed from './components/resultDetailed'
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies } from "pokeapi-typescript"
@@ -45,39 +45,26 @@ function App(props: {})
                 setSearchResults([])
                 // Map the search results into <SearchResult /> components and then display them
                 setSearchResults(pokemonFullData.map(([pokemon, species]) =>
-                    <SearchResult pokemon={pokemon} species={species} key={pokemon.name} onClick={pokemon => detailHandler(pokemon)}/>))
-                setLoading(false)
-            })
-    }
-    
-    const detailHandler = (pokemon: IPokemon) => {
-        setSearchResults([])
-        setLoading(true)
-
-        // Fetch species data from pokemon because
-        // it is needed by <ResultDetailed />
-        getPkmnByURL<IPokemonSpecies>(pokemon.species.url)  // Else, fetch the data then put
-            .then(species => {                   // the promise in the cache
-                setDetailedResult(<ResultDetailed pokemon={pokemon} pkmnSpecies={species} />)
+                    <SearchResult pokemon={pokemon} species={species} key={pokemon.name} />))
                 setLoading(false)
             })
     }
 
-    useEffect(() => {
-        // Handling pkmn query string variable
-        let url_string = window.location.href
-        let url = new URL(url_string)
-        let pkmn = url.searchParams.get("pkmn")
-        if (pkmn === null) // If variable pkmn is in the query string
-            return
+    // useEffect(() => {
+    //     // Handling pkmn query string variable
+    //     let url_string = window.location.href
+    //     let url = new URL(url_string)
+    //     let pkmn = url.searchParams.get("pkmn")
+    //     if (pkmn === null) // If variable pkmn is in the query string
+    //         return
 
-        getPkmnByEndpoint<IPokemon>("pokemon", pkmn)
-            .then((data) => {
-                // Pass it to detail handler to render the pokemon
-                detailHandler(data)
-            })
-            .catch(() => console.log(`Failed to grab ${pkmn}`))
-    }, [])
+    //     getPkmnByEndpoint<IPokemon>("pokemon", pkmn)
+    //         .then((data) => {
+    //             // Pass it to detail handler to render the pokemon
+    //             //detailHandler(data)
+    //         })
+    //         .catch(() => console.log(`Failed to grab ${pkmn}`))
+    // }, [])
 
     useEffect(() => {
         document.body.classList.add("dark")
@@ -91,14 +78,16 @@ function App(props: {})
                         <LoadingSpinner visible={loading}/>
                     </div>
                     <SearchBox keyUp={queryPokeAPI} />
-                    <div className="search__result-container">
-                        {searchResults}
-                    </div>
-                    <div className="search__result-detailed-container">
+                    <Switch>
+                        <div className="search__result-container">
+                            {searchResults}
+                        </div>
                         <Route path="/pokemon/:pkmn">
-                            <ResultDetailed />
+                            <div className="search__result-detailed-container">
+                                    <ResultDetailed />
+                            </div>
                         </Route>
-                    </div>
+                    </Switch>
                 </div>
             </div>
         </Router>
