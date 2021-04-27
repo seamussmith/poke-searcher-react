@@ -198,3 +198,34 @@ export function Stat(props: {
     )
 }
 
+// Flair
+
+export const Flair = styled.p<{
+    flairColor: string
+}>`
+    color: var(--text-color-inverse);
+    background-color: ${({flairColor}) => flairColor};
+    border: solid ${({flairColor}) => flairColor} 5px;
+    font-size: 20pt;
+    font-weight: bold;
+    margin: 5px 10%;
+    border-radius: 100px;
+    display: block;
+`
+
+// Type
+export const Type = styled.p`
+    display: inline-block;
+    background-color: currentColor;
+    text-shadow: 2px 2px 1px var(--shadow-color);
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    width: 8ch;
+`
+
+export const EmptyType = styled(Type)`
+    background-color: transparent;
+    box-shadow: 0 0 10px inset white;
+`
+
