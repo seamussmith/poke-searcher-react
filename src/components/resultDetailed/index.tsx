@@ -27,76 +27,93 @@ function ResultDetailed(props: {})
     const [species, setSpecies] = useState({} as IPokemonSpecies)
     const params = useParams<{pkmn: string}>()
     const [ready, setReady] = useState(false)
+    const firstRender = useRef(true)
 
     const self = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
         if (window.screen.width < 720)
             self.current?.scrollIntoView()
+        setReady(false)
         getPkmnByEndpoint<IPokemon>("pokemon", params.pkmn)
             .then(pkmn => {
                 getPkmnByURL<IPokemonSpecies>(pkmn.species.url)
                     .then(spec => {
                         setPokemon(pkmn)
                         setSpecies(spec)
+                        firstRender.current = false
                         setReady(true)
                     })
             })
-    })
-
-    if (!ready)
-        return <LoadingSpinner visible/>
+    }, [params])
+    if (firstRender.current)
+        return <LoadingSpinner visible />
 
     // Get the latest flavor text
     return (
-        <div className='result-detailed' ref={self}>
-            <PokemonContext.Provider value={{
-                pokemon: pokemon,
-                species: species
-            }}>
-                {/* [ROW 1] */}
+        <>
+            <div className='result-detailed' ref={self}>
+                <PokemonContext.Provider value={{
+                    pokemon: pokemon,
+                    species: species
+                }}>
 
-                {/* Pokemon name, Portrait, Flairs, Type */}
-                <Division width={4} height={1}>
-                    <div className='result-detailed__division--pokemon'>
-                        <PkmnMainBanner />
-                    </div>
-                </Division>
+                    {/* [ROW 1] */}
 
-                {/* Stats, Info, Gender Ratios */}
-                <Division width={4} height={1}>
-                    <div className="result-detailed__division--info">
-                        <BaseStatList />
-                        <PkmnGenderRatio />
-                    </div>
-                </Division>
+                    {/* Pokemon name, Portrait, Flairs, Type */}
+                    <Division width={4} height={1}>
+                        <div className='result-detailed__division--pokemon'>
+                            <PkmnMainBanner />
+                        </div>
+                    </Division>
 
-                {/* [ROW 2] */}
+                    {/* Stats, Info, Gender Ratios */}
+                    <Division width={4} height={1}>
+                        <div className="result-detailed__division--info">
+                            <BaseStatList />
+                            <PkmnGenderRatio />
+                        </div>
+                    </Division>
 
-                <Division width={5} height={3}>
-                    <Evolutions />
-                </Division>
+                    {!ready ?
+                        <Division width={8} height={1}>
+                            <LoadingSpinner visible/>
+                        </Division>
+                    :null}
 
-                <Division width={3} height={1}>
-                    <PkmnInfo />
-                </Division>
+                    {/* [ROW 2] */}
 
-                <Division width={3} height={1}>
-                    <PokedexEntry />
-                </Division>
+                    <Division width={5} height={3}>
+                        <Evolutions />
+                    </Division>
 
-                <Division width={8} height={1}>
-                    <Abilities />
-                </Division>
+                    {!ready ?
+                        <Division width={8} height={1}>
+                            <LoadingSpinner visible/>
+                        </Division>
+                    :null}
+                    
+                    <Division width={3} height={1}>
+                        <PkmnInfo />
+                    </Division>
 
-                {/* [ROW 4] */}
+                    <Division width={3} height={1}>
+                        <PokedexEntry />
+                    </Division>
 
-                {/* TODO: Insert egg group compatability here */}
-                <Division width={8} height={1}>
-                    <SharePokemon />
-                </Division>
-            </PokemonContext.Provider>
-        </div>
+                    <Division width={8} height={1}>
+                        <Abilities />
+                    </Division>
+
+                    {/* [ROW 4] */}
+
+                    {/* TODO: Insert egg group compatability here */}
+                    <Division width={8} height={1}>
+                        <SharePokemon />
+                    </Division>
+                </PokemonContext.Provider>
+            </div>
+        </>
     )
 }
 
