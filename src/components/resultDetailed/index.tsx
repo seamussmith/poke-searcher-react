@@ -16,7 +16,8 @@ import {
     Division,
     EvenDivision,
     TypeLabel,
-    Flair
+    Flair,
+    StatDiv
 } from "./components"
 
 import { capitalize, stylePokemonName } from '../util/util'
@@ -174,46 +175,21 @@ function PkmnFlairs(props: {})
     )
 }
 
-// Element for displaying Pokemon stats
-function PkmnStat(props: {
-    name: string
-    outOf: number
-    stat: string | number
-})
-{
-    const styles = {
-        "--stat": props.stat,
-        "--out-of": props.outOf
-    } as React.CSSProperties
-    return (
-        <div className={`result-detailed__stat ${`result-detailed__stat--${props.name}`}`}>
-            <div className="result-detailed__stat-name">
-                {capitalize(props.name).replace("-", " ")}
-            </div>
-            <div className="result-detailed__stat-bar-container">
-                <div className="result-detailed__stat-bar" style={styles}>
-                    <p className="result-detailed__stat-number">{props.stat}</p>
-                </div>
-            </div>
-        </div>
-    )
-}
-
 // Element that generates all the elements for a pokemon's stats
 function BaseStatList(props: {})
 {
     const { pokemon } = useContext(PokemonContext)
     return (
         <div>
-            <h1 className="result-detailed__label">Stats </h1>
-            <div className='result-detailed__base-stats'>
+            <Label1>Stats</Label1>
+            <StatDiv>
                 {
                 pokemon.stats.map((stat) =>
                     <Stat name={stat.stat.name} stat={stat.base_stat} outOf={255} key={stat.stat.name}/>
                 )
                 }
                 <Stat name={"total"} stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)} outOf={1125}/>
-            </div>
+            </StatDiv>
         </div>
     )
 }
