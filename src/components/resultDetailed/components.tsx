@@ -52,8 +52,7 @@ export const Division = styled.div<{
         grid-column: span 8 / auto;
         grid-row: span 8 / auto;
     }
-}
-    
+}  
 `
 
 export const EvenDivision = styled(Division)`
@@ -201,7 +200,7 @@ export function Stat(props: {
     return (
         <StatCmp name={props.name}>
             <StatName>
-                {capitalize(props.name)}
+                {capitalize(props.name).replaceAll("-", " ")}
             </StatName>
             <StatBarContainer>
                 <StatBar stat={props.stat} outOf={props.outOf}>
