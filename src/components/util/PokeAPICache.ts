@@ -36,26 +36,6 @@ export async function getByEndpoint<T>(endpoint: string, param: string): Promise
     return APICache[query] ?? (APICache[query] = fetch(query).then(blob => blob.json()))
 }
 
-export async function GetPokemon(query: string)
-{
-    return PokemonCache[query] ?? (PokemonCache[query] = fetch(query).then(blob => blob.json()))
-}
-
-export async function GetPokemonSpecies(query: string)
-{
-    return SpeciesCache[query] ?? (SpeciesCache[query] = fetch(query).then(blob => blob.json()))
-}
-
-export async function GetEvolutionTree(query: string)
-{
-    return EvolutionCache[query] ?? (EvolutionCache[query] = fetch(query).then(blob => blob.json()))
-}
-
-export async function GetAbility(query: string)
-{
-    return AbilityCache[query] ?? (AbilityCache[query] = fetch(query).then(blob => blob.json()))
-}
-
 export async function MatchQuery(query: string, limit = -1)
 {
     await indexListFetchJob // Wait until the index list is ready
