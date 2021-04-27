@@ -3,13 +3,17 @@ import { capitalize } from "../util/util";
 
 // Labels
 
-const Label = css`
+export const Label = css`
     border-bottom: solid 2px transparent;
     border-image: radial-gradient(currentColor 20%, transparent 100%);
     border-image-slice: 1;
     margin: 10px auto;
     padding: 0.25ch 1ch;
     width: fit-content;
+`
+
+export const Label0 = styled.span`
+    ${Label}
 `
 
 export const Label1 = styled.h1`
@@ -46,7 +50,6 @@ export const EvenDivision = styled(Division)`
     display: flex;
     justify-content: space-evenly;
     flex-direction: column;
-    height: 100%;
 `
 
 export const StatDiv = styled.div`
