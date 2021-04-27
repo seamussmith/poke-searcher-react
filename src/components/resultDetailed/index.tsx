@@ -243,8 +243,8 @@ function PokedexEntry(props: {})
             .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
     return (
         <>
-            <h2 className="result-detailed__label">Pokedex Desc.</h2>
-            <p className='result-detailed__flavor-text'>{latestFlavorText}</p>
+            <Label2>Pokedex Desc.</Label2>
+            <p>{latestFlavorText}</p>
         </>
     )
 }
@@ -304,7 +304,7 @@ function Ability(props: {
     return (
         <div className="result-detailed__ability">
             <div className="result-detailed__ability-name">
-                <h2 className="result-detailed__label">{capitalize(props.ability.name)}</h2>
+                <Label2>{capitalize(props.ability.name)}</Label2>
             </div>
             <div className="result-detailed__ability-desc">
                 <p>
@@ -328,14 +328,14 @@ function Abilities(props: {})
     }, [pokemon])
 
     return (
-        <div className="result-detailed__abilities">
-            <h1 className="result-detailed__label">Abilities</h1>
+        <>
+            <Label1>Abilities</Label1>
             <div className="result-detailed__abilities-container">
                 {
                     abilities?.map((ability) => <Ability ability={ability} key={ability.id}/>) ?? <LoadingSpinner visible />
                 }
             </div>
-        </div>
+        </>
     )
 }
 
@@ -364,7 +364,7 @@ function Evolutions(props: {})
 
     return (
         <>
-            <h1 className="result-detailed__label">Evolutions/Variants</h1>
+            <Label1>Evolutions/Variants</Label1>
             <div className="result-detailed__pokemon-grid">
                 {pokemonList?.map((pkmn) => 
                     <SearchResult
