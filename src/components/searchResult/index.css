@@ -1,5 +1,6 @@
 .search-result {
-    --current-radius: 20px;  
+    --current-radius: 20px;
+    text-decoration: none;
   
     color: white;
     display: flex;
@@ -30,6 +31,7 @@
 }
 
 .search-result--disabled {
+    pointer-events: none;
     filter: brightness(50%);
     box-shadow: 1px 1px 0px var(--shadow-color);
 }

@@ -3,11 +3,12 @@ import {capitalize, stylePokemonName} from '../util/util'
 import './index.css'
 import '../typeColorClasses/typeColorClasses.css'
 import { IPokemon, IPokemonSpecies } from 'pokeapi-typescript'
+import { Link } from "react-router-dom"
 
 function SearchResult(props: {
     pokemon: IPokemon
     species?: IPokemonSpecies
-    onClick: (pokemon: IPokemon) => void
+    onClick?: (pokemon: IPokemon) => void
     disabled?: boolean
 })
 {
@@ -15,10 +16,10 @@ function SearchResult(props: {
     const onClick = () => {
         if (props.disabled)
             return
-        props.onClick(pokeData)
+        //props.onClick(pokeData)
     }
     return (
-        <div className={`${props.disabled ? "search-result--disabled":""} search-result`} onClick={onClick}>
+        <Link to={`/pokemon/${props.pokemon.name}`} className={`${props.disabled ? "search-result--disabled":""} search-result`}>
             <div className="search-result__img-container">
                 <img
                 className="search-result__image nofilter"
@@ -36,8 +37,7 @@ function SearchResult(props: {
                     <Type type={pokeData.types[1]?.type.name} key={pokeData.types[1]?.type.name}>{capitalize(pokeData.types[1]?.type.name ?? "???")} </Type>
                 </p>
             </div>
-            
-        </div>
+        </Link>
     )
 }
 

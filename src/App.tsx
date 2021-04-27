@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import SearchBox from './components/searchBox'
 import SearchResult from './components/searchResult'
 import ResultDetailed from './components/resultDetailed'
+import { BrowserRouter as Router, Route } from "react-router-dom"
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies } from "pokeapi-typescript"
@@ -83,20 +84,25 @@ function App(props: {})
     }, [])
 
     return (
-        <div className="App">
-            <div className="search">
-                <div className="loading-container">
-                    <LoadingSpinner visible={loading}/>
-                </div>
-                <SearchBox keyUp={queryPokeAPI} />
-                <div className="search__result-container">
-                    {searchResults}
-                </div>
-                <div className="search__result-detailed-container">
-                    {detailedResult}
+        <Router>
+            <div className="App">
+                <div className="search">
+                    <div className="loading-container">
+                        <LoadingSpinner visible={loading}/>
+                    </div>
+                    <SearchBox keyUp={queryPokeAPI} />
+                    <div className="search__result-container">
+                        {searchResults}
+                    </div>
+                    <div className="search__result-detailed-container">
+                        <Route path="/pokemon/:pkmn">
+                            <ResultDetailed />
+                        </Route>
+                    </div>
                 </div>
             </div>
-        </div>
+        </Router>
+
     )
 }
 //
