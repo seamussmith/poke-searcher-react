@@ -6,6 +6,7 @@ import './index.css'
 import CopyClicker from '../copyClicker'
 import SearchResult from "../searchResult"
 import PokemonContext from "./pokemonContext"
+import { Stat } from "./components"
 
 import { capitalize, stylePokemonName } from '../util/util'
 import { getPkmnByEndpoint, getPkmnByURL } from '../util/PokeAPICache'
@@ -256,10 +257,10 @@ function BaseStatList(props: {})
             <div className='result-detailed__base-stats'>
                 {
                 pokemon.stats.map((stat) =>
-                    <PkmnStat name={stat.stat.name} stat={stat.base_stat} outOf={255} key={stat.stat.name}/>
+                    <Stat name={stat.stat.name} stat={stat.base_stat} outOf={255} key={stat.stat.name}/>
                 )
                 }
-                <PkmnStat name={"total"} stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)} outOf={1125}/>
+                <Stat name={"total"} stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)} outOf={1125}/>
             </div>
         </div>
     )
