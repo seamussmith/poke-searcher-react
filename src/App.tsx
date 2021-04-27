@@ -70,7 +70,7 @@ function App(props: {})
         if (pkmn === null) // If variable pkmn is in the query string
             return
 
-        getPkmnByURL<IPokemon>(POKEMON_ENDPOINT+pkmn)
+        getPkmnByEndpoint<IPokemon>("pokemon", pkmn)
             .then((data) => {
                 // Pass it to detail handler to render the pokemon
                 detailHandler(data)
