@@ -410,7 +410,7 @@ function Abilities(props: {})
             <h1 className="result-detailed__label">Abilities</h1>
             <div className="result-detailed__abilities-container">
                 {
-                    abilities?.map((ability) => <Ability ability={ability} key={ability.id}/>) ?? "Loading..."
+                    abilities?.map((ability) => <Ability ability={ability} key={ability.id}/>) ?? <LoadingSpinner visible />
                 }
             </div>
         </div>
@@ -449,7 +449,7 @@ function Evolutions(props: {})
                     pokemon={pkmn}
                     disabled={pokemon.name === pkmn.name}
                     key={pkmn.name}/>)
-                    ?? "Loading..."}
+                    ?? <LoadingSpinner visible />}
             </div>
         </>
     )
