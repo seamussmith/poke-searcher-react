@@ -7,7 +7,9 @@ export default function LoadingSpinner(props: {
 })
 {
     return (
-        <div className="lds-ring">
+        <div className="lds-ring" style={{
+            display: props.visible?"none":"inline-block"
+        }}>
             <div></div>
             <div></div>
             <div></div>
