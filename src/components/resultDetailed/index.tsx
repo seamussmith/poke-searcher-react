@@ -75,24 +75,12 @@ function ResultDetailed(props: {})
                         </div>
                     </Division>
 
-                    {!ready ?
-                        <Division width={8} height={1}>
-                            <LoadingSpinner visible/>
-                        </Division>
-                    :null}
-
                     {/* [ROW 2] */}
 
                     <Division width={5} height={3}>
                         <Evolutions />
                     </Division>
 
-                    {!ready ?
-                        <Division width={8} height={1}>
-                            <LoadingSpinner visible/>
-                        </Division>
-                    :null}
-                    
                     <Division width={3} height={1}>
                         <PkmnInfo />
                     </Division>
