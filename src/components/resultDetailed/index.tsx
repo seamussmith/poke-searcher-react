@@ -6,7 +6,16 @@ import './index.css'
 import CopyClicker from '../copyClicker'
 import SearchResult from "../searchResult"
 import PokemonContext from "./pokemonContext"
-import { Stat } from "./components"
+import {
+    Stat,
+    Label1,
+    Label2,
+    Label,
+    NameLabel,
+    Label0,
+    Division,
+    EvenDivision
+} from "./components"
 
 import { capitalize, stylePokemonName } from '../util/util'
 import { getPkmnByEndpoint, getPkmnByURL } from '../util/PokeAPICache'
@@ -62,19 +71,15 @@ function ResultDetailed(props: {})
                     {/* [ROW 1] */}
 
                     {/* Pokemon name, Portrait, Flairs, Type */}
-                    <Division width={4} height={1}>
-                        <div className='result-detailed__division--pokemon'>
-                            <PkmnMainBanner />
-                        </div>
-                    </Division>
+                    <EvenDivision width={4} height={1}>
+                        <PkmnMainBanner />
+                    </EvenDivision>
 
                     {/* Stats, Info, Gender Ratios */}
-                    <Division width={4} height={1}>
-                        <div className="result-detailed__division--info">
+                    <EvenDivision width={4} height={1}>
                             <BaseStatList />
                             <PkmnGenderRatio />
-                        </div>
-                    </Division>
+                    </EvenDivision>
 
                     {/* [ROW 2] */}
 
@@ -106,24 +111,6 @@ function ResultDetailed(props: {})
     )
 }
 
-function Division(props: {
-    children: React.ReactNode
-    width: number
-    height: number
-})
-{
-    let styles = {
-        "--grid-width": props.width,
-        "--grid-height": props.height
-    } as React.CSSProperties
-
-    return (
-        <div className="result-detailed__division" style={styles}>
-            {props.children}
-        </div>
-    )
-}
-
 function Type(props: {
     type: string | null
     children: React.ReactNode
@@ -149,9 +136,9 @@ function PkmnMainBanner(props: {})
     
     return (
         <>
-            <h2 className='result-detailed__name-detailed'>
-                <span className={`${pokemon.types[0].type.name} result-detailed__label`}>{stylePokemonName(pokemon.name)}</span>
-            </h2>
+            <NameLabel>
+                <Label0 className={pokemon.types[0].type.name}>{stylePokemonName(pokemon.name)}</Label0>
+            </NameLabel>
             <div>
                 {imgElement}
             </div>
