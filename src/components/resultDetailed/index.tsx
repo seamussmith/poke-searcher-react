@@ -15,7 +15,8 @@ import {
     Label0,
     Division,
     EvenDivision,
-    TypeLabel
+    TypeLabel,
+    Flair
 } from "./components"
 
 import { capitalize, stylePokemonName } from '../util/util'
@@ -112,18 +113,6 @@ function ResultDetailed(props: {})
     )
 }
 
-function Type(props: {
-    type: string | null
-    children: React.ReactNode
-})
-{
-    return (
-        <p className={`result-detailed__type ${props.type ?? "result-detailed__type--none"}`}>
-            {props.children}
-        </p>
-    )
-}
-
 function PkmnMainBanner(props: {})
 {
     const { pokemon } = useContext(PokemonContext)
@@ -150,18 +139,6 @@ function PkmnMainBanner(props: {})
                 <TypeLabel typeName={type1} key={type1}></TypeLabel>
             </div>
         </>
-    )
-}
-
-// Element that display's the pokemon's types
-function PkmnTypes(props: {})
-{
-    const { pokemon } = useContext(PokemonContext)
-    return (
-        <div className='result-detailed__types-detailed'>
-            <Type type={pokemon.types[0].type.name} key={pokemon.types[0].type.name}><span>{capitalize(pokemon.types[0].type.name)}</span></Type>
-            <Type type={pokemon.types[1]?.type.name} key={pokemon.types[1]?.type.name}><span>{capitalize(pokemon.types[1]?.type.name ?? "???")}</span></Type>
-        </div>
     )
 }
 
@@ -194,21 +171,6 @@ function PkmnFlairs(props: {})
         <div>
             {flairs}
         </div>
-    )
-}
-
-function Flair(props: {
-    color: string
-    children: React.ReactNode
-})
-{
-    const styles = {
-        "--flair-color": props.color
-    } as React.CSSProperties
-    return (
-        <p className="result-detailed__flair" style={styles}>
-            {props.children}
-        </p>
     )
 }
 

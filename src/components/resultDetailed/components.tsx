@@ -201,11 +201,11 @@ export function Stat(props: {
 // Flair
 
 export const Flair = styled.p<{
-    flairColor: string
+    color: string
 }>`
     color: var(--text-color-inverse);
-    background-color: ${({flairColor}) => flairColor};
-    border: solid ${({flairColor}) => flairColor} 5px;
+    background-color: ${({color}) => color};
+    border: solid ${({color}) => color} 5px;
     font-size: 20pt;
     font-weight: bold;
     margin: 5px 10%;
