@@ -14,7 +14,8 @@ import {
     NameLabel,
     Label0,
     Division,
-    EvenDivision
+    EvenDivision,
+    TypeLabel
 } from "./components"
 
 import { capitalize, stylePokemonName } from '../util/util'
@@ -133,7 +134,8 @@ function PkmnMainBanner(props: {})
                         pokemon.sprites.front_default ??
                         NO_IMAGE }
                         alt={pokemon.name} />
-    
+    const type0 = pokemon.types[0].type.name
+    const type1 = pokemon.types[1]?.type.name
     return (
         <>
             <NameLabel className={pokemon.types[0].type.name}>
@@ -144,7 +146,8 @@ function PkmnMainBanner(props: {})
             </div>
             <div>
                 <PkmnFlairs />
-                <PkmnTypes />
+                <TypeLabel typeName={type0} key={type0}></TypeLabel>
+                <TypeLabel typeName={type1} key={type1}></TypeLabel>
             </div>
         </>
     )
