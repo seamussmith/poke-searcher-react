@@ -81,7 +81,7 @@ function ResultDetailed(props: {})
                 {/* [ROW 2] */}
 
                 <Division width={5} height={3}>
-                    <Evolutions onClick={onPokemonUpdate} />
+                    <Evolutions />
                 </Division>
 
                 <Division width={3} height={1}>
@@ -429,9 +429,7 @@ function SharePokemon(props: {})
     )
 }
 
-function Evolutions(props: {
-    onClick: (pokemon: IPokemon) => void
-})
+function Evolutions(props: {})
 {
     const [pokemonList, setPokemonList] = useState<IPokemon[]|null>(null)
     const { pokemon, species } = useContext(PokemonContext)
@@ -450,7 +448,6 @@ function Evolutions(props: {
             <div className="result-detailed__pokemon-grid">
                 {pokemonList?.map((pkmn) => 
                     <SearchResult
-                    onClick={props.onClick}
                     pokemon={pkmn}
                     disabled={pokemon.name === pkmn.name}
                     key={pkmn.name}/>)
