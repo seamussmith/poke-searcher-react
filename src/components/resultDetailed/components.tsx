@@ -29,6 +29,7 @@ export const Label3 = styled.h3`
 `
 
 export const NameLabel = styled.h1`
+    ${Label}
     font-size: 30pt;
 `
 

@@ -136,8 +136,8 @@ function PkmnMainBanner(props: {})
     
     return (
         <>
-            <NameLabel>
-                <Label0 className={pokemon.types[0].type.name}>{stylePokemonName(pokemon.name)}</Label0>
+            <NameLabel className={pokemon.types[0].type.name}>
+                {stylePokemonName(pokemon.name)}
             </NameLabel>
             <div>
                 {imgElement}
