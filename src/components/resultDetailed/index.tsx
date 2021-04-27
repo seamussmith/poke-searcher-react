@@ -17,6 +17,7 @@ import {
     IAbility
 } from "pokeapi-typescript"
 import { useParams } from 'react-router'
+import LoadingSpinner from '../loadingSpinner'
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 
@@ -28,14 +29,6 @@ function ResultDetailed(props: {})
     const [ready, setReady] = useState(false)
 
     const self = useRef<HTMLDivElement>(null)
-
-    const onPokemonUpdate = (pokemonData: IPokemon) => {
-        getPkmnByURL<IPokemonSpecies>(pokemonData.species.url)
-            .then(speciesData => {
-                setPokemon(pokemonData)
-                setSpecies(speciesData)
-            })
-    }
 
     useEffect(() => {
         if (window.screen.width < 720)
@@ -52,7 +45,7 @@ function ResultDetailed(props: {})
     })
 
     if (!ready)
-        return <></>
+        return <LoadingSpinner visible/>
 
     // Get the latest flavor text
     return (
@@ -424,7 +417,7 @@ function SharePokemon(props: {})
     const { pokemon } = useContext(PokemonContext)
     return (
         <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-            <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}?pkmn=${pokemon.name}`} />
+            <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}`} />
         </p>
     )
 }
