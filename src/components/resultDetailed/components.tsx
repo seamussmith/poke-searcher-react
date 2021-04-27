@@ -214,7 +214,7 @@ export const Flair = styled.p<{
 `
 
 // Type
-export const Type = styled.p`
+export const Type = styled.h1`
     display: inline-block;
     background-color: currentColor;
     text-shadow: 2px 2px 1px var(--shadow-color);
@@ -229,3 +229,12 @@ export const EmptyType = styled(Type)`
     box-shadow: 0 0 10px inset white;
 `
 
+export function TypeLabel(props: {
+    typeName: string | null
+})
+{
+    if (props.typeName == null)
+        return <EmptyType><span>???</span></EmptyType>
+    else
+        return <Type className={props.typeName}><span>{capitalize(props.typeName)}</span></Type>
+}
