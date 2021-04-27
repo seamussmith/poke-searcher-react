@@ -6,6 +6,7 @@ import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon } from "pokeapi-typescript"
 import { GetPokemon, GetPokemonSpecies, MatchQuery, POKEMON_ENDPOINT } from "./components/util/PokeAPICache"
+import LoadingSpinner from './components/loadingSpinner'
 
 function App(props: {})
 {
@@ -14,9 +15,11 @@ function App(props: {})
 
     const [searchResults, setSearchResults] = useState<JSX.Element[]>([])
     const [detailedResult, setDetailedResult] = useState<JSX.Element|null>(null)
+    const [loading, setLoading] = useState(false)
     
     const queryPokeAPI = (query: string) => {
         setDetailedResult(null)
+        setLoading(true)
 
         queryIndex.current += 1
         let thisQueryIndex = queryIndex.current
@@ -25,6 +28,7 @@ function App(props: {})
         if (query === "") // If no query...
         {
             setSearchResults([])
+            setLoading(false)
             return
         }
         
@@ -42,12 +46,13 @@ function App(props: {})
                 // Map the search results into <SearchResult /> components and then display them
                 setSearchResults(pokemonFullData.map(([pokemon, species]) =>
                     <SearchResult pokemon={pokemon} species={species} key={pokemon.name} onClick={pokemon => detailHandler(pokemon)}/>))
+                setLoading(false)
             })
     }
     
     const detailHandler = (pokemon: IPokemon) => {
         setSearchResults([])
-        setDetailedResult(<h1>Loading details...</h1>)
+        setLoading(true)
 
         // Fetch species data from pokemon because
         // it is needed by <ResultDetailed />
@@ -56,6 +61,7 @@ function App(props: {})
                 if (window.screen.width < 720)
                     searchDiv.current?.scrollIntoView()
                 setDetailedResult(<ResultDetailed pokemon={pokemon} pkmnSpecies={species} />)
+                setLoading(false)
             })
     }
 
@@ -87,6 +93,7 @@ function App(props: {})
                     {searchResults}
                 </div>
                 <div className="search__result-detailed-container">
+                    <LoadingSpinner visible={loading}/>
                     {detailedResult}
                 </div>
             </div>
