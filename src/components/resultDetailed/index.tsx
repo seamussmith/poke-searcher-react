@@ -34,10 +34,13 @@ function ResultDetailed(props: {
             .then(speciesData => {
                 setPokemon(pokemonData)
                 setSpecies(speciesData)
-                if (window.screen.width < 720)
-                    self.current?.scrollIntoView()
             })
     }
+
+    useEffect(() => {
+        if (window.screen.width < 720)
+            self.current?.scrollIntoView()
+    })
 
     // Get the latest flavor text
     return (
@@ -397,7 +400,7 @@ function Abilities(props: {})
             <h1 className="result-detailed__label">Abilities</h1>
             <div className="result-detailed__abilities-container">
                 {
-                    abilities?.map((ability) => <Ability ability={ability}/>) ?? "Loading..."
+                    abilities?.map((ability) => <Ability ability={ability} key={ability.id}/>) ?? "Loading..."
                 }
             </div>
         </div>

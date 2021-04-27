@@ -11,7 +11,6 @@ import LoadingSpinner from './components/loadingSpinner'
 function App(props: {})
 {
     const queryIndex = useRef(0)
-    const searchDiv = useRef<HTMLDivElement>(null)
 
     const [searchResults, setSearchResults] = useState<JSX.Element[]>([])
     const [detailedResult, setDetailedResult] = useState<JSX.Element|null>(null)
@@ -58,8 +57,6 @@ function App(props: {})
         // it is needed by <ResultDetailed />
         GetPokemonSpecies(pokemon.species.url)  // Else, fetch the data then put
             .then(species => {                   // the promise in the cache
-                if (window.screen.width < 720)
-                    searchDiv.current?.scrollIntoView()
                 setDetailedResult(<ResultDetailed pokemon={pokemon} pkmnSpecies={species} />)
                 setLoading(false)
             })
@@ -87,7 +84,7 @@ function App(props: {})
 
     return (
         <div className="App">
-            <div className="search" ref={searchDiv}>
+            <div className="search">
                 <SearchBox keyUp={queryPokeAPI} />
                 <div className="search__result-container">
                     {searchResults}
