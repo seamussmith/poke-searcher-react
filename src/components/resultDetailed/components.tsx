@@ -173,7 +173,6 @@ export const StatName = styled.div`
     padding: 0 1ch;
     background-color: var(--primary);
     border-radius: var(--stat-radius) 0 0 var(--stat-radius);
-/*     border: 2px solid red; */
     box-shadow: 1px 0 4px var(--shadow);
     z-index: 1;
     border-right-width: 0px;
