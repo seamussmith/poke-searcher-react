@@ -18,7 +18,7 @@ import {
     TypeLabel,
     Flair,
     StatDiv,
-    Gender
+    Gender,
 } from "./components"
 
 import { capitalize, stylePokemonName } from '../util/util'
@@ -91,9 +91,9 @@ function ResultDetailed(props: {})
                         <Evolutions />
                     </Division>
 
-                    <Division width={3} height={1}>
+                    <EvenDivision width={3} height={1}>
                         <PkmnInfo />
-                    </Division>
+                    </EvenDivision>
 
                     <Division width={3} height={1}>
                         <PokedexEntry />
@@ -275,27 +275,25 @@ function PkmnInfo(props: {})
     if (!eggGroupText.join("")) // Check if there are no egg groups (failsafe)
         eggGroupText = ["N/A"]
     return (
-        <div className="result-detailed__pkmn-info-base">
-            <h2 className="result-detailed__label">Pokemon Info</h2>
-            <div className="result-detailed__pkmn-info">
-                <InfoStat icoName="fas fa-hashtag">
-                    ID {
-                        pokemon.id < 10_000 ?
-                        `#${pokemon.id}` :
-                        "N/A"
-                    }
-                </InfoStat>
-                <InfoStat icoName="fas fa-weight-hanging">
-                    Weight: {pokemon.weight/10}kg
-                </InfoStat>
-                <InfoStat icoName="fas fa-tree">
-                    Likes {species.habitat?.name ?? "no"} environments
-                </InfoStat>
-                <InfoStat icoName="fas fa-egg">
-                    Egg groups: {eggGroupText.join(", ")}
-                </InfoStat>
-            </div>
-        </div>
+        <>
+            <Label2>Pokemon Info</Label2>
+            <InfoStat icoName="fas fa-hashtag">
+                ID {
+                    pokemon.id < 10_000 ?
+                    `#${pokemon.id}` :
+                    "N/A"
+                }
+            </InfoStat>
+            <InfoStat icoName="fas fa-weight-hanging">
+                Weight: {pokemon.weight/10}kg
+            </InfoStat>
+            <InfoStat icoName="fas fa-tree">
+                Likes {species.habitat?.name ?? "no"} environments
+            </InfoStat>
+            <InfoStat icoName="fas fa-egg">
+                Egg groups: {eggGroupText.join(", ")}
+            </InfoStat>
+        </>
     )
 }
 
