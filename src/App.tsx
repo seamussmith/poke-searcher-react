@@ -11,6 +11,16 @@ import LoadingSpinner from './components/loadingSpinner'
 
 function App(props: {})
 {
+    return (
+        <Router>
+            <RealApp />
+        </Router>
+
+    )
+}
+
+function RealApp()
+{
     const queryIndex = useRef(0)
 
     const [searchResults, setSearchResults] = useState<JSX.Element[]>([])
@@ -71,31 +81,28 @@ function App(props: {})
     useEffect(() => {
         document.body.classList.add("dark")
     }, [])
-
+    
     return (
-        <Router>
-            <div className="App">
-                <div className="search">
-                    <div className="loading-container">
-                        <LoadingSpinner visible={loading}/>
-                    </div>
-                    <SearchBox keyUp={queryPokeAPI} />
-                    <Switch>
-                        <Route path="/pokemon/:pkmn">
-                            <div className="search__result-detailed-container">
-                                <ResultDetailed />
-                            </div>
-                        </Route>
-                        <Route path="/">
-                            <div className="search__result-container">
-                                {searchResults}
-                            </div>
-                        </Route>
-                    </Switch>
+        <div className="App">
+            <div className="search">
+                <div className="loading-container">
+                    <LoadingSpinner visible={loading}/>
                 </div>
+                <SearchBox keyUp={queryPokeAPI} />
+                <Switch>
+                    <Route path="/pokemon/:pkmn">
+                        <div className="search__result-detailed-container">
+                            <ResultDetailed />
+                        </div>
+                    </Route>
+                    <Route path="/">
+                        <div className="search__result-container">
+                            {searchResults}
+                        </div>
+                    </Route>
+                </Switch>
             </div>
-        </Router>
-
+        </div>
     )
 }
 //
