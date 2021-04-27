@@ -31,6 +31,9 @@ export const Label3 = styled.h3`
 export const NameLabel = styled.h1`
     ${Label}
     font-size: 30pt;
+    @media (max-width: 720px) {
+        font-size: 25pt;
+    }
 `
 
 // Division Styling
@@ -45,6 +48,12 @@ export const Division = styled.div<{
     background-color: var(--layer-2);
     border-radius: var(--division-radius);
     box-shadow: 1px 2px 0px 0px var(--shadow-color);
+    @media (max-width: 720px) {
+        grid-column: span 8 / auto;
+        grid-row: span 8 / auto;
+    }
+}
+    
 `
 
 export const EvenDivision = styled(Division)`
@@ -60,6 +69,10 @@ export const StatDiv = styled.div`
     align-items: center;
     flex-wrap: wrap;
     padding: 10px;
+`
+
+export const ResultDetailed = styled.div`
+
 `
 
 // Stat bars
