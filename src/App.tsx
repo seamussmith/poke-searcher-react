@@ -5,7 +5,7 @@ import ResultDetailed from './components/resultDetailed'
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies } from "pokeapi-typescript"
-import { getByEndpoint, getByURL, MatchQuery, POKEMON_ENDPOINT } from "./components/util/PokeAPICache"
+import { getPkmnByEndpoint, getPkmnByURL, MatchQuery, POKEMON_ENDPOINT } from "./components/util/PokeAPICache"
 import LoadingSpinner from './components/loadingSpinner'
 
 function App(props: {})
@@ -34,8 +34,8 @@ function App(props: {})
         // query pokeapi for the pokemon
         MatchQuery(query, 30)
             // accumulate all the matches then fetch the pokemon
-            .then(results => Promise.all(results.map(i => getByURL<IPokemon>(i.url))))
-            .then(pokemonData => Promise.all(pokemonData.map(p => Promise.all([p, getByURL<IPokemonSpecies>(p.species.url)]))))
+            .then(results => Promise.all(results.map(i => getPkmnByURL<IPokemon>(i.url))))
+            .then(pokemonData => Promise.all(pokemonData.map(p => Promise.all([p, getPkmnByURL<IPokemonSpecies>(p.species.url)]))))
             .then((pokemonFullData) => {
                 // Fix pop animations
                 // if this is an earlier query, abort
@@ -55,7 +55,7 @@ function App(props: {})
 
         // Fetch species data from pokemon because
         // it is needed by <ResultDetailed />
-        getByURL<IPokemonSpecies>(pokemon.species.url)  // Else, fetch the data then put
+        getPkmnByURL<IPokemonSpecies>(pokemon.species.url)  // Else, fetch the data then put
             .then(species => {                   // the promise in the cache
                 setDetailedResult(<ResultDetailed pokemon={pokemon} pkmnSpecies={species} />)
                 setLoading(false)
@@ -70,7 +70,7 @@ function App(props: {})
         if (pkmn === null) // If variable pkmn is in the query string
             return
 
-        getByURL<IPokemon>(POKEMON_ENDPOINT+pkmn)
+        getPkmnByURL<IPokemon>(POKEMON_ENDPOINT+pkmn)
             .then((data) => {
                 // Pass it to detail handler to render the pokemon
                 detailHandler(data)

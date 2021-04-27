@@ -8,7 +8,7 @@ import SearchResult from "../searchResult"
 import PokemonContext from "./pokemonContext"
 
 import { capitalize, stylePokemonName } from '../util/util'
-import { getByEndpoint, getByURL } from '../util/PokeAPICache'
+import { getPkmnByEndpoint, getPkmnByURL } from '../util/PokeAPICache'
 import {
     IPokemon,
     IPokemonSpecies,
@@ -30,7 +30,7 @@ function ResultDetailed(props: {
     const self = useRef<HTMLDivElement>(null)
 
     const onPokemonUpdate = (pokemonData: IPokemon) => {
-        getByURL<IPokemonSpecies>(pokemonData.species.url)
+        getPkmnByURL<IPokemonSpecies>(pokemonData.species.url)
             .then(speciesData => {
                 setPokemon(pokemonData)
                 setSpecies(speciesData)
@@ -391,7 +391,7 @@ function Abilities(props: {})
     const [abilities, setAbilities] = useState<IAbility[]|null>(null)
 
     useEffect(() => {
-        Promise.all(pokemon.abilities.map((e) => getByURL<IAbility>(e.ability.url)))
+        Promise.all(pokemon.abilities.map((e) => getPkmnByURL<IAbility>(e.ability.url)))
             .then(result => setAbilities(result))
     }, [pokemon])
 
@@ -427,7 +427,7 @@ function Evolutions(props: {
     // when the component mounts
     // componentDidMount
     useEffect(() => {
-        getByURL<IEvolutionChain>(species.evolution_chain.url)
+        getPkmnByURL<IEvolutionChain>(species.evolution_chain.url)
             .then(result => unwrapChain(result)) // vv Push default variants to the top of the list
             .then(pokemons => setPokemonList(pokemons.sort((a, b) => Number(b.is_default) - Number(a.is_default))))
     }, [species.evolution_chain.url])
@@ -469,13 +469,13 @@ async function unwrapChain(evoChain: IEvolutionChain)
     }
 
     // Fetch all the pokemon species data
-    let speciesEntries = await Promise.all(urls.map(url => getByURL<IPokemonSpecies>(url)))
+    let speciesEntries = await Promise.all(urls.map(url => getPkmnByURL<IPokemonSpecies>(url)))
 
     // *external screaming*
     // Fetch all the pokemon data
     let pokemonPromise = Promise.all(
         speciesEntries.map( // Each species has an array of varieties
-            entry => entry.varieties.map(v => getByURL<IPokemon>(v.pokemon.url)) // Fetch each variety in the species
+            entry => entry.varieties.map(v => getPkmnByURL<IPokemon>(v.pokemon.url)) // Fetch each variety in the species
             ).flat()) // Flatten the array
 
     // Return the resulting pokemons

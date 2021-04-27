@@ -25,12 +25,12 @@ export const POKEMON_ENDPOINT = API_ENDPOINT+"/pokemon/"
 export const SPECIES_ENDPOINT = API_ENDPOINT+"/pokemon-species/"
 export const EVOTREE_ENDPOINT = API_ENDPOINT+"/evolution/"
 
-export async function getByURL<T extends s>(query: string): Promise<T>
+export async function getPkmnByURL<T extends s>(query: string): Promise<T>
 {
     return APICache[query] ?? (APICache[query] = fetch(query).then(blob => blob.json()))
 }
 
-export async function getByEndpoint<T>(endpoint: string, param: string): Promise<T>
+export async function getPkmnByEndpoint<T>(endpoint: string, param: string): Promise<T>
 {
     const query = `${API_ENDPOINT}/${endpoint}/${param}`
     return APICache[query] ?? (APICache[query] = fetch(query).then(blob => blob.json()))
