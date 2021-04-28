@@ -46,8 +46,6 @@ function ResultDetailed(props: {})
     const [ready, setReady] = useState(false)
     const firstRender = useRef(true)
 
-    
-
     const self = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -189,7 +187,6 @@ function ResultDetailed(props: {})
 
                 {/* [ROW 4] */}
 
-                {/* TODO: Insert egg group compatability here */}
                 <Division width={8} height={1}>
                     <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
                         <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}`} />
@@ -229,40 +226,6 @@ function PkmnFlairs(props: {})
         <div>
             {flairs}
         </div>
-    )
-}
-
-// Element that displays the pokemon's gender ratio or genderlessness
-function PkmnGenderRatio(props: {})
-{
-    const { species } = useContext(PokemonContext)
-
-    const genderRatio = species.gender_rate
-
-    const femaleRatio = genderRatio/8 * 100 // gender is stored in eighths
-    const maleRatio = 100 - femaleRatio // Get male ratio
-    let genderElements: JSX.Element
-
-    if (genderRatio === -1)
-    {
-        genderElements = (
-            <Gender />
-        )
-    }
-    else
-    {
-        genderElements = (
-            <>
-                <Gender gender="male" ratio={maleRatio}/>
-                <Gender gender="female" ratio={femaleRatio}/>
-            </>
-        )
-    }
-        
-    return (
-        <StatDiv>
-            {genderElements}
-        </StatDiv>
     )
 }
 
