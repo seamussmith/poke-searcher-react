@@ -9,9 +9,7 @@ import {
     Stat,
     Label1,
     Label2,
-    Label,
     NameLabel,
-    Label0,
     Division,
     EvenDivision,
     TypeLabel,
@@ -20,7 +18,6 @@ import {
     Gender,
     ResultDetailedGrid,
     InfoStat,
-    PokemonGrid,
     Ability,
     AbilityContainer,
 } from "./components"
@@ -30,8 +27,6 @@ import { getPkmnByEndpoint, getPkmnByURL } from '../util/PokeAPICache'
 import {
     IPokemon,
     IPokemonSpecies,
-    IEvolutionChain,
-    IChainLink,
     IAbility
 } from "pokeapi-typescript"
 import { useParams } from 'react-router'
