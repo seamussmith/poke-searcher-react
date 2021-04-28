@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState, useRef } from 'react'
 import '../typeColorClasses/typeColorClasses.css'
 
 import CopyClicker from '../copyClicker'
-import SearchResult from "../searchResult"
 import PokemonContext from "./pokemonContext"
 import {
     Stat,
@@ -42,7 +41,6 @@ function ResultDetailed(props: {})
     const history = useHistory()
     const params = useParams<{id:string, name:string}>()
     const [ready, setReady] = useState(false)
-    const firstRender = useRef(true)
 
     const self = useRef<HTMLDivElement>(null)
 
@@ -55,7 +53,6 @@ function ResultDetailed(props: {})
             history.push("/")
             return
         }
-        setReady(false)
         getPkmnByEndpoint<IPokemon>("pokemon", params.id)
             .then(pkmn => {
                 // correct name in url if incorrect
@@ -68,14 +65,13 @@ function ResultDetailed(props: {})
                     .then(spec => {
                         setPokemon(pkmn)
                         setSpecies(spec)
-                        firstRender.current = false
                         setReady(true)
                     })
             })
             .catch(_ => history.push("/"))
     }, [params, history])
 
-    if (firstRender.current)
+    if (ready)
         return <LoadingSpinner visible />
 
     const type0 = pokemon.types[0].type.name
