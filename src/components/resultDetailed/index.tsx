@@ -190,35 +190,6 @@ function ResultDetailed(props: {})
     )
 }
 
-function PkmnMainBanner(props: {})
-{
-    const { pokemon } = useContext(PokemonContext)
-    const imgElement = <img
-                        className='pokeimg'
-                        // other.official-artwork not in interface for some reason
-                        src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
-                        pokemon.sprites.front_default ??
-                        NO_IMAGE }
-                        alt={pokemon.name} />
-    const type0 = pokemon.types[0].type.name
-    const type1 = pokemon.types[1]?.type.name
-    return (
-        <>
-            <NameLabel className={pokemon.types[0].type.name}>
-                {stylePokemonName(pokemon.name)}
-            </NameLabel>
-            <div>
-                {imgElement}
-            </div>
-            <div>
-                <PkmnFlairs />
-                <TypeLabel typeName={type0} key={type0}></TypeLabel>
-                <TypeLabel typeName={type1} key={type1}></TypeLabel>
-            </div>
-        </>
-    )
-}
-
 
 // Element that displays any special attributes the pokemon has (legendary, mega evolution, etc...)
 function PkmnFlairs(props: {})
@@ -247,25 +218,6 @@ function PkmnFlairs(props: {})
     return (
         <div>
             {flairs}
-        </div>
-    )
-}
-
-// Element that generates all the elements for a pokemon's stats
-function BaseStatList(props: {})
-{
-    const { pokemon } = useContext(PokemonContext)
-    return (
-        <div>
-            <Label1>Stats</Label1>
-            <StatDiv>
-                {
-                pokemon.stats.map((stat) =>
-                    <Stat name={stat.stat.name} stat={stat.base_stat} outOf={255} key={stat.stat.name}/>
-                )
-                }
-                <Stat name={"total"} stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)} outOf={1125}/>
-            </StatDiv>
         </div>
     )
 }
@@ -301,57 +253,6 @@ function PkmnGenderRatio(props: {})
         <StatDiv>
             {genderElements}
         </StatDiv>
-    )
-}
-
-// Element for the pokemon's Pokedex flavor text
-function PokedexEntry(props: {})
-{
-    const { species } = useContext(PokemonContext)
-    let latestFlavorText = species.flavor_text_entries
-            .filter((e) => e.language.name === "en")   // get all english entries
-            .reverse()[0]                              // Get the last element
-            .flavor_text.replaceAll("\u000C", ' ')     // Remove weird char that exists in some entries
-            .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
-    return (
-        <>
-            <Label2>Pokedex Desc.</Label2>
-            <p>{latestFlavorText}</p>
-        </>
-    )
-}
-
-// Element that displays the pokemon's extra info 
-function PkmnInfo(props: {})
-{
-    const { pokemon, species } = useContext(PokemonContext)
-            // Format all the egg group names
-    let eggGroupText = species.egg_groups
-                                    .map(
-                                        (e) => capitalize(e.name === "no-eggs" ? "undiscovered" : e.name)
-                                    ) // Map out the egg groups the pokemon is in
-    if (!eggGroupText.join("")) // Check if there are no egg groups (failsafe)
-        eggGroupText = ["N/A"]
-    return (
-        <>
-            <Label2>Pokemon Info</Label2>
-            <InfoStat icoName="fas fa-hashtag">
-                ID {
-                    pokemon.id < 10_000 ?
-                    `#${pokemon.id}` :
-                    "N/A"
-                }
-            </InfoStat>
-            <InfoStat icoName="fas fa-weight-hanging">
-                Weight: {pokemon.weight/10}kg
-            </InfoStat>
-            <InfoStat icoName="fas fa-tree">
-                Likes {species.habitat?.name ?? "no"} environments
-            </InfoStat>
-            <InfoStat icoName="fas fa-egg">
-                Egg groups: {eggGroupText.join(", ")}
-            </InfoStat>
-        </>
     )
 }
 
