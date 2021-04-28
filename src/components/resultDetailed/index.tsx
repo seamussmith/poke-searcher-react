@@ -122,17 +122,17 @@ function ResultDetailed(props: {})
                     <Label1>Stats</Label1>
                     <StatDiv>
                         {
-                        pokemon.stats.map((stat) =>
+                        pokemon.stats.map(({stat:{name}, base_stat}) =>
                             <Stat
-                                name={stat.stat.name}
-                                stat={stat.base_stat}
+                                name={name}
+                                stat={base_stat}
                                 outOf={255}
-                                key={stat.stat.name} />
+                                key={name} />
                         )
                         }
                         <Stat
                             name={"total"}
-                            stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)}
+                            stat={pokemon.stats.map(({base_stat}) => base_stat).reduce((n, c) => n + c)}
                             outOf={1125} />
                     </StatDiv>
                     <Label1>Gender ratio </Label1>
@@ -188,7 +188,7 @@ function ResultDetailed(props: {})
 
                 <Division width={8} height={1}>
                     <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-                        <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}`} />
+                        <CopyClicker copyTxt={window.location.origin + window.location.pathname} />
                     </p>
                 </Division>
             </PokemonContext.Provider>
