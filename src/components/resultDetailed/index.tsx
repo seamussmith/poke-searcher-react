@@ -22,6 +22,8 @@ import {
     ResultDetailedGrid,
     InfoStat,
     PokemonGrid,
+    Ability,
+    AbilityContainer,
 } from "./components"
 
 import { capitalize, stylePokemonName } from '../util/util'
@@ -229,25 +231,6 @@ function PkmnFlairs(props: {})
     )
 }
 
-function Ability(props: {
-    ability: IAbility
-})
-{
-    return (
-        <div className="result-detailed__ability">
-            <div className="result-detailed__ability-name">
-                <Label2>{capitalize(props.ability.name)}</Label2>
-            </div>
-            <div className="result-detailed__ability-desc">
-                <p>
-                    {props.ability.effect_entries.filter((e) => e.language.name === "en")[0].short_effect}
-                </p>
-            </div>
-        </div>
-    )
-}
-
-
 function Abilities(props: {})
 {
     const { pokemon } = useContext(PokemonContext)
@@ -260,13 +243,11 @@ function Abilities(props: {})
     }, [pokemon])
 
     return (
-        <>
-            <div className="result-detailed__abilities-container">
-                {
-                    abilities?.map((ability) => <Ability ability={ability} key={ability.id}/>) ?? <LoadingSpinner visible />
-                }
-            </div>
-        </>
+        <AbilityContainer>
+            {
+                abilities?.map((ability) => <Ability ability={ability} key={ability.id}/>) ?? <LoadingSpinner visible />
+            }
+        </AbilityContainer>
     )
 }
 
