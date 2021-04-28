@@ -19,6 +19,9 @@ import {
     Flair,
     StatDiv,
     Gender,
+    ResultDetailedGrid,
+    InfoStat,
+    PokemonGrid,
 } from "./components"
 
 import { capitalize, stylePokemonName } from '../util/util'
@@ -66,7 +69,7 @@ function ResultDetailed(props: {})
     // Get the latest flavor text
     return (
         <>
-            <div className='result-detailed' ref={self}>
+            <ResultDetailedGrid ref={self}>
                 <PokemonContext.Provider value={{
                     pokemon: pokemon,
                     species: species
@@ -110,7 +113,7 @@ function ResultDetailed(props: {})
                         <SharePokemon />
                     </Division>
                 </PokemonContext.Provider>
-            </div>
+            </ResultDetailedGrid>
         </>
     )
 }
@@ -224,10 +227,10 @@ function PkmnGenderRatio(props: {})
         
     return (
         <div>
-            <h1 className="result-detailed__label">Gender ratio </h1>
-            <div className='result-detailed__gender-rates'>
+            <Label1>Gender ratio </Label1>
+            <StatDiv>
                 {genderElements}
-            </div>
+            </StatDiv>
         </div>
     )
 }
@@ -246,20 +249,6 @@ function PokedexEntry(props: {})
             <Label2>Pokedex Desc.</Label2>
             <p>{latestFlavorText}</p>
         </>
-    )
-}
-
-function InfoStat(props: {
-    icoName: string,
-    children: React.ReactNode
-})
-{
-    return (
-        <div className="result-detailed__pkmn-info-stat">
-            <span className="result-detailed__pkmn-info-icon">
-                <i className={props.icoName}></i>
-            </span> <span>{props.children}</span>
-        </div>
     )
 }
 
@@ -365,14 +354,14 @@ function Evolutions(props: {})
     return (
         <>
             <Label1>Evolutions/Variants</Label1>
-            <div className="result-detailed__pokemon-grid">
+            <PokemonGrid>
                 {pokemonList?.map((pkmn) => 
                     <SearchResult
                     pokemon={pkmn}
                     disabled={pokemon.name === pkmn.name}
                     key={pkmn.name}/>)
                     ?? <LoadingSpinner visible />}
-            </div>
+            </PokemonGrid>
         </>
     )
 }
