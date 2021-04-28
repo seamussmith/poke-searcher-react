@@ -71,7 +71,7 @@ function ResultDetailed(props: {})
             .catch(_ => history.push("/"))
     }, [params, history])
 
-    if (ready)
+    if (!ready)
         return <LoadingSpinner visible />
 
     const type0 = pokemon.types[0].type.name
