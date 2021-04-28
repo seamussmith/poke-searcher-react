@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState, useRef } from 'react'
 
 import '../typeColorClasses/typeColorClasses.css'
-import './index.css'
 
 import CopyClicker from '../copyClicker'
 import SearchResult from "../searchResult"
