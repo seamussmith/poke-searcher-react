@@ -49,6 +49,7 @@ function ResultDetailed(props: {})
 
     const self = useRef<HTMLDivElement>(null)
 
+    // onURLChanged
     useEffect(() => {
         if (window.screen.width < 720)
             self.current?.scrollIntoView()
@@ -64,6 +65,7 @@ function ResultDetailed(props: {})
                     })
             })
     }, [params])
+
     if (firstRender.current)
         return <LoadingSpinner visible />
 
