@@ -25,7 +25,7 @@ export async function getPkmnByURL<T extends s>(query: string): Promise<T>
     return APICache[query] ?? (APICache[query] = fetch(query).then(blob => blob.json()))
 }
 
-export async function getPkmnByEndpoint<T>(endpoint: string, param: string): Promise<T>
+export async function getPkmnByEndpoint<T extends s>(endpoint: string, param: string): Promise<T>
 {
     const query = `${API_ENDPOINT}/${endpoint}/${param}`
     return APICache[query] ?? (APICache[query] = fetch(query).then(blob => blob.json()))
