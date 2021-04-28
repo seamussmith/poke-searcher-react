@@ -1,5 +1,5 @@
 import { IAbility } from "pokeapi-typescript";
-import styled, { AnyStyledComponent, css, ThemedStyledFunction } from "styled-components";
+import styled, { css } from "styled-components";
 import { capitalize } from "../util/util";
 
 // Labels

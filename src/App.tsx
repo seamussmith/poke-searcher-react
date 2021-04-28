@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies } from "pokeapi-typescript"
-import { getPkmnByEndpoint, getPkmnByURL, MatchQuery, POKEMON_ENDPOINT } from "./components/util/PokeAPICache"
+import { getPkmnByURL, MatchQuery } from "./components/util/PokeAPICache"
 import LoadingSpinner from './components/loadingSpinner'
 
 function App(props: {})
@@ -23,12 +23,10 @@ function RealApp()
     const queryIndex = useRef(0)
 
     const [searchResults, setSearchResults] = useState<JSX.Element[]>([])
-    const [detailedResult, setDetailedResult] = useState<JSX.Element|null>(null)
     const [loading, setLoading] = useState(false)
     const history = useHistory()
     
     const queryPokeAPI = (query: string) => {
-        setDetailedResult(null)
         setLoading(true)
         history.push("/")
 

@@ -12,11 +12,6 @@ function SearchResult(props: {
 })
 {
     const pokeData = props.pokemon
-    const onClick = () => {
-        if (props.disabled)
-            return
-        //props.onClick(pokeData)
-    }
     return (
         <Link to={`/${props.pokemon.id}/${props.pokemon.name}`} className={`${props.disabled ? "search-result--disabled":""} search-result`}>
             <div className="search-result__img-container">
