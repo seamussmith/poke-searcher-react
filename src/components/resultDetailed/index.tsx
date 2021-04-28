@@ -29,7 +29,7 @@ import {
     IPokemonSpecies,
     IAbility
 } from "pokeapi-typescript"
-import { useParams } from 'react-router'
+import { useHistory, useParams } from 'react-router'
 import LoadingSpinner from '../loadingSpinner'
 import Evolutions from './evolutions'
 
@@ -39,6 +39,7 @@ function ResultDetailed(props: {})
 {
     const [pokemon, setPokemon] = useState({} as IPokemon)
     const [species, setSpecies] = useState({} as IPokemonSpecies)
+    const history = useHistory()
     const params = useParams<{id:string, name:string}>()
     const [ready, setReady] = useState(false)
     const firstRender = useRef(true)
@@ -52,6 +53,12 @@ function ResultDetailed(props: {})
         setReady(false)
         getPkmnByEndpoint<IPokemon>("pokemon", params.id)
             .then(pkmn => {
+                // correct name in url if incorrect
+                if (pkmn.name !== params.name)
+                {
+                    history.push(`/${pkmn.id}/${pkmn.name}`)
+                    return
+                }
                 getPkmnByURL<IPokemonSpecies>(pkmn.species.url)
                     .then(spec => {
                         setPokemon(pkmn)
