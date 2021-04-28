@@ -40,3 +40,8 @@ export function escapeRegExp(str: string): string
 {
     return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 }
+
+export function isStringPositiveInteger(str: string)
+{
+    return /\d+$/.test(str)
+}
