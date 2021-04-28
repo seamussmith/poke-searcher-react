@@ -73,7 +73,7 @@ function ResultDetailed(props: {})
                     })
             })
             .catch(_ => history.push("/"))
-    }, [params])
+    }, [params, history])
 
     if (firstRender.current)
         return <LoadingSpinner visible />
