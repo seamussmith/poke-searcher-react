@@ -22,7 +22,7 @@ import {
     AbilityContainer,
 } from "./components"
 
-import { capitalize, stylePokemonName } from '../util/util'
+import { capitalize, isStringPositiveInteger, stylePokemonName } from '../util/util'
 import { getPkmnByEndpoint, getPkmnByURL } from '../util/PokeAPICache'
 import {
     IPokemon,
@@ -50,6 +50,11 @@ function ResultDetailed(props: {})
     useEffect(() => {
         if (window.screen.width < 720)
             self.current?.scrollIntoView()
+        if (!isStringPositiveInteger(params.id))
+        {
+            history.push("/")
+            return
+        }
         setReady(false)
         getPkmnByEndpoint<IPokemon>("pokemon", params.id)
             .then(pkmn => {
@@ -67,6 +72,7 @@ function ResultDetailed(props: {})
                         setReady(true)
                     })
             })
+            .catch(_ => history.push("/"))
     }, [params])
 
     if (firstRender.current)
