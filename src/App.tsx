@@ -47,16 +47,16 @@ function RealApp()
         MatchQuery(query, 30)
             // accumulate all the matches then fetch the pokemon
             .then(results => Promise.all(results.map(i => getPkmnByURL<IPokemon>(i.url))))
-            .then(pokemonData => Promise.all(pokemonData.map(p => Promise.all([p, getPkmnByURL<IPokemonSpecies>(p.species.url)]))))
-            .then((pokemonFullData) => {
+            .then((pokemon) => {
+                pokemon.forEach(p => getPkmnByURL<IPokemonSpecies>(p.species.url))
                 // Fix pop animations
                 // if this is an earlier query, abort
                 if (thisQueryIndex < queryIndex.current)
                     return
                 setSearchResults([])
                 // Map the search results into <SearchResult /> components and then display them
-                setSearchResults(pokemonFullData.map(([pokemon, species]) =>
-                    <SearchResult pokemon={pokemon} species={species} key={pokemon.name} />))
+                setSearchResults(pokemon.map(p =>
+                    <SearchResult pokemon={p} key={p.name} />))
                 setLoading(false)
             })
     }
