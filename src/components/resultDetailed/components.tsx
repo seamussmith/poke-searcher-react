@@ -1,3 +1,4 @@
+import { IAbility } from "pokeapi-typescript";
 import styled, { AnyStyledComponent, css, ThemedStyledFunction } from "styled-components";
 import { capitalize } from "../util/util";
 
@@ -370,6 +371,17 @@ export const PokemonGrid = styled.div`
 // Abilities
 
 export const AbilityContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 5px;
+    margin: 5px;
+    @media (max-width: 720px)
+    {
+        grid-template-columns: 1fr;
+    }
+`
+
+export const AbilityDiv = styled.div`
     text-align: center;
     display: grid;
     grid-template-rows: 1fr 1fr;
@@ -396,3 +408,21 @@ export const AbilityDesc = styled.div`
     align-items: center;
     padding: 5px;
 `
+
+export function Ability(props: {
+    ability: IAbility
+})
+{
+    return (
+        <AbilityDiv>
+            <AbilityName>
+                <Label2>{capitalize(props.ability.name)}</Label2>
+            </AbilityName>
+            <AbilityDesc>
+                <p>
+                    {props.ability.effect_entries.filter((e) => e.language.name === "en")[0].short_effect}
+                </p>
+            </AbilityDesc>
+        </AbilityDiv>
+    )
+}
