@@ -89,7 +89,7 @@ function RealApp()
                 </div>
                 <SearchBox keyUp={queryPokeAPI} />
                 <Switch>
-                    <Route path="/pokemon/:pkmn" exact>
+                    <Route path="/:id/:name/" exact>
                         <div className="search__result-detailed-container">
                             <ResultDetailed />
                         </div>

@@ -39,7 +39,7 @@ function ResultDetailed(props: {})
 {
     const [pokemon, setPokemon] = useState({} as IPokemon)
     const [species, setSpecies] = useState({} as IPokemonSpecies)
-    const params = useParams<{pkmn: string}>()
+    const params = useParams<{id:string, name:string}>()
     const [ready, setReady] = useState(false)
     const firstRender = useRef(true)
 
@@ -50,7 +50,7 @@ function ResultDetailed(props: {})
         if (window.screen.width < 720)
             self.current?.scrollIntoView()
         setReady(false)
-        getPkmnByEndpoint<IPokemon>("pokemon", params.pkmn)
+        getPkmnByEndpoint<IPokemon>("pokemon", params.id)
             .then(pkmn => {
                 getPkmnByURL<IPokemonSpecies>(pkmn.species.url)
                     .then(spec => {

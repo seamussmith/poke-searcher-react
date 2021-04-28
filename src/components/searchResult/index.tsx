@@ -18,7 +18,7 @@ function SearchResult(props: {
         //props.onClick(pokeData)
     }
     return (
-        <Link to={`/pokemon/${props.pokemon.name}`} className={`${props.disabled ? "search-result--disabled":""} search-result`}>
+        <Link to={`/${props.pokemon.id}/${props.pokemon.name}`} className={`${props.disabled ? "search-result--disabled":""} search-result`}>
             <div className="search-result__img-container">
                 <img
                 className="search-result__image nofilter"
