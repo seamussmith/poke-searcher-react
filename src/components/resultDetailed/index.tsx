@@ -46,6 +46,8 @@ function ResultDetailed(props: {})
     const [ready, setReady] = useState(false)
     const firstRender = useRef(true)
 
+    
+
     const self = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
@@ -66,6 +68,22 @@ function ResultDetailed(props: {})
     if (firstRender.current)
         return <LoadingSpinner visible />
 
+    const type0 = pokemon.types[0].type.name
+    const type1 = pokemon.types[1]?.type.name
+
+    let eggGroupText = species.egg_groups
+                                    .map(
+                                        (e) => capitalize(e.name === "no-eggs" ? "undiscovered" : e.name)
+                                    ) // Map out the egg groups the pokemon is in
+    if (!eggGroupText.join("")) // Check if there are no egg groups (failsafe)
+        eggGroupText = ["N/A"]
+
+    const latestFlavorText = species.flavor_text_entries
+        .filter((e) => e.language.name === "en")   // get all english entries
+        .reverse()[0]                              // Get the last element
+        .flavor_text.replaceAll("\u000C", ' ')     // Remove weird char that exists in some entries
+        .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
+
     // Get the latest flavor text
     return (
         <>
@@ -79,27 +97,81 @@ function ResultDetailed(props: {})
 
                     {/* Pokemon name, Portrait, Flairs, Type */}
                     <EvenDivision width={4} height={1}>
-                        <PkmnMainBanner />
+                        <NameLabel className={type0}>
+                            {stylePokemonName(pokemon.name)}
+                        </NameLabel>
+                        <div>
+                            <img
+                            className='pokeimg'
+                            // other.official-artwork not in interface for some reason
+                            src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
+                            pokemon.sprites.front_default ??
+                            NO_IMAGE }
+                            alt={pokemon.name} />
+                        </div>
+                        <div>
+                            <PkmnFlairs />
+                            <TypeLabel typeName={type0} key={type0}></TypeLabel>
+                            <TypeLabel typeName={type1} key={type1}></TypeLabel>
+                        </div>
                     </EvenDivision>
 
                     {/* Stats, Info, Gender Ratios */}
                     <EvenDivision width={4} height={1}>
-                            <BaseStatList />
-                            <PkmnGenderRatio />
+                            <div>
+                                <Label1>Stats</Label1>
+                                <StatDiv>
+                                    {
+                                    pokemon.stats.map((stat) =>
+                                        <Stat
+                                            name={stat.stat.name}
+                                            stat={stat.base_stat}
+                                            outOf={255}
+                                            key={stat.stat.name} />
+                                    )
+                                    }
+                                    <Stat
+                                        name={"total"}
+                                        stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)}
+                                        outOf={1125} />
+                                </StatDiv>
+                            </div>
+                            <div>
+                                <Label1>Gender ratio </Label1>
+                                <PkmnGenderRatio />
+                            </div>
                     </EvenDivision>
 
                     {/* [ROW 2] */}
 
                     <Division width={5} height={3}>
+                        <Label1>Evolutions/Variants</Label1>
                         <Evolutions />
                     </Division>
 
                     <EvenDivision width={3} height={1}>
-                        <PkmnInfo />
+                        <Label2>Pokemon Info</Label2>
+                        <InfoStat icoName="fas fa-hashtag">
+                            ID {
+                                pokemon.id < 10_000 ?
+                                `#${pokemon.id}` :
+                                "N/A"
+                            }
+                        </InfoStat>
+                        <InfoStat icoName="fas fa-weight-hanging">
+                            Weight: {pokemon.weight/10}kg
+                        </InfoStat>
+                        <InfoStat icoName="fas fa-tree">
+                            Likes {species.habitat?.name ?? "no"} environments
+                        </InfoStat>
+                        <InfoStat icoName="fas fa-egg">
+                            Egg groups: {eggGroupText.join(", ")}
+                        </InfoStat>
                     </EvenDivision>
 
                     <Division width={3} height={1}>
-                        <PokedexEntry />
+                        <Label2>Pokedex Desc.</Label2>
+                        <p>{latestFlavorText}</p>
                     </Division>
 
                     <Division width={8} height={1}>
@@ -226,12 +298,9 @@ function PkmnGenderRatio(props: {})
     }
         
     return (
-        <div>
-            <Label1>Gender ratio </Label1>
-            <StatDiv>
-                {genderElements}
-            </StatDiv>
-        </div>
+        <StatDiv>
+            {genderElements}
+        </StatDiv>
     )
 }
 
@@ -352,17 +421,14 @@ function Evolutions(props: {})
     }, [species.evolution_chain.url])
 
     return (
-        <>
-            <Label1>Evolutions/Variants</Label1>
-            <PokemonGrid>
-                {pokemonList?.map((pkmn) => 
-                    <SearchResult
-                    pokemon={pkmn}
-                    disabled={pokemon.name === pkmn.name}
-                    key={pkmn.name}/>)
-                    ?? <LoadingSpinner visible />}
-            </PokemonGrid>
-        </>
+        <PokemonGrid>
+            {pokemonList?.map((pkmn) => 
+                <SearchResult
+                pokemon={pkmn}
+                disabled={pokemon.name === pkmn.name}
+                key={pkmn.name}/>)
+                ?? <LoadingSpinner visible />}
+        </PokemonGrid>
     )
 }
 
