@@ -84,109 +84,119 @@ function ResultDetailed(props: {})
         .flavor_text.replaceAll("\u000C", ' ')     // Remove weird char that exists in some entries
         .replaceAll(/(\r\n|\n|\r)/gm," ")          // Remove newline chars
 
+    const genderRatio = species.gender_rate
+
+    const femaleRatio = genderRatio/8 * 100 // gender is stored in eighths
+    const maleRatio = 100 - femaleRatio // Get male ratio
+
     // Get the latest flavor text
     return (
-        <>
-            <ResultDetailedGrid ref={self}>
-                <PokemonContext.Provider value={{
-                    pokemon: pokemon,
-                    species: species
-                }}>
+        <ResultDetailedGrid ref={self}>
+            <PokemonContext.Provider value={{
+                pokemon: pokemon,
+                species: species
+            }}>
 
-                    {/* [ROW 1] */}
+                {/* [ROW 1] */}
 
-                    {/* Pokemon name, Portrait, Flairs, Type */}
-                    <EvenDivision width={4} height={1}>
-                        <NameLabel className={type0}>
-                            {stylePokemonName(pokemon.name)}
-                        </NameLabel>
-                        <div>
-                            <img
-                            className='pokeimg'
-                            // other.official-artwork not in interface for some reason
-                            src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
-                            pokemon.sprites.front_default ??
-                            NO_IMAGE }
-                            alt={pokemon.name} />
-                        </div>
-                        <div>
-                            <PkmnFlairs />
-                            <TypeLabel typeName={type0} key={type0}></TypeLabel>
-                            <TypeLabel typeName={type1} key={type1}></TypeLabel>
-                        </div>
-                    </EvenDivision>
+                {/* Pokemon name, Portrait, Flairs, Type */}
+                <EvenDivision width={4} height={1}>
+                    <NameLabel className={type0}>
+                        {stylePokemonName(pokemon.name)}
+                    </NameLabel>
+                    <div>
+                        <img
+                        className='pokeimg'
+                        // other.official-artwork not in interface for some reason
+                        src={ (pokemon.sprites as any).other["official-artwork"].front_default ??
+                        pokemon.sprites.front_default ??
+                        NO_IMAGE }
+                        alt={pokemon.name} />
+                    </div>
+                    <div>
+                        <PkmnFlairs />
+                        <TypeLabel typeName={type0} key={type0}></TypeLabel>
+                        <TypeLabel typeName={type1} key={type1}></TypeLabel>
+                    </div>
+                </EvenDivision>
 
-                    {/* Stats, Info, Gender Ratios */}
-                    <EvenDivision width={4} height={1}>
-                            <div>
-                                <Label1>Stats</Label1>
-                                <StatDiv>
-                                    {
-                                    pokemon.stats.map((stat) =>
-                                        <Stat
-                                            name={stat.stat.name}
-                                            stat={stat.base_stat}
-                                            outOf={255}
-                                            key={stat.stat.name} />
-                                    )
-                                    }
-                                    <Stat
-                                        name={"total"}
-                                        stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)}
-                                        outOf={1125} />
-                                </StatDiv>
-                            </div>
-                            <div>
-                                <Label1>Gender ratio </Label1>
-                                <PkmnGenderRatio />
-                            </div>
-                    </EvenDivision>
+                {/* Stats, Gender Ratio */}
+                <EvenDivision width={4} height={1}>
+                    <Label1>Stats</Label1>
+                    <StatDiv>
+                        {
+                        pokemon.stats.map((stat) =>
+                            <Stat
+                                name={stat.stat.name}
+                                stat={stat.base_stat}
+                                outOf={255}
+                                key={stat.stat.name} />
+                        )
+                        }
+                        <Stat
+                            name={"total"}
+                            stat={pokemon.stats.map(stat => stat.base_stat).reduce((n, c) => n + c)}
+                            outOf={1125} />
+                    </StatDiv>
+                    <Label1>Gender ratio </Label1>
+                    <StatDiv>
+                        {genderRatio !== -1 ?
+                        <>
+                            <Gender gender="male" ratio={maleRatio}/>
+                            <Gender gender="female" ratio={femaleRatio}/>
+                        </> :
+                            <Gender />
+                        }
+                    </StatDiv>
+                </EvenDivision>
 
-                    {/* [ROW 2] */}
+                {/* [ROW 2] */}
 
-                    <Division width={5} height={3}>
-                        <Label1>Evolutions/Variants</Label1>
-                        <Evolutions />
-                    </Division>
+                <Division width={5} height={3}>
+                    <Label1>Evolutions/Variants</Label1>
+                    <Evolutions />
+                </Division>
 
-                    <EvenDivision width={3} height={1}>
-                        <Label2>Pokemon Info</Label2>
-                        <InfoStat icoName="fas fa-hashtag">
-                            ID {
-                                pokemon.id < 10_000 ?
-                                `#${pokemon.id}` :
-                                "N/A"
-                            }
-                        </InfoStat>
-                        <InfoStat icoName="fas fa-weight-hanging">
-                            Weight: {pokemon.weight/10}kg
-                        </InfoStat>
-                        <InfoStat icoName="fas fa-tree">
-                            Likes {species.habitat?.name ?? "no"} environments
-                        </InfoStat>
-                        <InfoStat icoName="fas fa-egg">
-                            Egg groups: {eggGroupText.join(", ")}
-                        </InfoStat>
-                    </EvenDivision>
+                <EvenDivision width={3} height={1}>
+                    <Label2>Pokemon Info</Label2>
+                    <InfoStat icoName="fas fa-hashtag">
+                        ID {
+                            pokemon.id < 10_000 ?
+                            `#${pokemon.id}` :
+                            "N/A"
+                        }
+                    </InfoStat>
+                    <InfoStat icoName="fas fa-weight-hanging">
+                        Weight: {pokemon.weight/10}kg
+                    </InfoStat>
+                    <InfoStat icoName="fas fa-tree">
+                        Likes {species.habitat?.name ?? "no"} environments
+                    </InfoStat>
+                    <InfoStat icoName="fas fa-egg">
+                        Egg groups: {eggGroupText.join(", ")}
+                    </InfoStat>
+                </EvenDivision>
 
-                    <Division width={3} height={1}>
-                        <Label2>Pokedex Desc.</Label2>
-                        <p>{latestFlavorText}</p>
-                    </Division>
+                <Division width={3} height={1}>
+                    <Label2>Pokedex Desc.</Label2>
+                    <p>{latestFlavorText}</p>
+                </Division>
 
-                    <Division width={8} height={1}>
-                        <Abilities />
-                    </Division>
+                <Division width={8} height={1}>
+                    <Label1>Abilities</Label1>
+                    <Abilities />
+                </Division>
 
-                    {/* [ROW 4] */}
+                {/* [ROW 4] */}
 
-                    {/* TODO: Insert egg group compatability here */}
-                    <Division width={8} height={1}>
-                        <SharePokemon />
-                    </Division>
-                </PokemonContext.Provider>
-            </ResultDetailedGrid>
-        </>
+                {/* TODO: Insert egg group compatability here */}
+                <Division width={8} height={1}>
+                    <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
+                        <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}`} />
+                    </p>
+                </Division>
+            </PokemonContext.Provider>
+        </ResultDetailedGrid>
     )
 }
 
@@ -288,23 +298,12 @@ function Abilities(props: {})
 
     return (
         <>
-            <Label1>Abilities</Label1>
             <div className="result-detailed__abilities-container">
                 {
                     abilities?.map((ability) => <Ability ability={ability} key={ability.id}/>) ?? <LoadingSpinner visible />
                 }
             </div>
         </>
-    )
-}
-
-function SharePokemon(props: {})
-{
-    const { pokemon } = useContext(PokemonContext)
-    return (
-        <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-            <CopyClicker copyTxt={`${window.location.origin + window.location.pathname}`} />
-        </p>
     )
 }
 
