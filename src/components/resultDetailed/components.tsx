@@ -69,7 +69,7 @@ export const StatDiv = styled.div`
     padding: 10px;
 `
 
-export const ResultDetailed = styled.div`
+export const ResultDetailedGrid = styled.div`
     text-align: center;
     display: grid;
     grid-template-columns: repeat(8, 1fr); 
