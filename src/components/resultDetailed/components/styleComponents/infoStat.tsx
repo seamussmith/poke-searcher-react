@@ -1,7 +1,6 @@
+import styled from "styled-components"
 
 // InfoStat
-
-import styled from "styled-components"
 
 export const InfoStatParent = styled.div`
     display: flex;

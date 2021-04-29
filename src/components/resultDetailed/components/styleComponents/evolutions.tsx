@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const EvolutionsGrid = styled.div`
     background-color: var(--layer-0);
     display: grid;

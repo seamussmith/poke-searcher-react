@@ -1,7 +1,6 @@
+import styled from "styled-components"
 
 // Gender
-
-import styled from "styled-components"
 
 const GenderColors: any = {
     "male": "var(--male-stat-background)",

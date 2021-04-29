@@ -1,7 +1,6 @@
+import styled from "styled-components";
 
 // Flair
-
-import styled from "styled-components";
 
 export const Flair = styled.p<{
     color: string

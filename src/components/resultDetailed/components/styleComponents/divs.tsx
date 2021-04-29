@@ -1,7 +1,6 @@
+import styled from "styled-components"
 
 // Division Styling
-
-import styled from "styled-components"
 
 export const Division = styled.div<{
     width?: number

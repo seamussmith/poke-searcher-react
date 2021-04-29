@@ -1,8 +1,6 @@
+import styled, { css } from "styled-components"
 
 // Stat bars
-
-import styled, { css } from "styled-components"
-import { capitalize } from "../../../util/util"
 
 const StatColors: any = {
     "hp": css`

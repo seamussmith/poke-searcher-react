@@ -1,7 +1,6 @@
+import styled, { css } from "styled-components"
 
 // Labels
-
-import styled, { css } from "styled-components"
 
 export const Label = css`
     border-bottom: solid 2px transparent;
