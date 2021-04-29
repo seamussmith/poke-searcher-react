@@ -11,7 +11,6 @@ export function Evolutions(props: {})
     const [pokemonList, setPokemonList] = useState<IPokemon[]|null>(null)
     const { pokemon, species } = useContext(PokemonContext)
 
-    // when the component mounts
     // componentDidMount
     useEffect(() => {
         getPkmnByURL<IEvolutionChain>(species.evolution_chain.url)
@@ -37,6 +36,10 @@ async function unwrapChain(evoChain: IEvolutionChain)
     let urls: string[] = []
     // stack of evolves_to properties
     let evoStack: IChainLink[] = []
+
+    // Edge case where the chain is empty
+    if (evoChain.chain == null)
+        return []
 
     // push the first evolution onto the stack
     evoStack.push(evoChain.chain)
