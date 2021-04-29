@@ -4,7 +4,7 @@
 import { IAbility } from "pokeapi-typescript"
 import React from "react"
 import styled from "styled-components"
-import { capitalize } from "../../util/util"
+import { capitalize } from "../../../util/util"
 import { Label2 } from "./label"
 
 export const AbilityContainer = styled.div`

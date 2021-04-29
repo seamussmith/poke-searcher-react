@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import { capitalize } from "../../util/util"
+import { capitalize } from "../../../util/util"
 
 // Type
 export const Type = styled.h1`
