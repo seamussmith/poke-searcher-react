@@ -93,7 +93,8 @@ function RealApp()
     )
 }
 
-function WackyRedirect() {
+function WackyRedirect()
+{
     const params = useParams<{name:string}>()
     const history = useHistory()
     const [id, setId] = useState<number|null>(null)
