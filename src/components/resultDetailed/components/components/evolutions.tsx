@@ -38,7 +38,7 @@ async function unwrapChain(evoChain: IEvolutionChain)
     let evoStack: IChainLink[] = []
 
     // Edge case where the chain is empty
-    if (evoChain.chain == null)
+    if (evoChain.chain == null) // null and undefined are same with loose equality
         return []
 
     // push the first evolution onto the stack
