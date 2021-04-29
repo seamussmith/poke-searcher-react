@@ -47,7 +47,7 @@ async function unwrapChain(evoChain: IEvolutionChain)
     while (evoStack.length !== 0)
     {
         // pop the first evolution off the evo stack
-        let item = evoStack.pop()
+        const item = evoStack.pop()
         // push the evolution's species data into result
         urls.push(item!.species.url)
         // push all evolutions to the stack
@@ -55,11 +55,11 @@ async function unwrapChain(evoChain: IEvolutionChain)
     }
 
     // Fetch all the pokemon species data
-    let speciesEntries = await Promise.all(urls.map(url => getPkmnByURL<IPokemonSpecies>(url)))
+    const speciesEntries = await Promise.all(urls.map(url => getPkmnByURL<IPokemonSpecies>(url)))
 
     // *external screaming*
     // Fetch all the pokemon data
-    let pokemonPromise = Promise.all(
+    const pokemonPromise = Promise.all(
         speciesEntries.map( // Each species has an array of varieties
             entry => entry.varieties.map(v => getPkmnByURL<IPokemon>(v.pokemon.url)) // Fetch each variety in the species
             ).flat()) // Flatten the array
