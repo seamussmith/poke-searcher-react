@@ -41,7 +41,7 @@ export const ResultDetailedGrid = styled.div`
     gap: 10px;
 
     --pokemon-color: none;
-    width: 1000px;
+    width: 60vw;
     transform-origin: top;
     border-color: var(--pokemon-color);
     background-color: var(--layer-1);
@@ -49,4 +49,10 @@ export const ResultDetailedGrid = styled.div`
     box-shadow: 1px 2px 2px 1px var(--shadow-color);
     padding: 10px;
     margin: 1% 0;
+    @media (max-width: 1280px) {
+        width: 80vw;
+    }
+    @media (max-width: 900px) {
+        width: 100vw;
+    }
 `
