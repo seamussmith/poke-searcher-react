@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import SearchBox from './components/searchBox'
 import SearchResult from './components/searchResult'
 import ResultDetailed from './components/resultDetailed'
-import { BrowserRouter as Router, Route, Switch, useHistory } from "react-router-dom"
+import { BrowserRouter as Router, Redirect, Route, Switch, useHistory, useParams } from "react-router-dom"
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies } from "pokeapi-typescript"
@@ -59,22 +59,6 @@ function RealApp()
             })
     }
 
-    // useEffect(() => {
-    //     // Handling pkmn query string variable
-    //     let url_string = window.location.href
-    //     let url = new URL(url_string)
-    //     let pkmn = url.searchParams.get("pkmn")
-    //     if (pkmn === null) // If variable pkmn is in the query string
-    //         return
-
-    //     getPkmnByEndpoint<IPokemon>("pokemon", pkmn)
-    //         .then((data) => {
-    //             // Pass it to detail handler to render the pokemon
-    //             //detailHandler(data)
-    //         })
-    //         .catch(() => console.log(`Failed to grab ${pkmn}`))
-    // }, [])
-
     useEffect(() => {
         document.body.classList.add("dark")
     }, [])
@@ -92,6 +76,12 @@ function RealApp()
                             <ResultDetailed />
                         </div>
                     </Route>
+                    <Route path="/:name/" exact>
+                        <WackyRedirect />
+                        <div className="search__result-detailed-container">
+                            <LoadingSpinner visible/>
+                        </div>
+                    </Route>
                     <Route path="/">
                         <div className="search__result-container">
                             {searchResults}
@@ -101,6 +91,30 @@ function RealApp()
             </div>
         </div>
     )
+}
+
+function WackyRedirect() {
+    const params = useParams<{name:string}>()
+    const history = useHistory()
+    const [id, setId] = useState<number|null>(null)
+
+    useEffect(() => {
+        MatchQuery(params.name)
+            .then(result => {
+                const foundResult = result.find(e => e.name === params.name)
+                if (foundResult === undefined)
+                {
+                    history.push("/")
+                    return
+                }
+                setId(parseInt(foundResult!.url.split("/").slice(-2)[0]))
+            })
+    }, [params])
+
+    if (id == null)
+        return null
+
+    return <Redirect to={`/${id}/${params.name}/`}/>
 }
 //
 export default App
