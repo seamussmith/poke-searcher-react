@@ -2,6 +2,30 @@ import styled from "styled-components"
 
 // Division Styling
 
+export const ResultDetailedGrid = styled.div`
+    text-align: center;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr); 
+
+    gap: 10px;
+
+    --pokemon-color: none;
+    width: 60vw;
+    transform-origin: top;
+    border-color: var(--pokemon-color);
+    background-color: var(--layer-1);
+    border-radius: var(--division-radius);
+    box-shadow: 1px 2px 2px 1px var(--shadow-color);
+    padding: 10px;
+    margin: 1% 0;
+    @media (max-width: 1280px) {
+        width: 80vw;
+    }
+    @media (max-width: 900px) {
+        width: 100vw;
+    }
+`
+
 export const Division = styled.div<{
     width?: number
     height?: number
@@ -31,28 +55,4 @@ export const StatDiv = styled.div`
     align-items: center;
     flex-wrap: wrap;
     padding: 10px;
-`
-
-export const ResultDetailedGrid = styled.div`
-    text-align: center;
-    display: grid;
-    grid-template-columns: repeat(8, 1fr); 
-
-    gap: 10px;
-
-    --pokemon-color: none;
-    width: 60vw;
-    transform-origin: top;
-    border-color: var(--pokemon-color);
-    background-color: var(--layer-1);
-    border-radius: var(--division-radius);
-    box-shadow: 1px 2px 2px 1px var(--shadow-color);
-    padding: 10px;
-    margin: 1% 0;
-    @media (max-width: 1280px) {
-        width: 80vw;
-    }
-    @media (max-width: 900px) {
-        width: 100vw;
-    }
 `
