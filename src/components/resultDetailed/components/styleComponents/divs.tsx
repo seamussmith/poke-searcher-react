@@ -21,7 +21,7 @@ export const ResultDetailedGrid = styled.div`
     @media (max-width: 1280px) {
         width: 80vw;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 1024px) {
         width: 100vw;
     }
 `
@@ -36,7 +36,7 @@ export const Division = styled.div<{
     background-color: var(--layer-2);
     border-radius: var(--division-radius);
     box-shadow: 1px 2px 0px 0px var(--shadow-color);
-    @media (max-width: 720px) {
+    @media (max-width: 800px) {
         grid-column: span 8 / auto;
         grid-row: span 8 / auto;
     }
