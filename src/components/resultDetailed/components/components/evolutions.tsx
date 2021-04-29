@@ -1,12 +1,12 @@
 import { IChainLink, IEvolutionChain, IPokemon, IPokemonSpecies } from "pokeapi-typescript"
 import React, { useContext, useEffect, useState } from "react"
-import LoadingSpinner from "../loadingSpinner"
-import SearchResult from "../searchResult"
-import { getPkmnByURL } from "../util/PokeAPICache"
-import { PokemonGrid } from "./components"
-import PokemonContext from "./pokemonContext"
+import LoadingSpinner from "../../../loadingSpinner"
+import SearchResult from "../../../searchResult"
+import { getPkmnByURL } from "../../../util/PokeAPICache"
+import { EvolutionsGrid } from "../styleComponents/evolutions"
+import PokemonContext from "../../pokemonContext"
 
-export default function Evolutions(props: {})
+export function Evolutions(props: {})
 {
     const [pokemonList, setPokemonList] = useState<IPokemon[]|null>(null)
     const { pokemon, species } = useContext(PokemonContext)
@@ -20,14 +20,14 @@ export default function Evolutions(props: {})
     }, [species.evolution_chain.url])
 
     return (
-        <PokemonGrid>
+        <EvolutionsGrid>
             {pokemonList?.map((pkmn) => 
                 <SearchResult
                 pokemon={pkmn}
                 disabled={pokemon.name === pkmn.name}
                 key={pkmn.name}/>)
                 ?? <LoadingSpinner visible />}
-        </PokemonGrid>
+        </EvolutionsGrid>
     )
 }
 

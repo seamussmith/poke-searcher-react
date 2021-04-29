@@ -118,23 +118,3 @@ export const StatName = styled.div`
     z-index: 1;
     border-right-width: 0px;
 `
-
-export function Stat(props: {
-    name: string
-    outOf: number
-    stat: number
-})
-{
-    return (
-        <StatCmp name={props.name}>
-            <StatName>
-                {capitalize(props.name).replaceAll("-", " ")}
-            </StatName>
-            <StatBarContainer>
-                <StatBar stat={props.stat} outOf={props.outOf}>
-                    {props.stat}
-                </StatBar>
-            </StatBarContainer>
-        </StatCmp>
-    )
-}

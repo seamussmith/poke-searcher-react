@@ -16,13 +16,3 @@ export const EmptyType = styled(Type)`
     background-color: transparent;
     box-shadow: 0 0 10px inset white;
 `
-
-export function TypeLabel(props: {
-    typeName: string | null
-})
-{
-    if (props.typeName == null)
-        return <EmptyType><span>???</span></EmptyType>
-    else
-        return <Type className={props.typeName}><span>{capitalize(props.typeName)}</span></Type>
-}

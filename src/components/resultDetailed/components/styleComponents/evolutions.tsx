@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const PokemonGrid = styled.div`
+export const EvolutionsGrid = styled.div`
     background-color: var(--layer-0);
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));

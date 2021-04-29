@@ -19,6 +19,7 @@ import {
     InfoStat,
     Ability,
     AbilityContainer,
+    Evolutions
 } from "./components"
 
 import { capitalize, isStringPositiveInteger, stylePokemonName } from '../util/util'
@@ -30,7 +31,6 @@ import {
 } from "pokeapi-typescript"
 import { useHistory, useParams } from 'react-router'
 import LoadingSpinner from '../loadingSpinner'
-import Evolutions from './evolutions'
 
 const NO_IMAGE = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/399.png"
 

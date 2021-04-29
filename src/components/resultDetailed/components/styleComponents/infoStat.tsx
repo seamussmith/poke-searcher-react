@@ -25,17 +25,3 @@ export const InfoStatIcon = styled.div`
     padding: 15px;
     margin: 0px 1ch;
 `
-
-export function InfoStat(props: {
-    icoName: string,
-    children: React.ReactNode
-})
-{
-    return (
-        <InfoStatParent>
-            <InfoStatIcon>
-                <i className={props.icoName}></i>
-            </InfoStatIcon> <span>{props.children}</span>
-        </InfoStatParent>
-    )
-}

@@ -22,20 +22,3 @@ export const GenderLabel = styled.div<{
     box-shadow: 1px 2px 0px 0px var(--shadow-color);
     margin: 5px;
 `
-
-export function Gender(props: {
-    gender?: "male" | "female"
-    ratio?: number
-    children?: React.ReactNode 
-})
-{
-    const genderMap: any = {
-        "male": <i className="fas fa-mars"></i>,
-        "female": <i className="fas fa-venus"></i>
-    }
-    return (
-        <GenderLabel gender={props.gender ?? ""}>
-            <h1>{genderMap[props.gender ?? ""] ?? "Genderless"} {props.ratio}{props.gender && "%"}</h1>
-        </GenderLabel>
-    )
-}
