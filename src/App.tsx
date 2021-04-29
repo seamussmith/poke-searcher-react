@@ -109,7 +109,7 @@ function WackyRedirect() {
                 }
                 setId(parseInt(foundResult!.url.split("/").slice(-2)[0]))
             })
-    }, [params])
+    }, [params, history])
 
     if (id == null)
         return null
