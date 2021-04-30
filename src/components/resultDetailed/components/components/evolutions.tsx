@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react"
 import LoadingSpinner from "../../../loadingSpinner"
 import SearchResult from "../../../searchResult"
 import { getPkmnByURL } from "../../../util/PokeAPICache"
-import { EvolutionsGrid } from "../styleComponents/evolutions"
+import { EvolutionsGrid } from ".."
 import PokemonContext from "../../pokemonContext"
 
 export function Evolutions(props: {})
