@@ -19,7 +19,8 @@ import {
     InfoStat,
     Ability,
     AbilityContainer,
-    Evolutions
+    Evolutions,
+    PokedexDesc
 } from "./components"
 
 import { capitalize, isStringPositiveInteger, stylePokemonName } from '../util/util'
@@ -185,7 +186,7 @@ function ResultDetailed(props: {})
 
                 <Division width={3} height={1}>
                     <Label2>Pokedex Desc.</Label2>
-                    <p>{latestFlavorText}</p>
+                    <PokedexDesc>{latestFlavorText}</PokedexDesc>
                 </Division>
 
                 <Division width={8} height={1}>

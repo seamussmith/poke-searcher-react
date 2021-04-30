@@ -7,6 +7,7 @@ export * from "./styleComponents/label"
 export * from "./styleComponents/evolutions"
 export * from "./styleComponents/stat"
 export * from "./styleComponents/type"
+export * from "./styleComponents/pokedexDesc"
 
 export * from "./components/ability"
 export * from "./components/evolutions"
