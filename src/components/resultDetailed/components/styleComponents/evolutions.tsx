@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const EvolutionsGrid = styled.div`
     background-color: var(--layer-0);
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 2fr));
+    grid-template-columns: repeat(auto-fit, minmax(275px, 2fr));
     grid-auto-rows: 150px;
     justify-content: center;
 
