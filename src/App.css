@@ -31,6 +31,7 @@ html {
     --female-stat-background: rgb(126, 35, 81);
     --shadow-color: rgb(10, 10, 10);
     --link-color: lightblue;
+    --link-hover: hsl(195, 63%, 66%);
     --text-color: white;
     --text-color-inverse: black
 }
