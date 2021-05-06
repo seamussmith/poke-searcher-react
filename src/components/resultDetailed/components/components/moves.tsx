@@ -15,9 +15,7 @@ export function Moves(props: {})
     const { pokemon } = useContext(pokemonContext)
     useEffect(() => {
         Promise.all(pokemon.moves.map(e => getPkmnByURL<IMove>(e.move.url)))
-            .then(result => {
-                setMoves(result)
-            })
+            .then(result => setMoves(result))
     }, [pokemon])
     return (
         <MovesGrid>
