@@ -159,7 +159,7 @@ function ResultDetailed(props: {})
 
                 {/* [ROW 2] */}
 
-                <Division width={5} height={3}>
+                <Division width={5} height={2}>
                     <Label1>Evolutions/Variants</Label1>
                     <Evolutions />
                 </Division>
@@ -189,7 +189,12 @@ function ResultDetailed(props: {})
                     <PokedexDesc>{latestFlavorText}</PokedexDesc>
                 </Division>
 
-                <Division width={8} height={1}>
+                <Division width={5} height={1}>
+                    <Label1>Moves</Label1>
+                    
+                </Division>
+
+                <Division width={3} height={1}>
                     <Label1>Abilities</Label1>
                     <Abilities />
                 </Division>
