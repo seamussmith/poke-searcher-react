@@ -184,10 +184,10 @@ function ResultDetailed(props: {})
                     </InfoStat>
                 </EvenDivision>
 
-                <Division width={3} height={1}>
-                    <Label2>Pokedex Desc.</Label2>
+                <EvenDivision width={3} height={1}>
+                    <Label1>Pokedex Desc.</Label1>
                     <PokedexDesc>{latestFlavorText}</PokedexDesc>
-                </Division>
+                </EvenDivision>
 
                 <Division width={5} height={1}>
                     <Label1>Moves</Label1>
