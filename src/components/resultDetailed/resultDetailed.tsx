@@ -20,7 +20,8 @@ import {
     Ability,
     AbilityContainer,
     Evolutions,
-    PokedexDesc
+    PokedexDesc,
+    Moves
 } from "./components"
 
 import { capitalize, isStringPositiveInteger, stylePokemonName } from '../util/util'
@@ -191,7 +192,7 @@ function ResultDetailed(props: {})
 
                 <Division width={5} height={1}>
                     <Label1>Moves</Label1>
-                    
+                    <Moves />
                 </Division>
 
                 <Division width={3} height={1}>
