@@ -11,21 +11,17 @@ import { Move, MoveType } from "../styleComponents/moves";
 
 export function Moves(props: {})
 {
-    const [moves, setMoves] = useState<IMove[]>([])
-    const [ready, setReady] = useState(false)
+    const [moves, setMoves] = useState<IMove[]|null>(null)
     const { pokemon } = useContext(pokemonContext)
     useEffect(() => {
         Promise.all(pokemon.moves.map(e => getPkmnByURL<IMove>(e.move.url)))
             .then(result => {
                 setMoves(result)
-                setReady(true)
             })
     }, [pokemon])
-    if (!ready)
-        return <LoadingSpinner visible />
     return (
         <MovesGrid>
-            {moves.map(e => (
+            {moves?.map(e => (
                 <Move key={e.id}>
                     <Label1>{e.name.split("-").map(e => capitalize(e)).join(" ")}</Label1>
                     <Label2>Type</Label2>
@@ -46,7 +42,7 @@ export function Moves(props: {})
                         }
                     </p>
                 </Move>
-            ))}
+            )) ?? <LoadingSpinner visible />}
         </MovesGrid>
     )
 }
