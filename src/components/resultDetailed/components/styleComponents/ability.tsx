@@ -4,13 +4,9 @@ import styled from "styled-components"
 
 export const AbilityContainer = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    grid-template-columns: 1fr;
     gap: 5px;
     margin: 5px;
-    @media (max-width: 720px)
-    {
-        grid-template-columns: 1fr;
-    }
 `
 
 export const AbilityDiv = styled.div`
