@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const MovesGrid = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, 2fr));
+    grid-template-columns: 1fr;
     height: 500px;
     overflow: auto;
     background-color: var(--layer-0);
