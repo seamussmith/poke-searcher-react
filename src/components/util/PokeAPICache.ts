@@ -1,10 +1,11 @@
-import { IPokemon, IPokemonSpecies, IEvolutionChain, INamedApiResourceList, IAbility } from "pokeapi-typescript"
+import { IPokemon, IPokemonSpecies, IEvolutionChain, INamedApiResourceList, IAbility, IMove } from "pokeapi-typescript"
 
 type s =
     IPokemon |
     IPokemonSpecies |
     IEvolutionChain |
-    IAbility
+    IAbility |
+    IMove
 
 export const APICache: Record<string, Promise<any>> = {}
 export let PokeList: INamedApiResourceList<IPokemon>|null = null
