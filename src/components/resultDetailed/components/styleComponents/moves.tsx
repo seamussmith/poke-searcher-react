@@ -15,3 +15,8 @@ export const Move = styled.div`
     border-radius: 10px;
     padding: 0 10px;
 `
+
+export const MoveType = styled.div`
+    display: flex;
+    justify-items: flex-start;
+`
