@@ -56,7 +56,6 @@ export const StatCmp = styled.div<{
     display: flex;
     align-items: center;
     background-color: var(--tertiary);
-    width: 100%;
     height: 2.5em;
     border-radius: var(--stat-radius);
     margin: 5px;

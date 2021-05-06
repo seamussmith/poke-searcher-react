@@ -55,4 +55,7 @@ export const StatDiv = styled.div`
     align-items: center;
     flex-wrap: wrap;
     padding: 10px;
+    * {
+        width: 100%;
+    }
 `
