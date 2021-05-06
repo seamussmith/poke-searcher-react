@@ -50,7 +50,7 @@ const StatColors: any = {
 export const StatCmp = styled.div<{
     name: string
 }>`
-    ${({name}) => StatColors[name]}
+    ${({name}) => StatColors[name] ?? StatColors["total"]}
     --stat-radius: 15px;
     box-shadow: 2px 2px 1px 0px var(--shadow);
     display: flex;
