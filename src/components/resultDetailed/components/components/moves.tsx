@@ -19,24 +19,24 @@ export function Moves(props: {})
     }, [pokemon])
     return (
         <MovesGrid>
-            {moves?.map(e => (
-                <Move key={e.id}>
-                    <Label1>{e.name.split("-").map(e => capitalize(e)).join(" ")}</Label1>
+            {moves?.map(move => (
+                <Move key={move.id}>
+                    <Label1>{move.name.split("-").map(e => capitalize(e)).join(" ")}</Label1>
                     <Label2>Type</Label2>
                     <div>
-                        <TypeLabel typeName={e.type.name}></TypeLabel>
+                        <TypeLabel typeName={move.type.name}></TypeLabel>
                     </div>
                     <Label2>Stats</Label2>
-                    <Stat name="Power" outOf={255} stat={e.power ?? 0} />
-                    <Stat name="Accuracy" outOf={100} stat={e.accuracy ?? 0} />
+                    <Stat name="Power" outOf={255} stat={move.power ?? 0} />
+                    <Stat name="Accuracy" outOf={100} stat={move.accuracy ?? 0} />
                     <Label2 style={{textAlign: "left"}}>Description</Label2>
                     <p>
                         {
-                            e.effect_entries
+                            move.effect_entries
                             .filter(i => i.language.name === "en")
                             .reverse()[0]
                             .short_effect
-                            .replaceAll("$effect_chance%", `${e.effect_chance}%`)
+                            .replaceAll("$effect_chance%", `${move.effect_chance}%`)
                         }
                     </p>
                 </Move>
