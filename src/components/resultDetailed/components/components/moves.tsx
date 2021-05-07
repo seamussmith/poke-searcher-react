@@ -12,10 +12,14 @@ export function Moves(props: {})
 {
     const [moves, setMoves] = useState<IMove[]|null>(null)
     const { pokemon } = useContext(pokemonContext)
+    
+    // onPokemonUpdate
     useEffect(() => {
+        // Grab all of the pokemon's moves
         Promise.all(pokemon.moves.map(e => getPkmnByURL<IMove>(e.move.url)))
             .then(result => setMoves(result))
     }, [pokemon])
+
     return (
         <MovesGrid>
             {moves?.map(move => (
@@ -31,10 +35,12 @@ export function Moves(props: {})
                     <Label2 style={{textAlign: "left"}}>Description</Label2>
                     <p>
                         {
+                            // Get the move's latest english entry
                             move.effect_entries
                             .filter(i => i.language.name === "en")
                             .reverse()[0]
                             .short_effect
+                            // Replace effect chance placeholder with the effect chance
                             .replaceAll("$effect_chance%", `${move.effect_chance}%`)
                         }
                     </p>
