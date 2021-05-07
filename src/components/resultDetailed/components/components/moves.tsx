@@ -1,13 +1,12 @@
-import { IMove, IPokemonMove } from "pokeapi-typescript";
+import { IMove } from "pokeapi-typescript";
 import React, { useContext, useEffect, useState } from "react";
-import styled from "styled-components";
 import { MovesGrid, Stat, TypeLabel } from "..";
 import LoadingSpinner from "../../../loadingSpinner";
 import { getPkmnByURL } from "../../../util/PokeAPICache";
 import { capitalize } from "../../../util/util";
 import pokemonContext from "../../pokemonContext";
-import { Label1, Label2, Label3 } from "../styleComponents/label";
-import { Move, MoveType } from "../styleComponents/moves";
+import { Label1, Label2 } from "../styleComponents/label";
+import { Move } from "../styleComponents/moves";
 
 export function Moves(props: {})
 {

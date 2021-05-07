@@ -1,7 +1,7 @@
 import React from "react";
 import './index.css'
 import '../navbar/navbar.css'
-import { MiniNavbar, Navbar, NavbarLink, NavbarListItem, NavbarUList } from "../navbar"
+import { MiniNavbar, NavbarLink, NavbarListItem, NavbarUList } from "../navbar"
 
 function Footer()
 {
