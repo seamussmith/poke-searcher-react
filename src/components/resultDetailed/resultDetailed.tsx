@@ -160,10 +160,10 @@ function ResultDetailed(props: {})
 
                 {/* [ROW 2] */}
 
-                <Division width={5} height={2}>
+                <EvenDivision width={5} height={2}>
                     <Label1>Evolutions/Variants</Label1>
                     <Evolutions />
-                </Division>
+                </EvenDivision>
 
                 <EvenDivision width={3} height={1}>
                     <Label2>Pokemon Info</Label2>
@@ -177,6 +177,9 @@ function ResultDetailed(props: {})
                     <InfoStat icoName="fas fa-weight-hanging">
                         Weight: {pokemon.weight/10}kg
                     </InfoStat>
+                    <InfoStat icoName="fas fa-ruler-vertical">
+                        Height: {pokemon.height*10}cm
+                    </InfoStat>
                     <InfoStat icoName="fas fa-tree">
                         Likes {species.habitat?.name ?? "no"} environments
                     </InfoStat>
@@ -186,7 +189,7 @@ function ResultDetailed(props: {})
                 </EvenDivision>
 
                 <EvenDivision width={3} height={1}>
-                    <Label1>Pokedex Desc.</Label1>
+                    <Label2>Pokedex Desc.</Label2>
                     <PokedexDesc>{latestFlavorText}</PokedexDesc>
                 </EvenDivision>
 
