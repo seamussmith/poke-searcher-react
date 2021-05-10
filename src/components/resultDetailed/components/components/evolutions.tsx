@@ -32,14 +32,14 @@ export function Evolutions(props: {})
 
 async function unwrapChain(evoChain: IEvolutionChain)
 {
+    // Edge case where the chain is empty
+    if (evoChain.chain == null) // null and undefined are same with loose equality
+        return []
+    
     // each species named url
     let urls: string[] = []
     // stack of evolves_to properties
     let evoStack: IChainLink[] = []
-
-    // Edge case where the chain is empty
-    if (evoChain.chain == null) // null and undefined are same with loose equality
-        return []
 
     // push the first evolution onto the stack
     evoStack.push(evoChain.chain)
