@@ -13,7 +13,10 @@ function SearchResult(props: {
 {
     const pokeData = props.pokemon
     return (
-        <Link to={`/${props.pokemon.id}/${props.pokemon.name}/`} className={`${props.disabled ? "search-result--disabled":""} search-result`}>
+        <Link to={`/${props.pokemon.id}/${props.pokemon.name}/`} className={`${props.disabled ? "search-result--disabled":""} search-result`}
+        style={{
+            backgroundImage: `url(${props.pokemon.sprites.front_default})`
+        }}>
             <div className="search-result__img-container">
                 <img
                 className="search-result__image nofilter"

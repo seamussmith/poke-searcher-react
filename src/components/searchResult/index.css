@@ -8,7 +8,13 @@
     align-items: center;
     text-align: center;
     min-height: 150px;
-  
+
+    background-repeat: no-repeat;
+    background-blend-mode: multiply;
+    background-position-x: 100px;
+    background-position-y: 30%;
+    background-size: 95%;
+    image-rendering: pixelated;
   
     border-radius: var(--current-radius);
     background-color: var(--layer-1);
