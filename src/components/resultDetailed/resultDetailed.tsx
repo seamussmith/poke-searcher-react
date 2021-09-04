@@ -25,7 +25,8 @@ import {
     GigantamaxFlair,
     LegendaryFlair,
     MythicalFlair,
-    MegaEvolutionFlair
+    MegaEvolutionFlair,
+    AlternativeFormFlair
 } from "./components"
 
 import { capitalize, isStringPositiveInteger, stylePokemonName } from '../util/util'
@@ -228,6 +229,7 @@ function PkmnFlairs(props: {})
     let splitName = pokemon.name.split("-")
     // Generate the flairs for the pokemon
     let flairs = []
+    let couldBeAlternate = true;
     if (looseSpecies.is_legendary)
     {
         flairs.push(<LegendaryFlair key="legendary">Legendary Pokemon</LegendaryFlair> )
@@ -238,11 +240,17 @@ function PkmnFlairs(props: {})
     }
     if (splitName.some((e) => e === "mega"))
     {
+        couldBeAlternate = false;
         flairs.push(<MegaEvolutionFlair key="mega">Mega evolution</MegaEvolutionFlair>)
     }
     if (splitName.some((e) => e === "gmax"))
     {
+        couldBeAlternate = false;
         flairs.push(<GigantamaxFlair key="giga">Gigantamax Form</GigantamaxFlair>)
+    }
+    if (!pokemon.is_default && couldBeAlternate)
+    {
+        flairs.push(<AlternativeFormFlair key="alt">Alternative Form</AlternativeFormFlair>)
     }
     return (
         <div>

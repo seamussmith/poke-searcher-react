@@ -32,11 +32,16 @@ export const MythicalFlair = styled(BaseFlair)`
     --flair-shadow: #5c1252;
 `
 
+export const AlternativeFormFlair = styled(BaseFlair)`
+    --flair-color: #cc7829;
+    --flair-shadow: #79481a;
+`
+
 export const MegaEvolutionFlair = styled(BaseFlair)`
     --flair-color: transparent;
     --flair-shadow: transparent;
-    --mega-evo-gradient: linear-gradient(to right, #adb44b, #4bb84b, #45b2b4, #c751c9);
-    
+    --mega-evo-gradient: linear-gradient(to right, #bac24e, #4bb84b, #48b4b6, #db58dd);
+
     position: relative;
     z-index: 0;
     background-image: var(--mega-evo-gradient);
