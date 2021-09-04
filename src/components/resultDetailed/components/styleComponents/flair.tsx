@@ -23,18 +23,41 @@ export const GigantamaxFlair = styled(BaseFlair)`
 `
 
 export const LegendaryFlair = styled(BaseFlair)`
-    --flair-color: #c02727;
-    --flair-shadow: #691717;
+    --flair-color: #22a534;
+    --flair-shadow: #1b7727;
 `
 
 export const MythicalFlair = styled(BaseFlair)`
-    --flair-color: #c02727;
-    --flair-shadow: #691717;
+    --flair-color: #a52a95;
+    --flair-shadow: #5c1252;
 `
 
 export const MegaEvolutionFlair = styled(BaseFlair)`
-    --flair-color: #c02727;
-    --flair-shadow: #691717;
+    --flair-color: transparent;
+    --flair-shadow: transparent;
+    --mega-evo-gradient: linear-gradient(to right, #adb44b, #4bb84b, #45b2b4, #c751c9);
+    
+    position: relative;
+    z-index: 0;
+    background-image: var(--mega-evo-gradient);
+    
+    /* Emulating a box shadow but with a background image */
+    &::before {
+        content: "";
+        position: absolute;
+
+        /* Creates the sort of box shadow effect I like */
+        /* Somehow... */
+        opacity: 50%;
+        background-image: var(--mega-evo-gradient);
+        border-radius: 100px;
+
+        z-index: -1;
+        top: 2px;
+        left: 2px;
+        width: 100%;
+        height: 100%;
+    }
 `
 
 export const Flair = styled.p<{
