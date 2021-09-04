@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import SearchBox from './components/searchBox'
 import SearchResult from './components/searchResult'
 import ResultDetailed from './components/resultDetailed'
-import { BrowserRouter as Router, Redirect, Route, Switch, useHistory, useParams } from "react-router-dom"
+import { HashRouter as Router, Redirect, Route, Switch, useHistory, useParams } from "react-router-dom"
 import './App.css'
 import { escapeRegExp } from './components/util/util'
 import { IPokemon, IPokemonSpecies } from "pokeapi-typescript"
