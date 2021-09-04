@@ -11,7 +11,7 @@ export function Stat(props: {
     return (
         <StatCmp name={props.name}>
             <StatName>
-                {capitalize(props.name).replaceAll("-", " ")}
+                {props.name.split("-").map(e => capitalize(e)).join(" ")}
             </StatName>
             <StatBarContainer>
                 <StatBar stat={props.stat} outOf={props.outOf}>
