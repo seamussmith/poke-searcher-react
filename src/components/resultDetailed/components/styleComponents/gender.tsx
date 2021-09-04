@@ -15,9 +15,16 @@ export const GenderLabel = styled.div<{
     height: 84px;
     display: flex;
     border-radius: var(--mini-divison-radius);
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
+    align-items: center;
     background-color: ${({gender}) => GenderColors[gender] ?? "var(--layer-1)"};
     box-shadow: 1px 2px 0px 0px var(--shadow-color);
     margin: 5px;
+    /* oH BUt ThiS iS BaD PraCTIcE */
+    /* I JUST WANT THEM TO AL */
+    & > h1 {
+        width: auto;
+        margin: 0ch 0.5ch;
+    }
 `

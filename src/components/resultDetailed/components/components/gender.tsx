@@ -13,7 +13,7 @@ export function Gender(props: {
     }
     return (
         <GenderLabel gender={props.gender ?? ""}>
-            <h1>{genderMap[props.gender ?? ""] ?? "Genderless"} {props.ratio}{props.gender && "%"}</h1>
+            <h1>{genderMap[props.gender ?? ""] ?? "Genderless"}</h1><h1>{props.ratio}{props.gender && "%"}</h1>
         </GenderLabel>
     )
 }
