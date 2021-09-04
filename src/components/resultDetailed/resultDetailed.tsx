@@ -211,7 +211,7 @@ function ResultDetailed(props: {})
 
                 <Division width={8} height={1}>
                     <p>Share this Pokemon <span className="--bigify"><i className="fas fa-share"></i></span> <br />
-                        <CopyClicker copyTxt={window.location.origin + window.location.pathname} />
+                        <CopyClicker copyTxt={window.location.href.split('?')[0]} />
                     </p>
                 </Division>
             </PokemonContext.Provider>

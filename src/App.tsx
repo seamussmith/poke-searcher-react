@@ -12,7 +12,7 @@ import LoadingSpinner from './components/loadingSpinner'
 function App(props: {})
 {
     return (
-        <Router basename={process.env.PUBLIC_URL}>
+        <Router>
             <RealApp />
         </Router>
     )
