@@ -12,6 +12,9 @@ const BaseFlair = styled.p`
     font-size: 20pt;
     font-weight: bold;
     margin: 5px 10%;
+    @media (max-width: 720px) {
+        margin: 5px 2%;
+    }
     border-radius: 100px;
     padding: 2px 2px;
     display: block;
@@ -63,17 +66,4 @@ export const MegaEvolutionFlair = styled(BaseFlair)`
         width: 100%;
         height: 100%;
     }
-`
-
-export const Flair = styled.p<{
-    color: string
-}>`
-    color: var(--text-color-inverse);
-    background-color: ${({color}) => color};
-    border: solid ${({color}) => color} 5px;
-    font-size: 20pt;
-    font-weight: bold;
-    margin: 5px 10%;
-    border-radius: 100px;
-    display: block;
 `

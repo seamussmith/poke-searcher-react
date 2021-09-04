@@ -12,7 +12,6 @@ import {
     Division,
     EvenDivision,
     TypeLabel,
-    Flair,
     StatDiv,
     Gender,
     ResultDetailedGrid,
@@ -227,7 +226,7 @@ function PkmnFlairs(props: {})
     const { pokemon, species } = useContext(PokemonContext)
     const looseSpecies = species as any
     let splitName = pokemon.name.split("-")
-    
+
     // Generate the flairs for the pokemon
     let flairs = []
     let couldBeAlternate = true;
