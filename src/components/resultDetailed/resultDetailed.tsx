@@ -21,7 +21,11 @@ import {
     AbilityContainer,
     Evolutions,
     PokedexDesc,
-    Moves
+    Moves,
+    GigantamaxFlair,
+    LegendaryFlair,
+    MythicalFlair,
+    MegaEvolutionFlair
 } from "./components"
 
 import { capitalize, isStringPositiveInteger, stylePokemonName } from '../util/util'
@@ -226,19 +230,19 @@ function PkmnFlairs(props: {})
     let flairs = []
     if (looseSpecies.is_legendary)
     {
-        flairs.push(<Flair color="#ffd700" key="legendary">Legendary Pokemon</Flair> )
+        flairs.push(<LegendaryFlair key="legendary">Legendary Pokemon</LegendaryFlair> )
     }
     if (looseSpecies.is_mythical)
     {
-        flairs.push(<Flair color="#e70de7" key="mythical">Mythical Pokemon</Flair>)
+        flairs.push(<MythicalFlair key="mythical">Mythical Pokemon</MythicalFlair>)
     }
     if (splitName.some((e) => e === "mega"))
     {
-        flairs.push(<Flair color="#00a9cc" key="mega">Mega evolution</Flair>)
+        flairs.push(<MegaEvolutionFlair key="mega">Mega evolution</MegaEvolutionFlair>)
     }
     if (splitName.some((e) => e === "gmax"))
     {
-        flairs.push(<Flair color="#c02727" key="giga">Gigantamax Form</Flair>)
+        flairs.push(<GigantamaxFlair key="giga">Gigantamax Form</GigantamaxFlair>)
     }
     return (
         <div>
