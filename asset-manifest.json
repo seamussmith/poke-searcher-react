@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/poke-searcher-react/static/css/main.7ea5dcbf.chunk.css",
-    "main.js": "/poke-searcher-react/static/js/main.b6c2ac52.chunk.js",
-    "main.js.map": "/poke-searcher-react/static/js/main.b6c2ac52.chunk.js.map",
+    "main.js": "/poke-searcher-react/static/js/main.ebc378d7.chunk.js",
+    "main.js.map": "/poke-searcher-react/static/js/main.ebc378d7.chunk.js.map",
     "runtime-main.js": "/poke-searcher-react/static/js/runtime-main.321d7baf.js",
     "runtime-main.js.map": "/poke-searcher-react/static/js/runtime-main.321d7baf.js.map",
-    "static/js/2.ad473b7f.chunk.js": "/poke-searcher-react/static/js/2.ad473b7f.chunk.js",
-    "static/js/2.ad473b7f.chunk.js.map": "/poke-searcher-react/static/js/2.ad473b7f.chunk.js.map",
+    "static/js/2.1df66de6.chunk.js": "/poke-searcher-react/static/js/2.1df66de6.chunk.js",
+    "static/js/2.1df66de6.chunk.js.map": "/poke-searcher-react/static/js/2.1df66de6.chunk.js.map",
     "static/js/3.837d91f0.chunk.js": "/poke-searcher-react/static/js/3.837d91f0.chunk.js",
     "static/js/3.837d91f0.chunk.js.map": "/poke-searcher-react/static/js/3.837d91f0.chunk.js.map",
     "index.html": "/poke-searcher-react/index.html",
     "static/css/main.7ea5dcbf.chunk.css.map": "/poke-searcher-react/static/css/main.7ea5dcbf.chunk.css.map",
-    "static/js/2.ad473b7f.chunk.js.LICENSE.txt": "/poke-searcher-react/static/js/2.ad473b7f.chunk.js.LICENSE.txt"
+    "static/js/2.1df66de6.chunk.js.LICENSE.txt": "/poke-searcher-react/static/js/2.1df66de6.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.321d7baf.js",
-    "static/js/2.ad473b7f.chunk.js",
+    "static/js/2.1df66de6.chunk.js",
     "static/css/main.7ea5dcbf.chunk.css",
-    "static/js/main.b6c2ac52.chunk.js"
+    "static/js/main.ebc378d7.chunk.js"
   ]
 }
