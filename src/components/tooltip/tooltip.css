@@ -14,7 +14,7 @@
     padding: 2px 10px;
     border-radius: var(--division-radius);
     background: var(--layer-3);
-    /* box-shadow: 0 0 2px var(--shadow-color); */
+    box-shadow: 0 0 2px var(--shadow-color);
     color: var(--text-color);
     text-align: center;
     transition: all 0.25s;
