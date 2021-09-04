@@ -227,6 +227,7 @@ function PkmnFlairs(props: {})
     const { pokemon, species } = useContext(PokemonContext)
     const looseSpecies = species as any
     let splitName = pokemon.name.split("-")
+    
     // Generate the flairs for the pokemon
     let flairs = []
     let couldBeAlternate = true;
@@ -252,6 +253,7 @@ function PkmnFlairs(props: {})
     {
         flairs.push(<AlternativeFormFlair key="alt">Alternative Form</AlternativeFormFlair>)
     }
+
     return (
         <div>
             {flairs}
