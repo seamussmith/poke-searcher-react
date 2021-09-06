@@ -242,7 +242,7 @@ function PkmnFlairs(props: {})
     if (splitName.some((e) => e === "mega"))
     {
         couldBeAlternate = false
-        flairs.push(<MegaEvolutionFlair key="mega">Mega evolution</MegaEvolutionFlair>)
+        flairs.push(<MegaEvolutionFlair key="mega">Mega Evolution</MegaEvolutionFlair>)
     }
     if (splitName.some((e) => e === "gmax"))
     {
