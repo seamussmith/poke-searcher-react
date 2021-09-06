@@ -11,9 +11,9 @@ const BaseFlair = styled.p`
     box-shadow: 2px 2px var(--flair-shadow);
     font-size: 20pt;
     font-weight: bold;
-    margin: 5px 10%;
+    margin: 10px 10%;
     @media (max-width: 720px) {
-        margin: 5px 2%;
+        margin: 10px 2%;
     }
     border-radius: 100px;
     padding: 2px 2px;
@@ -21,13 +21,61 @@ const BaseFlair = styled.p`
 `
 
 export const GigantamaxFlair = styled(BaseFlair)`
-    --flair-color: #c02727;
-    --flair-shadow: #691717;
+    --flair-color: #ce3030;
+    --flair-shadow: #ff2626;
+
+    position: relative;
+    z-index: 0;
+    background-color: var(--flair-color);
+    /* Glow effect */
+    box-shadow: 0 0 10px var(--flair-shadow);
+    
+    /* Emulate solid box shadow since I am using it to do the glow effect */
+    &::before {
+        content: "";
+        position: absolute;
+
+        opacity: 35%;
+        border-radius: 100px;
+        background-color: var(--flair-color);
+        /* Glowwwing */
+        box-shadow: 0 0 10px var(--flair-shadow);
+
+        z-index: -1;
+        top: 2px;
+        left: 2px;
+        width: 100%;
+        height: 100%;
+    }
 `
 
 export const EternamaxFlair = styled(BaseFlair)`
-    --flair-color: #a11071;
-    --flair-shadow: #750e53;
+    --flair-color: #412e85;
+    --flair-shadow: rgb(256, 46, 133);
+    
+    position: relative;
+    z-index: 0;
+    background-color: var(--flair-color);
+    /* Glow effect */
+    box-shadow: 0 0 10px var(--flair-shadow);
+    
+    /* Emulate solid box shadow since I am using it to do the glow effect */
+    &::before {
+        content: "";
+        position: absolute;
+
+        opacity: 25%;
+        border-radius: 100px;
+        background-color: var(--flair-color);
+        /* Glowwwing */
+        /* box-shadow: 0 0 15px var(--flair-shadow); */
+
+        z-index: -1;
+        top: 3px;
+        left: 3px;
+        width: 100%;
+        height: 100%;
+    }
 `
 
 export const LegendaryFlair = styled(BaseFlair)`
