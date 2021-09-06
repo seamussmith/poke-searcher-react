@@ -1,22 +1,23 @@
 {
   "files": {
-    "main.css": "/poke-searcher-react/static/css/main.7ea5dcbf.chunk.css",
-    "main.js": "/poke-searcher-react/static/js/main.daef7f3b.chunk.js",
-    "main.js.map": "/poke-searcher-react/static/js/main.daef7f3b.chunk.js.map",
-    "runtime-main.js": "/poke-searcher-react/static/js/runtime-main.321d7baf.js",
-    "runtime-main.js.map": "/poke-searcher-react/static/js/runtime-main.321d7baf.js.map",
-    "static/js/2.1df66de6.chunk.js": "/poke-searcher-react/static/js/2.1df66de6.chunk.js",
-    "static/js/2.1df66de6.chunk.js.map": "/poke-searcher-react/static/js/2.1df66de6.chunk.js.map",
-    "static/js/3.837d91f0.chunk.js": "/poke-searcher-react/static/js/3.837d91f0.chunk.js",
-    "static/js/3.837d91f0.chunk.js.map": "/poke-searcher-react/static/js/3.837d91f0.chunk.js.map",
+    "main.css": "/poke-searcher-react/static/css/main.d40060a6.chunk.css",
+    "main.js": "/poke-searcher-react/static/js/main.5dcd4fee.chunk.js",
+    "main.js.map": "/poke-searcher-react/static/js/main.5dcd4fee.chunk.js.map",
+    "runtime-main.js": "/poke-searcher-react/static/js/runtime-main.f3a4c8a0.js",
+    "runtime-main.js.map": "/poke-searcher-react/static/js/runtime-main.f3a4c8a0.js.map",
+    "static/js/2.d9698cb1.chunk.js": "/poke-searcher-react/static/js/2.d9698cb1.chunk.js",
+    "static/js/2.d9698cb1.chunk.js.map": "/poke-searcher-react/static/js/2.d9698cb1.chunk.js.map",
+    "static/js/3.c3a36b7d.chunk.js": "/poke-searcher-react/static/js/3.c3a36b7d.chunk.js",
+    "static/js/3.c3a36b7d.chunk.js.map": "/poke-searcher-react/static/js/3.c3a36b7d.chunk.js.map",
     "index.html": "/poke-searcher-react/index.html",
-    "static/css/main.7ea5dcbf.chunk.css.map": "/poke-searcher-react/static/css/main.7ea5dcbf.chunk.css.map",
-    "static/js/2.1df66de6.chunk.js.LICENSE.txt": "/poke-searcher-react/static/js/2.1df66de6.chunk.js.LICENSE.txt"
+    "static/css/main.d40060a6.chunk.css.map": "/poke-searcher-react/static/css/main.d40060a6.chunk.css.map",
+    "static/js/2.d9698cb1.chunk.js.LICENSE.txt": "/poke-searcher-react/static/js/2.d9698cb1.chunk.js.LICENSE.txt",
+    "static/media/logo.ae268293.svg": "/poke-searcher-react/static/media/logo.ae268293.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.321d7baf.js",
-    "static/js/2.1df66de6.chunk.js",
-    "static/css/main.7ea5dcbf.chunk.css",
-    "static/js/main.daef7f3b.chunk.js"
+    "static/js/runtime-main.f3a4c8a0.js",
+    "static/js/2.d9698cb1.chunk.js",
+    "static/css/main.d40060a6.chunk.css",
+    "static/js/main.5dcd4fee.chunk.js"
   ]
 }
