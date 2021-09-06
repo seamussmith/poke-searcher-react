@@ -230,7 +230,7 @@ function PkmnFlairs(props: {})
 
     // Generate the flairs for the pokemon
     let flairs = []
-    let couldBeAlternate = true;
+    let couldBeAlternate = true
     if (looseSpecies.is_legendary)
     {
         flairs.push(<LegendaryFlair key="legendary">Legendary Pokemon</LegendaryFlair> )
@@ -241,17 +241,17 @@ function PkmnFlairs(props: {})
     }
     if (splitName.some((e) => e === "mega"))
     {
-        couldBeAlternate = false;
+        couldBeAlternate = false
         flairs.push(<MegaEvolutionFlair key="mega">Mega evolution</MegaEvolutionFlair>)
     }
     if (splitName.some((e) => e === "gmax"))
     {
-        couldBeAlternate = false;
+        couldBeAlternate = false
         flairs.push(<GigantamaxFlair key="giga">Gigantamax Form</GigantamaxFlair>)
     }
     if (splitName.some((e) => e === "eternamax"))
     {
-        couldBeAlternate = false;
+        couldBeAlternate = false
         flairs.push(<EternamaxFlair key="giga">Eternamax Form</EternamaxFlair>)
     }
     if (!pokemon.is_default && couldBeAlternate)
