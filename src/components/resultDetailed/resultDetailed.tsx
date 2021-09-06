@@ -25,7 +25,8 @@ import {
     LegendaryFlair,
     MythicalFlair,
     MegaEvolutionFlair,
-    AlternativeFormFlair
+    AlternativeFormFlair,
+    EternamaxFlair
 } from "./components"
 
 import { capitalize, isStringPositiveInteger, stylePokemonName } from '../util/util'
@@ -247,6 +248,11 @@ function PkmnFlairs(props: {})
     {
         couldBeAlternate = false;
         flairs.push(<GigantamaxFlair key="giga">Gigantamax Form</GigantamaxFlair>)
+    }
+    if (splitName.some((e) => e === "eternamax"))
+    {
+        couldBeAlternate = false;
+        flairs.push(<EternamaxFlair key="giga">Eternamax Form</EternamaxFlair>)
     }
     if (!pokemon.is_default && couldBeAlternate)
     {

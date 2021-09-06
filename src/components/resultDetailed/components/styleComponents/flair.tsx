@@ -25,6 +25,11 @@ export const GigantamaxFlair = styled(BaseFlair)`
     --flair-shadow: #691717;
 `
 
+export const EternamaxFlair = styled(BaseFlair)`
+    --flair-color: #a11071;
+    --flair-shadow: #750e53;
+`
+
 export const LegendaryFlair = styled(BaseFlair)`
     --flair-color: #22a534;
     --flair-shadow: #1b7727;
