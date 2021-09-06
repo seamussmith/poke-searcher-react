@@ -16,15 +16,28 @@ export function Moves(props: {})
     // onPokemonUpdate
     useEffect(() => {
         // Grab all of the pokemon's moves
-        Promise.all(pokemon.moves.map(e => getPkmnByURL<IMove>(e.move.url)))
-            .then(result => setMoves(result))
+        Promise.all(
+            pokemon.moves
+                .filter(e => e.version_group_details.reverse()[0].move_learn_method.name === "level-up")
+                .map(e => getPkmnByURL<IMove>(e.move.url))
+        ).then(result => setMoves(result))
     }, [pokemon])
 
     return (
         <MovesGrid>
-            {moves?.map(move => (
+            {moves?.map(move => {
+                return {
+                    ...move,
+                    lv: pokemon.moves.find(e => e.move.name === move.name)?.version_group_details.reverse()[0].level_learned_at ?? 420
+                }
+            })
+                .sort((a, b) => a.lv - b.lv)
+                .map(move => (
                 <Move key={move.id}>
-                    <Label1>{move.name.split("-").map(e => capitalize(e)).join(" ")}</Label1>
+                    <Label1>
+                        {move.name.split("-").map(e => capitalize(e)).join(" ")} |
+                        Lv{pokemon.moves.find(e => e.move.name === move.name)?.version_group_details.reverse()[0].level_learned_at}
+                    </Label1>
                     <Label2>Type</Label2>
                     <div>
                         <TypeLabel typeName={move.type.name}></TypeLabel>
