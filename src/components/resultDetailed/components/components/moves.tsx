@@ -26,9 +26,11 @@ export function Moves(props: {})
     return (
         <MovesGrid>
             {moves?.map(move => {
+                let details = pokemon.moves.find(e => e.move.name === move.name)?.version_group_details
+                let latest = details?.sort((a, b) => parseInt(a.version_group.url.split("/")[1]) - parseInt(b.version_group.url.split("/")[1]))[0]
                 return {
                     ...move,
-                    lv: pokemon.moves.find(e => e.move.name === move.name)?.version_group_details.reverse()[0].level_learned_at ?? 420
+                    lv: latest?.level_learned_at ?? 420
                 }
             })
                 .sort((a, b) => a.lv - b.lv)
