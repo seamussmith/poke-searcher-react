@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import logo from "../../assets/logo.svg"
 import './index.css'
 
 function SearchBox(props: {
@@ -13,7 +14,9 @@ function SearchBox(props: {
     
     return (
         <div className="search-box">
-            <h1 className="search-box__title">PokeSearcher!</h1>
+            {/* todo: use not inline styles */}
+            {/* actually, im too lazy to convert this component to styled components, this will wow the freshmen enough */}
+            <img src={logo} alt="pokesearcher logo" className="search-box__logo"></img>
             <input
             type="text"
             className="search-box__input"

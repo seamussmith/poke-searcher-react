@@ -23,6 +23,18 @@
     }
 }
 
+.search-box__logo {
+    width: 500px;
+    height: 150px;
+}
+
+@media (max-width: 720px) {
+    .search-box__logo {
+        width: 75%;
+        height: 100px;
+    }
+}
+
 .search-box__input:focus {
     outline: none;
 }
