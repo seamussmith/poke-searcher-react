@@ -199,7 +199,7 @@ function ResultDetailed(props: {})
                 </EvenDivision>
 
                 <Division width={5} height={1}>
-                    <Label1>Moves</Label1>
+                    <Label1>Leveling Moves</Label1>
                     <Moves />
                 </Division>
 
