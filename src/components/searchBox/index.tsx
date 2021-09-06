@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
 import logo from "../../assets/logo.svg"
 import './index.css'
 
@@ -14,9 +15,9 @@ function SearchBox(props: {
     
     return (
         <div className="search-box">
-            {/* todo: use not inline styles */}
-            {/* actually, im too lazy to convert this component to styled components, this will wow the freshmen enough */}
-            <img src={logo} alt="pokesearcher logo" className="search-box__logo"></img>
+            <Link to="/">
+                <img src={logo} alt="pokesearcher logo" className="search-box__logo"></img>
+            </Link>
             <input
             type="text"
             className="search-box__input"
