@@ -15,7 +15,7 @@ export function Stat(props: {
             </StatName>
             <StatBarContainer>
                 <StatBar stat={props.stat} outOf={props.outOf}>
-                    {props.stat}
+                    {props.stat}/{props.outOf}
                 </StatBar>
             </StatBarContainer>
         </StatCmp>
