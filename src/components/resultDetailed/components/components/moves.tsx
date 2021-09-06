@@ -36,7 +36,7 @@ export function Moves(props: {})
                 <Move key={move.id}>
                     <Label1>
                         {move.name.split("-").map(e => capitalize(e)).join(" ")} |
-                        Lv{pokemon.moves.find(e => e.move.name === move.name)?.version_group_details.reverse()[0].level_learned_at}
+                        Lv{move.lv}
                     </Label1>
                     <Label2>Type</Label2>
                     <div>
