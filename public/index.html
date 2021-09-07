@@ -2,7 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon-light.svg" id="fv-light" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon-dark.svg" id="fv-dark" />
+    <script>
+      // match icon to color theme
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+        document.getElementById("fv-light").remove()
+      else
+        document.getElementById("fv-dark").remove()
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
@@ -27,7 +35,7 @@
     <!-- preconnect to pokeapi -->
     <link rel="preconnect" href="https://pokeapi.co">
     <link rel="dns-prefetch" href="https://pokeapi.co">
-    <title>React App</title>
+    <title>Pokesearcher</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

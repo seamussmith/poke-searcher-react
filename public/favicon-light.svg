@@ -1,0 +1,19 @@
+<svg width="581" height="582" viewBox="0 0 581 582" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <style>
+    .pokeball__handle {
+        fill: black;
+    }
+    .pokeball__glass {
+        stroke: black;
+    }
+    </style>
+    <ellipse cx="361" cy="184" rx="134" ry="94" fill="#FF0000"></ellipse>
+    <ellipse cx="357.5" cy="248.5" rx="130.5" ry="106.5" fill="white"></ellipse>
+    <rect x="236" y="141" width="244" height="82" fill="#FF0000"></rect>
+    <circle cx="359.5" cy="221.5" r="136.5" stroke="black" stroke-width="20"></circle>
+    <line x1="213" y1="221" x2="506" y2="221" stroke="black" stroke-width="20"></line>
+    <circle cx="359.5" cy="221.5" r="42.5" fill="white" stroke="black" stroke-width="20"></circle>
+    <circle cx="359.5" cy="221.5" r="16.5" fill="black"></circle>
+    <rect x="170.667" y="368" width="60" height="241.359" rx="30" transform="rotate(45 170.667 368)" fill="black"></rect>
+    <circle cx="359.5" cy="221.5" r="211.5" stroke-width="20" stroke="black"></circle>
+</svg>
