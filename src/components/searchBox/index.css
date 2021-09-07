@@ -9,9 +9,9 @@
 
 .search-box__input {
     font-size: 30pt;
-    width: 25ch;
+    width: 20ch;
     border: solid rgb(138, 138, 138) 2px;
-    border-radius: 1000px;
+    border-radius: 0 1000px 1000px 0;
     padding: 5px 20px;
 }
 
@@ -33,6 +33,24 @@
         width: 75%;
         height: 100px;
     }
+}
+
+.search-box__link {
+    text-align: center;
+}
+
+.search-box__input-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+.search-box__search-icon {
+    display: grid;
+    place-items: center;
+    background-color: var(--layer-3);
+    border-radius: 1000px 0 0 1000px;
+    padding-left: 0.5ch;
+    width: 5ch;
+    font-size: 18pt;
 }
 
 .search-box__input:focus {

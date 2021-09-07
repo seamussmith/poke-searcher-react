@@ -15,16 +15,22 @@ function SearchBox(props: {
     
     return (
         <div className="search-box">
-            <Link to="/">
+            <Link to="/" className="search-box__link">
                 <img src={logo} alt="pokesearcher logo" className="search-box__logo"></img>
             </Link>
-            <input
-            type="text"
-            className="search-box__input"
-            placeholder="Search for a Pokemon!"
-            spellCheck={false}
-            value={value}
-            onChange={onChange}/>
+            <div className="search-box__input-wrapper">
+                <div className="search-box__search-icon">
+                    <i className="fas fa-search"></i>
+                </div>
+                <input
+                type="text"
+                className="search-box__input"
+                placeholder="Search for a Pokemon!"
+                spellCheck={false}
+                value={value}
+                onChange={onChange}/>
+            </div>
+            
         </div>
     )
 }
