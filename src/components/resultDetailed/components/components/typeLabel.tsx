@@ -8,7 +8,7 @@ export function TypeLabel(props: {
 })
 {
     if (props.typeName == null)
-        return <EmptyType><span>???</span></EmptyType>
+        return <EmptyType><span><pre style={{padding: "0", margin: "0"}}>   </pre></span></EmptyType>
     else
         return <Type className={props.typeName}><span>{capitalize(props.typeName)}</span></Type>
 }
