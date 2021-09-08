@@ -19,7 +19,6 @@
 @media (max-width: 720px) {
     .search-box__input {
         padding: 10px 20px;
-        width: 80vw;
         font-size: 20pt
     }
 }
@@ -44,6 +43,14 @@
     display: flex;
     flex-direction: row;
 }
+
+@media (max-width: 720px) {
+    .search-box__input-wrapper {
+        width: 80vw;
+    }
+
+}
+
 .search-box__search-icon {
     display: grid;
     place-items: center;
