@@ -19,7 +19,7 @@
 @media (max-width: 720px) {
     .search-box__input {
         padding: 10px 0.5ch;
-        width: 20ch;
+        width: 80%;
         font-size: 20pt
     }
 }
@@ -59,6 +59,12 @@
     padding-left: 0.5ch;
     width: 5ch;
     font-size: 18pt;
+}
+
+@media (max-width: 720px) {
+    .search-box__search-icon {
+        width: 20%;
+    }
 }
 
 .search-box__input:focus {
