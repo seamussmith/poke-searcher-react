@@ -151,7 +151,7 @@ function ResultDetailed(props: {})
                             stat={pokemon.stats.map(({base_stat}) => base_stat).reduce((n, c) => n + c)}
                             outOf={1125} />
                     </StatDiv>
-                    <Label1>Gender ratio </Label1>
+                    <Label1>Gender Rarity</Label1>
                     <StatDiv>
                         {genderRatio !== -1 ?
                         <>
