@@ -135,7 +135,7 @@ function ResultDetailed(props: {})
 
                 {/* Stats, Gender Ratio */}
                 <EvenDivision width={4} height={1}>
-                    <Label1>Stats</Label1>
+                    <Label1>Base Stats</Label1>
                     <StatDiv>
                         {
                         pokemon.stats.map(({stat:{name}, base_stat}) =>
