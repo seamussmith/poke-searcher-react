@@ -53,8 +53,7 @@ function ResultDetailed(props: {})
 
     // onURLChanged
     useEffect(() => {
-        if (window.screen.width < 720)
-            self.current?.scrollIntoView()
+        self.current?.scrollIntoView()
         if (!isStringPositiveInteger(params.id))
         {
             history.push("/")
