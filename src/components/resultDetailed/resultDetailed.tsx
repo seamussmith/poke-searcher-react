@@ -228,7 +228,7 @@ function PkmnFlairs(props: {})
     let splitName = pokemon.name.split("-")
 
     // Generate the flairs for the pokemon
-    let flairs = []
+    let flairs: JSX.Element[] = []
     let couldBeAlternate = true
     if (looseSpecies.is_legendary)
     {
